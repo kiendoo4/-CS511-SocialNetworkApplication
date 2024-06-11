@@ -16,7 +16,7 @@ namespace _CS511__SocialNetworkApplication.View
         public event EventHandler ButtonClicked;
         public event EventHandler LoginSuccessClicked;
         public event EventHandler ForgotPasswordClicked;
-        public string username;
+        public string username, lmeo;
         public Login()
         {
             InitializeComponent();
@@ -40,22 +40,23 @@ namespace _CS511__SocialNetworkApplication.View
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines("D:\\CS511\\Thuchanh\\[CS511]btth1\\[CS511]btth1\\Resources\\UserList.txt");
+            string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
             bool checkacc = false;
             foreach (string line in lines)
             {
                 string[] parts = line.Split('*');
-                if (parts[0] == AccUs.Text || parts[2] == AccUs.Text)
-                    if (parts[3] == Pw.Text)
+                if (parts[0] == AccUs.Text || parts[4] == AccUs.Text)
+                    if (parts[5] == Pw.Text)
                     {
                         checkacc = true;
+                        lmeo = parts[0];
                         break;
                     }
             }
             if (checkacc)
             {
                 username = AccUs.Text;
-                LoginSuccessClicked?.Invoke(this, EventArgs.Empty);
+                LoginSuccessClicked?.Invoke(lmeo, EventArgs.Empty);
             }
             else
                 MessageBox.Show("Tài khoản hoặc mật khẩu không khớp/không tồn tại", "Thông báo", MessageBoxButtons.OK); 
@@ -64,11 +65,6 @@ namespace _CS511__SocialNetworkApplication.View
         private void ForgotPassword_Click(object sender, EventArgs e)
         {
             ForgotPasswordClicked?.Invoke(this, EventArgs.Empty);
-        }
-
-        private void LoginButton_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _CS511__SocialNetworkApplication.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,9 +15,16 @@ namespace _CS511__SocialNetworkApplication
         [STAThread]
         static void Main()
         {
+            if (Environment.OSVersion.Version.Major >= 6)
+            {
+                SetProcessDPIAware();
+            }
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new MainW());
         }
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+
+        private static extern bool SetProcessDPIAware();
     }
 }

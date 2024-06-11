@@ -46,7 +46,7 @@ namespace _CS511__SocialNetworkApplication.View
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Paytone One", 21F);
-            this.label1.Location = new System.Drawing.Point(46, 26);
+            this.label1.Location = new System.Drawing.Point(32, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(409, 57);
             this.label1.TabIndex = 0;
@@ -56,7 +56,7 @@ namespace _CS511__SocialNetworkApplication.View
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(55, 103);
+            this.label2.Location = new System.Drawing.Point(40, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(133, 38);
             this.label2.TabIndex = 1;
@@ -66,17 +66,17 @@ namespace _CS511__SocialNetworkApplication.View
             // 
             this.AccUs.BackColor = System.Drawing.Color.White;
             this.AccUs.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
-            this.AccUs.Location = new System.Drawing.Point(55, 148);
+            this.AccUs.Location = new System.Drawing.Point(40, 148);
             this.AccUs.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.AccUs.Name = "AccUs";
-            this.AccUs.Size = new System.Drawing.Size(400, 39);
+            this.AccUs.Size = new System.Drawing.Size(425, 39);
             this.AccUs.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(55, 212);
+            this.label3.Location = new System.Drawing.Point(41, 212);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(130, 38);
             this.label3.TabIndex = 3;
@@ -86,18 +86,18 @@ namespace _CS511__SocialNetworkApplication.View
             // 
             this.Pw.BackColor = System.Drawing.Color.White;
             this.Pw.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
-            this.Pw.Location = new System.Drawing.Point(56, 254);
+            this.Pw.Location = new System.Drawing.Point(40, 254);
             this.Pw.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Pw.Name = "Pw";
             this.Pw.PasswordChar = '•';
-            this.Pw.Size = new System.Drawing.Size(400, 39);
+            this.Pw.Size = new System.Drawing.Size(425, 39);
             this.Pw.TabIndex = 4;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(56, 406);
+            this.label4.Location = new System.Drawing.Point(33, 406);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(246, 38);
             this.label4.TabIndex = 5;
@@ -108,7 +108,7 @@ namespace _CS511__SocialNetworkApplication.View
             this.ForgotPassword.BackColor = System.Drawing.Color.SteelBlue;
             this.ForgotPassword.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForgotPassword.ForeColor = System.Drawing.Color.White;
-            this.ForgotPassword.Location = new System.Drawing.Point(56, 324);
+            this.ForgotPassword.Location = new System.Drawing.Point(40, 324);
             this.ForgotPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.ForgotPassword.Name = "ForgotPassword";
             this.ForgotPassword.Size = new System.Drawing.Size(202, 50);
@@ -122,21 +122,20 @@ namespace _CS511__SocialNetworkApplication.View
             this.LoginButton.BackColor = System.Drawing.Color.Purple;
             this.LoginButton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LoginButton.ForeColor = System.Drawing.Color.White;
-            this.LoginButton.Location = new System.Drawing.Point(275, 325);
+            this.LoginButton.Location = new System.Drawing.Point(284, 324);
             this.LoginButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.LoginButton.Name = "LoginButton";
             this.LoginButton.Size = new System.Drawing.Size(181, 50);
             this.LoginButton.TabIndex = 7;
             this.LoginButton.Text = "Đăng nhập";
             this.LoginButton.UseVisualStyleBackColor = false;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click_1);
             // 
             // RegistrationButton
             // 
             this.RegistrationButton.BackColor = System.Drawing.Color.IndianRed;
             this.RegistrationButton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegistrationButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.RegistrationButton.Location = new System.Drawing.Point(295, 400);
+            this.RegistrationButton.Location = new System.Drawing.Point(304, 400);
             this.RegistrationButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegistrationButton.Name = "RegistrationButton";
             this.RegistrationButton.Size = new System.Drawing.Size(161, 50);
