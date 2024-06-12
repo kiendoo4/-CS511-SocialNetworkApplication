@@ -74,9 +74,9 @@
             // 
             this.textPost.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textPost.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
-            this.textPost.Location = new System.Drawing.Point(23, 103);
+            this.textPost.Location = new System.Drawing.Point(23, 101);
             this.textPost.Name = "textPost";
-            this.textPost.Size = new System.Drawing.Size(766, 48);
+            this.textPost.Size = new System.Drawing.Size(766, 50);
             this.textPost.TabIndex = 5;
             this.textPost.Text = "";
             // 

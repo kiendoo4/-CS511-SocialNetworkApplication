@@ -14,55 +14,17 @@ namespace _CS511__SocialNetworkApplication.View
 {
     public partial class Post : UserControl
     {
+        DataRow postInfo;
+
         public Post()
         {
             InitializeComponent();
         }
-        public Post(string[] list)
+        public Post(DataRow row)
         {
             InitializeComponent();
-            mode.Items.Add("Công khai");
-            mode.Items.Add("Bạn bè");
-            mode.Items.Add("Chỉ mình tôi");
-            mode.SelectedIndex = 0;
-            mode.Enabled = false;
-            string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
-            foreach (string line in lines)
-            {
-                string[] parts = line.Split('*');
-                if (parts[0] == list[0])
-                {
-                    NameUser.Text = parts[1];
-                    Avatar.ImageLocation = parts[6];
-                    for (int i = 0; i < mode.Items.Count; i++)
-                    {
-                        if (mode.Items[i].ToString() == list[1].ToString())
-                        {
-                            mode.SelectedIndex = i;
-                        }
-                    }
-                    textPost.TextChanged += textPost_TextChanged;
-                    Size textSize = TextRenderer.MeasureText(textPost.Text, textPost.Font);
-                    textPost.ReadOnly = true;
-                    textPost.BackColor = Color.White;
-                    textPost.Text = list[2];
-                    mode.BackColor = Color.White;   
-                    //-------------------------------------------------------
-                    
-                    string imgsource = list[3];
-                    string[] imgpath = imgsource.Split('*');
-                    foreach (string imgpath2 in imgpath)
-                    {
-                        PictureBox pictureBox = new PictureBox();
-                        pictureBox.ImageLocation = imgpath2;
-                        AddPictureBoxToPanel(pictureBox);
-                    }
-                    ArrangePictureBoxes();
-                    break;
-
-                }
-            }
-
+            postInfo = row;
+            
         }
 
         private void textPost_TextChanged(object sender, EventArgs e)

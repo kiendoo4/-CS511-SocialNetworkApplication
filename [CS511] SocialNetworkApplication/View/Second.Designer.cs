@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Second));
             this.userUC = new System.Windows.Forms.Panel();
             this.socialUC = new System.Windows.Forms.Panel();
-            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.flowPost = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -53,18 +53,21 @@
             // 
             // socialUC
             // 
-            this.socialUC.Controls.Add(this.flowLayoutPanel1);
+            this.socialUC.Controls.Add(this.flowPost);
             this.socialUC.Location = new System.Drawing.Point(422, 0);
             this.socialUC.Name = "socialUC";
             this.socialUC.Size = new System.Drawing.Size(853, 903);
             this.socialUC.TabIndex = 1;
             // 
-            // flowLayoutPanel1
+            // flowPost
             // 
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(853, 903);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowPost.AutoScroll = true;
+            this.flowPost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPost.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowPost.Location = new System.Drawing.Point(0, 0);
+            this.flowPost.Name = "flowPost";
+            this.flowPost.Size = new System.Drawing.Size(853, 903);
+            this.flowPost.TabIndex = 0;
             // 
             // label1
             // 
@@ -155,6 +158,6 @@
         public System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel messageUC;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.FlowLayoutPanel flowPost;
     }
 }

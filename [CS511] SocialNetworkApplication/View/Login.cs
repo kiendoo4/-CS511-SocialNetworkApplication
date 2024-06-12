@@ -40,7 +40,7 @@ namespace _CS511__SocialNetworkApplication.View
         }
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
+            string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
             bool checkacc = false;
             foreach (string line in lines)
             {
