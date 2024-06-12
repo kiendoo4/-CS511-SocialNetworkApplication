@@ -18,17 +18,45 @@ namespace _CS511__SocialNetworkApplication.View
     {
         UserUC userUC2 = new UserUC();
         static DataTable postList = new DataTable();
-
+        static DataTable userList = new DataTable();
         public Second()
         {
             InitializeComponent();
         }
-        public Second(string username) 
+        public Second(int idx) 
         {
             InitializeComponent();
-            userUC2 = new UserUC(username);
+            string csvFilePath = "../../Data/User.csv";
+            using (var reader = new StreamReader(csvFilePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ",",
+                BadDataFound = null
+            }))
+            {
+                // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
+                {
+                    userList.Columns.Add(header);
+                }
+
+                // Đọc các dòng còn lại và thêm vào DataTable
+                while (csv.Read())
+                {
+                    var row = userList.NewRow();
+                    foreach (DataColumn column in userList.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+                    userList.Rows.Add(row);
+                }
+            }
+
+            userUC2 = new UserUC(userList.Rows[idx]["Username"].ToString());
             userUC.Controls.Add(userUC2);
-            showPost(username);
+            //showPost(username);
             flowPost.FlowDirection = FlowDirection.TopDown;
             flowPost.WrapContents = false;
             flowPost.AutoScroll = true;

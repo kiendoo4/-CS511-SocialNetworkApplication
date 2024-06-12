@@ -28,7 +28,7 @@ namespace _CS511__SocialNetworkApplication.View
 
         private void Login_LoginSuccessClicked(object sender, EventArgs e)
         {
-            if (sender is string lmeo)
+            if (sender is int lmeo)
                 changeSession?.Invoke(lmeo, EventArgs.Empty);
         }
 

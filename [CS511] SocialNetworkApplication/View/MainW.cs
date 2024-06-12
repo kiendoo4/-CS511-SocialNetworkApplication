@@ -40,7 +40,7 @@ namespace _CS511__SocialNetworkApplication.View
 
         private void First_changeSession(object sender, EventArgs e)
         {
-            if (sender is string lmeo)
+            if (sender is int lmeo)
             {
                 CurrentUC.Controls.Clear();
                 second = new Second(lmeo);

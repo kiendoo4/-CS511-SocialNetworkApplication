@@ -187,6 +187,8 @@
     <EmbeddedResource Include="View\UserUC.resx">
       <DependentUpon>UserUC.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\Post.csv" />
+    <None Include="Data\User.csv" />
     <None Include="Image\social-media-network_74855-4575.avif" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -204,6 +206,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\Images\chems good guy.jpg" />
+    <Content Include="Data\Images\Fantasy tavern.png" />
+    <Content Include="Data\Images\shoko.jpg" />
+    <Content Include="Data\Images\yori ban nang ngu cuc.png" />
     <Content Include="Data\Post.txt" />
     <Content Include="Data\Messages.txt" />
     <Content Include="Data\UserListFriend.txt" />
