@@ -30,7 +30,7 @@ namespace _CS511__SocialNetworkApplication.View
             this.MouseLeave += new EventHandler(MyUserControl_MouseLeave);
             //info = parts;
             //NameUser.Text = parts[1];
-            string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
+            string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
             foreach (string line in lines)
             {
                 string[] parts2 = line.Split('*');
