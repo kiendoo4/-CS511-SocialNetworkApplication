@@ -1,9 +1,12 @@
-﻿using System;
+﻿using CsvHelper.Configuration;
+using CsvHelper;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -18,6 +21,7 @@ namespace _CS511__SocialNetworkApplication.View
         public string[] info;
         private Color borderColor = Color.White;
         private bool isMouseOver = false;
+        public DataTable userList = new DataTable();
         public UserIndividual()
         {
             InitializeComponent();
@@ -30,18 +34,50 @@ namespace _CS511__SocialNetworkApplication.View
             this.MouseLeave += new EventHandler(MyUserControl_MouseLeave);
             //info = parts;
             //NameUser.Text = parts[1];
-            string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
-            foreach (string line in lines)
+            //string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
+            //foreach (string line in lines)
+            //{
+            //    string[] parts2 = line.Split('*');
+            //    if (parts2[0] == username)
+            //    {
+            //        NameUser.Text = parts2[1];
+            //        info = parts2;
+            //        break;
+            //    }    
+            //}
+
+            string csvFilePath = "../../Data/User.csv";
+            using (var reader = new StreamReader(csvFilePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
             {
-                string[] parts2 = line.Split('*');
-                if (parts2[0] == username)
+                Delimiter = ",",
+                BadDataFound = null
+            }))
+            {
+                // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
                 {
-                    NameUser.Text = parts2[1];
-                    info = parts2;
-                    break;
-                }    
+                    userList.Columns.Add(header);
+                }
+
+                // Đọc các dòng còn lại và thêm vào DataTable
+                while (csv.Read())
+                {
+                    var row = userList.NewRow();
+                    foreach (DataColumn column in userList.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+                    userList.Rows.Add(row);
+                    if (row["Username"].ToString() == username)
+                    {
+                        NameUser.Text = row["Name"].ToString();
+                        Avatar.ImageLocation = row["Avatar"].ToString();
+                    }
+                }
             }
-            Avatar.ImageLocation = info[6];
             Avatar.Cursor = Cursors.Hand;
             Avatar.MouseEnter += new EventHandler(MyUserControl_MouseEnter);
             Avatar.MouseLeave += new EventHandler(MyUserControl_MouseLeave);

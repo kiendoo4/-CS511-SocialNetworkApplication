@@ -57,7 +57,7 @@ namespace _CS511__SocialNetworkApplication.View
             //            break;
             //        }
             //}
-
+            userList.Clear();
             string csvFilePath = "../../Data/User.csv";
             using (var reader = new StreamReader(csvFilePath))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)

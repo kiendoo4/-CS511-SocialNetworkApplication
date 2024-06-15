@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Second));
             this.userUC = new System.Windows.Forms.Panel();
             this.socialUC = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbNewFeed = new System.Windows.Forms.TextBox();
             this.flowPost = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
@@ -39,6 +41,7 @@
             this.messageUC = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.socialUC.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.messageUC.SuspendLayout();
@@ -53,20 +56,43 @@
             // 
             // socialUC
             // 
+            this.socialUC.Controls.Add(this.panel1);
             this.socialUC.Controls.Add(this.flowPost);
             this.socialUC.Location = new System.Drawing.Point(422, 0);
             this.socialUC.Name = "socialUC";
             this.socialUC.Size = new System.Drawing.Size(853, 903);
             this.socialUC.TabIndex = 1;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.panel1.Controls.Add(this.tbNewFeed);
+            this.panel1.Location = new System.Drawing.Point(0, 3);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(853, 56);
+            this.panel1.TabIndex = 2;
+            // 
+            // tbNewFeed
+            // 
+            this.tbNewFeed.Font = new System.Drawing.Font("Quicksand SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbNewFeed.Location = new System.Drawing.Point(27, 10);
+            this.tbNewFeed.Margin = new System.Windows.Forms.Padding(30, 10, 70, 10);
+            this.tbNewFeed.Name = "tbNewFeed";
+            this.tbNewFeed.ReadOnly = true;
+            this.tbNewFeed.Size = new System.Drawing.Size(753, 36);
+            this.tbNewFeed.TabIndex = 1;
+            this.tbNewFeed.Text = "Bạn đang nghĩ gì?";
+            this.tbNewFeed.Click += new System.EventHandler(this.tbNewFeed_Click);
+            // 
             // flowPost
             // 
             this.flowPost.AutoScroll = true;
-            this.flowPost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowPost.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowPost.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowPost.Location = new System.Drawing.Point(0, 0);
+            this.flowPost.Location = new System.Drawing.Point(0, 65);
             this.flowPost.Name = "flowPost";
-            this.flowPost.Size = new System.Drawing.Size(853, 903);
+            this.flowPost.Size = new System.Drawing.Size(853, 838);
             this.flowPost.TabIndex = 0;
             // 
             // label1
@@ -139,6 +165,8 @@
             this.Name = "Second";
             this.Size = new System.Drawing.Size(1740, 903);
             this.socialUC.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -159,5 +187,7 @@
         private System.Windows.Forms.Panel messageUC;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
         private System.Windows.Forms.FlowLayoutPanel flowPost;
+        private System.Windows.Forms.TextBox tbNewFeed;
+        private System.Windows.Forms.Panel panel1;
     }
 }
