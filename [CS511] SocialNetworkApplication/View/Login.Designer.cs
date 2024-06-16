@@ -135,10 +135,10 @@ namespace _CS511__SocialNetworkApplication.View
             this.RegistrationButton.BackColor = System.Drawing.Color.IndianRed;
             this.RegistrationButton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RegistrationButton.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.RegistrationButton.Location = new System.Drawing.Point(304, 400);
+            this.RegistrationButton.Location = new System.Drawing.Point(285, 400);
             this.RegistrationButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.RegistrationButton.Name = "RegistrationButton";
-            this.RegistrationButton.Size = new System.Drawing.Size(161, 50);
+            this.RegistrationButton.Size = new System.Drawing.Size(180, 50);
             this.RegistrationButton.TabIndex = 8;
             this.RegistrationButton.Text = "Đăng ký";
             this.RegistrationButton.UseVisualStyleBackColor = false;

@@ -45,7 +45,7 @@ namespace _CS511__SocialNetworkApplication.View
             this.Avatar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Avatar.Name = "Avatar";
             this.Avatar.Size = new System.Drawing.Size(55, 55);
-            this.Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Avatar.TabIndex = 0;
             this.Avatar.TabStop = false;
             // 

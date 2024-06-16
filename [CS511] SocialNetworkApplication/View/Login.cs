@@ -36,28 +36,6 @@ namespace _CS511__SocialNetworkApplication.View
             ForgotPassword.Cursor = Cursors.Hand;
             LoginButton.Cursor = Cursors.Hand;
             RegistrationButton.Cursor = Cursors.Hand;
-        }
-
-        private void RegistrationButton_Click(object sender, EventArgs e)
-        {
-            ButtonClicked?.Invoke(this, EventArgs.Empty);
-        }
-        private void LoginButton_Click(object sender, EventArgs e)
-        {
-            //string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
-            bool checkacc = false;
-            //foreach (string line in lines)
-            //{
-            //    string[] parts = line.Split('*');
-            //    if (parts[0] == AccUs.Text || parts[4] == AccUs.Text)
-            //        if (parts[5] == Pw.Text)
-            //        {
-            //            checkacc = true;
-            //            lmeo = parts[0];
-            //            break;
-            //        }
-            //}
-
             string csvFilePath = "../../Data/User.csv";
             using (var reader = new StreamReader(csvFilePath))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -84,16 +62,24 @@ namespace _CS511__SocialNetworkApplication.View
                     }
                     userList.Rows.Add(row);
                 }
-                for (int i = 0; i < userList.Rows.Count; i++)
-                {
-                    if (userList.Rows[i]["Username"].ToString() == AccUs.Text)
-                        if (userList.Rows[i]["Password"].ToString() == Pw.Text)
-                        {
-                            checkacc = true;
-                            lmeo = i;
-                            break;
-                        }
-                }
+            }
+        }
+        private void RegistrationButton_Click(object sender, EventArgs e)
+        {
+            ButtonClicked?.Invoke(this, EventArgs.Empty);
+        }
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            bool checkacc = false;
+            for (int i = 0; i < userList.Rows.Count; i++)
+            {
+                if (userList.Rows[i]["Username"].ToString() == AccUs.Text)
+                    if (userList.Rows[i]["Password"].ToString() == Pw.Text)
+                    {
+                        checkacc = true;
+                        lmeo = i;
+                        break;
+                    }
             }
             if (checkacc)
             {

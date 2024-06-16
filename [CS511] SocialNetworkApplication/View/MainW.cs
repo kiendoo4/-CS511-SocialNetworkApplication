@@ -19,22 +19,10 @@ namespace _CS511__SocialNetworkApplication.View
         {
             InitializeComponent();
             CurrentUC.Controls.Add(First);
-            HideButton.Size = new Size(20, 20);
-            HideButton.BackColor = Color.Green;
-            HideButton.FlatStyle = FlatStyle.Flat;
-            HideButton.FlatAppearance.BorderSize = 0;
             GraphicsPath path = new GraphicsPath();
             path.AddEllipse(0, 0, 20, 20);
-            HideButton.Region = new Region(path);
-            HideButton.Click += HideButton_Click;
-            closeButton.Size = new Size(20, 20);
-            closeButton.BackColor = Color.Red;
-            closeButton.FlatStyle = FlatStyle.Flat;
-            closeButton.FlatAppearance.BorderSize = 0;
             GraphicsPath closePath = new GraphicsPath();
             closePath.AddEllipse(0, 0, 20, 20);
-            closeButton.Region = new Region(closePath);
-            closeButton.Click += closeButton_Click;
             First.changeSession += First_changeSession;
         }
 
