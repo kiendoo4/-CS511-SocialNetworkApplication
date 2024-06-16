@@ -102,6 +102,12 @@
     <Compile Include="View\ChangeInfo.Designer.cs">
       <DependentUpon>ChangeInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ChangingPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChangingPassword.Designer.cs">
+      <DependentUpon>ChangingPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ChatsmallUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     <EmbeddedResource Include="View\ChangeInfo.resx">
       <DependentUpon>ChangeInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangingPassword.resx">
+      <DependentUpon>ChangingPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChatsmallUC.resx">
       <DependentUpon>ChatsmallUC.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,15 +335,28 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Images\00-featured-tom-reading-newspaper-meme-template-preview.jpg" />
+    <Content Include="Data\Images\09d2efbc-ad8c-454b-a136-884c8d88f40c.jpg" />
     <Content Include="Data\Images\0a2fbd331d51ae781d9393c311b97c3e.jpg" />
+    <Content Include="Data\Images\2ae70617-aef5-4cbf-b62f-dcdf975fb9e7.jpg" />
+    <Content Include="Data\Images\438241771_1461193291270589_7418769774538554899_n.jpg" />
+    <Content Include="Data\Images\443fb978039d0817cc9fd28caeb14ef4.jpg" />
+    <Content Include="Data\Images\542976fa-4600-457b-b468-b178b0babb67.jpg" />
     <Content Include="Data\Images\6514db446bb429157a3dfc46dd9f0e7d.jpg" />
+    <Content Include="Data\Images\7ae27729-37fa-4105-bd1d-cb779280d781.jpg" />
+    <Content Include="Data\Images\99794745d5b0d82459e1fcf810685bc7.jpg" />
+    <Content Include="Data\Images\a98f4b03-67cb-4fda-9c02-76256dedcdf2.jpg" />
+    <Content Include="Data\Images\Avt dis saber.jpg" />
     <Content Include="Data\Images\chems good guy.jpg" />
     <Content Include="Data\Images\f017f12f8deb2d39d624daf1adcc30e5.jpg" />
     <Content Include="Data\Images\Fantasy tavern.png" />
     <Content Include="Data\Images\gojo.jpg" />
+    <Content Include="Data\Images\hermione.jpg" />
     <Content Include="Data\Images\kaka.jpg" />
+    <Content Include="Data\Images\Longstick.mp4" />
     <Content Include="Data\Images\messi.jpg" />
     <Content Include="Data\Images\nganngan.jpg" />
+    <Content Include="Data\Images\emiu.jpg" />
     <Content Include="Data\UserExpression.txt" />
     <Content Include="Data\UserImgBackground.txt" />
     <Content Include="Image\icons8-add-24.png" />

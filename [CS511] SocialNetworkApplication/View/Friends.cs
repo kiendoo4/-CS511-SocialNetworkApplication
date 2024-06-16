@@ -75,7 +75,49 @@ namespace _CS511__SocialNetworkApplication.View
 
         private void Friends_optionButton1(object sender, EventArgs e)
         {
-            //throw new NotImplementedException();
+            if (sender is int index2)
+            {
+                for (int i = 0; i < umkl.Count; i++)
+                {
+                    if (index2 == umkl[i].index)
+                    {
+                        DialogResult result = MessageBox.Show("Gửi lời mời muốn kết bạn đến người này?", "Lựa chọn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            string[] frList = userList2.Rows[index2]["AddFriend"].ToString().Split('*');
+                            List<string> frListAsList = new List<string>(frList);
+                            string elementToAdd = Convert.ToString(index2);
+                            frListAsList.Add(elementToAdd);
+                            frList = frListAsList.ToArray();
+                            userList2.Rows[index2]["AddFriend"] = string.Join("*", frList);
+                            WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
+
+                            uMightKnowList.Controls.Clear();
+                            umkl.Clear();
+                            string frInviteList = userList2.Rows[index]["AddFriend"].ToString();
+                            string[] Invites = frInviteList.Split('*');
+                            frList = userList2.Rows[index]["FriendList"].ToString().Split('*');
+                            for (int inn = 0; inn < userList2.Rows.Count; inn++)
+                            {
+                                if (!Array.Exists(frList, ee => ee == Convert.ToString(i)) && !Array.Exists(Invites, ee => ee == Convert.ToString(i)) && inn != index)
+                                {
+                                    umkl.Add(new EachFriend(userList2, i, "Other"));
+                                    umkl[umkl.Count - 1].changeButton += Friends_changeButton;
+                                    umkl[umkl.Count - 1].optionButton += Friends_optionButton1;
+                                    uMightKnowList.Controls.Add(umkl[umkl.Count - 1]);
+                                }
+                            }
+
+                            for (int inn = 0; inn < 2; inn++)
+                            {
+                                friendInviteList.Controls.Add(new blank());
+                            }
+                            MessageBox.Show("Đã gửi lời mời kết bạn", "Thông báo", MessageBoxButtons.OK);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void Friends_optionButton(object sender, EventArgs e)

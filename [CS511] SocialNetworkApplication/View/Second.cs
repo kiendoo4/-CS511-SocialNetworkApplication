@@ -287,12 +287,6 @@ namespace _CS511__SocialNetworkApplication.View
                 showPost(index);
             };
             formFeed.ShowDialog();
-                foreach (DataRow row in postList.Rows)
-                {
-                    
-                    MessageBox.Show(row[3].ToString());
-                }
-            
         }
         private void showListMessageFr(int index) 
         {

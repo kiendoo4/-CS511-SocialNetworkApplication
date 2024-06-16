@@ -26,6 +26,7 @@ namespace _CS511__SocialNetworkApplication.View
         public ChangeInfo(DataTable userList, int idx)
         {
             InitializeComponent();
+            panel1.Visible = false;
             Gender.Items.Add("Nữ");
             Gender.Items.Add("Nam");
             Gender.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -42,6 +43,7 @@ namespace _CS511__SocialNetworkApplication.View
             username.Text = userList.Rows[idx]["Username"].ToString();
             BornDate.Text = userList.Rows[idx]["Date_of_birth"].ToString();
             Gender.SelectedIndex = Convert.ToInt32(userList.Rows[idx]["Gender"].ToString());
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,6 +66,7 @@ namespace _CS511__SocialNetworkApplication.View
                     dataTable2.Rows[index]["Name"] = hoten.Text;
                     dataTable2.Rows[index]["Email"] = gmail.Text;
                     dataTable2.Rows[index]["Date_of_birth"] = BornDate.Text;
+                    dataTable2.Rows[index]["Gender"] = Gender.SelectedIndex;
                     WriteDataTableToCsv("../../Data/User.csv", dataTable2);
                     hoten.Enabled = false;
                     gmail.Enabled = false;
@@ -115,6 +118,21 @@ namespace _CS511__SocialNetworkApplication.View
                     csv.NextRecord();
                 }
             }
+        }
+
+        private void changePwButton_Click(object sender, EventArgs e)
+        {
+            panel1.Controls.Clear();
+            ChangingPassword changingPassword = new ChangingPassword(dataTable2, index);
+            changingPassword.backButton += ChangingPassword_backButton;
+            panel1.Controls.Add(changingPassword);
+            panel1.Visible = true;
+        }
+
+        private void ChangingPassword_backButton(object sender, EventArgs e)
+        {
+            panel1.Visible = false;
+            panel1.Controls.Clear();
         }
     }
 }
