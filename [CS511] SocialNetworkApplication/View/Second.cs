@@ -181,7 +181,7 @@ namespace _CS511__SocialNetworkApplication.View
             Controls.RemoveAt(0);
         }
 
-        public void showPost(string username)
+        public void showPost(int index)
         {
             string csvFilePath = "../../Data/Post.csv";
             using (var reader = new StreamReader(csvFilePath))
@@ -292,7 +292,7 @@ namespace _CS511__SocialNetworkApplication.View
                     
                     MessageBox.Show(row[3].ToString());
                 }
-            }
+            
         }
         private void showListMessageFr(int index) 
         {

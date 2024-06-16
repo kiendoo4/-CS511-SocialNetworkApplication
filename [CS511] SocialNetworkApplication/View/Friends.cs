@@ -75,7 +75,7 @@ namespace _CS511__SocialNetworkApplication.View
 
         private void Friends_optionButton1(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         private void Friends_optionButton(object sender, EventArgs e)

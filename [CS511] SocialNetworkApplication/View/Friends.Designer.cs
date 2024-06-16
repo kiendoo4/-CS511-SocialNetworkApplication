@@ -31,8 +31,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.friendInviteList = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.uMightKnowList = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,6 +67,13 @@
             this.panel1.Size = new System.Drawing.Size(784, 354);
             this.panel1.TabIndex = 2;
             // 
+            // friendInviteList
+            // 
+            this.friendInviteList.Location = new System.Drawing.Point(0, 0);
+            this.friendInviteList.Name = "friendInviteList";
+            this.friendInviteList.Size = new System.Drawing.Size(783, 354);
+            this.friendInviteList.TabIndex = 0;
+            // 
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -75,13 +82,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(784, 354);
             this.panel2.TabIndex = 3;
-            // 
-            // friendInviteList
-            // 
-            this.friendInviteList.Location = new System.Drawing.Point(0, 0);
-            this.friendInviteList.Name = "friendInviteList";
-            this.friendInviteList.Size = new System.Drawing.Size(783, 354);
-            this.friendInviteList.TabIndex = 0;
             // 
             // uMightKnowList
             // 
@@ -101,7 +101,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "Friends";
-            this.Size = new System.Drawing.Size(828, 888);
+            this.Size = new System.Drawing.Size(824, 888);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);

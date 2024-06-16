@@ -142,7 +142,6 @@ namespace _CS511__SocialNetworkApplication.View
             this.RegistrationButton.TabIndex = 8;
             this.RegistrationButton.Text = "Đăng ký";
             this.RegistrationButton.UseVisualStyleBackColor = false;
-            this.RegistrationButton.Click += new System.EventHandler(this.RegistrationButton_Click);
             // 
             // Login
             // 
