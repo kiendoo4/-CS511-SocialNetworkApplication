@@ -18,34 +18,22 @@ namespace _CS511__SocialNetworkApplication.View
     public partial class UserIndividual : UserControl
     {
         public event EventHandler MessageChatButton;
-        public string[] info;
+        public event EventHandler ChangeButton;
         private Color borderColor = Color.White;
         private bool isMouseOver = false;
         public DataTable userList = new DataTable();
+        int index = -1;
         public UserIndividual()
         {
             InitializeComponent();
         }
-        public UserIndividual(string username)
+        public UserIndividual(int idx, string role)
         {
             InitializeComponent();
+            index = idx;
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.MouseEnter += new EventHandler(MyUserControl_MouseEnter);
             this.MouseLeave += new EventHandler(MyUserControl_MouseLeave);
-            //info = parts;
-            //NameUser.Text = parts[1];
-            //string[] lines = File.ReadAllLines("../..\\Data\\UserList.txt");
-            //foreach (string line in lines)
-            //{
-            //    string[] parts2 = line.Split('*');
-            //    if (parts2[0] == username)
-            //    {
-            //        NameUser.Text = parts2[1];
-            //        info = parts2;
-            //        break;
-            //    }    
-            //}
-
             string csvFilePath = "../../Data/User.csv";
             using (var reader = new StreamReader(csvFilePath))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -63,6 +51,7 @@ namespace _CS511__SocialNetworkApplication.View
                 }
 
                 // Đọc các dòng còn lại và thêm vào DataTable
+                int i = 0;
                 while (csv.Read())
                 {
                     var row = userList.NewRow();
@@ -70,13 +59,15 @@ namespace _CS511__SocialNetworkApplication.View
                     {
                         row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
                     }
+                    
                     userList.Rows.Add(row);
-                    if (row["Username"].ToString() == username)
+                    if (i == idx)
                     {
                         NameUser.Text = row["Name"].ToString();
                         Avatar.ImageLocation = row["Avatar"].ToString();
                     }
-                }
+                    i++;
+                }  
             }
             Avatar.Cursor = Cursors.Hand;
             Avatar.MouseEnter += new EventHandler(MyUserControl_MouseEnter);
@@ -91,10 +82,34 @@ namespace _CS511__SocialNetworkApplication.View
                 Region region = new Region(gp);
                 Avatar.Region = region;
             }
+            if (role == "Main")
+            {
+                this.Click += UserIndividual_Click;
+                NameUser.Click += UserIndividual_Click;
+                Avatar.Click += UserIndividual_Click;
+            }
+            if (role == "Mess")
+            {
+                this.Click += UserIndividual_Click1;
+                NameUser.Click += UserIndividual_Click1;
+                Avatar.Click += UserIndividual_Click1;
+            }
         }
-        public UserIndividual(string username, string role, string path)
+
+        private void UserIndividual_Click1(object sender, EventArgs e)
+        {
+            ChangeButton?.Invoke(index, e);
+        }
+
+        private void UserIndividual_Click(object sender, EventArgs e)
+        {
+            ChangeButton?.Invoke(Convert.ToString(index), e);
+        }
+
+        public UserIndividual(int idx, string role, string path)
         {
             InitializeComponent();
+            index = idx;
             this.SetStyle(ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, true);
             this.MouseEnter += new EventHandler(MyUserControl_MouseEnter);
             this.MouseLeave += new EventHandler(MyUserControl_MouseLeave);
@@ -107,7 +122,16 @@ namespace _CS511__SocialNetworkApplication.View
             this.Cursor = Cursors.Hand;
             Avatar.ImageLocation = path;
             NameUser.Text = role;
+            this.Click += UserIndividual_Click2;
+            NameUser.Click += UserIndividual_Click2;
+            Avatar.Click += UserIndividual_Click2;
         }
+
+        private void UserIndividual_Click2(object sender, EventArgs e)
+        {
+            ChangeButton?.Invoke("Opt", e);
+        }
+
         private void label1_Click(object sender, EventArgs e)
         {
 

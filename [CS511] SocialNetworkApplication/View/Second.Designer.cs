@@ -40,6 +40,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.messageUC = new System.Windows.Forms.Panel();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.ChatSmall = new System.Windows.Forms.Panel();
             this.socialUC.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -98,10 +99,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Paytone One", 15F);
-            this.label1.Location = new System.Drawing.Point(271, 0);
+            this.label1.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
+            this.label1.Location = new System.Drawing.Point(0, 1);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 40);
+            this.label1.Size = new System.Drawing.Size(117, 25);
             this.label1.TabIndex = 12;
             this.label1.Text = "Người liên hệ";
             // 
@@ -110,19 +111,20 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(13, 43);
+            this.panel2.Location = new System.Drawing.Point(3, 29);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(443, 40);
+            this.panel2.Size = new System.Drawing.Size(453, 40);
             this.panel2.TabIndex = 13;
             // 
             // textBox1
             // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
             this.textBox1.Location = new System.Drawing.Point(54, 6);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(384, 28);
+            this.textBox1.Size = new System.Drawing.Size(394, 28);
             this.textBox1.TabIndex = 1;
             // 
             // pictureBox1
@@ -144,21 +146,31 @@
             this.messageUC.Controls.Add(this.label1);
             this.messageUC.Location = new System.Drawing.Point(1281, 0);
             this.messageUC.Name = "messageUC";
-            this.messageUC.Size = new System.Drawing.Size(459, 903);
+            this.messageUC.Size = new System.Drawing.Size(459, 793);
             this.messageUC.TabIndex = 2;
             // 
             // flowLayoutPanel2
             // 
-            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 88);
+            this.flowLayoutPanel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.flowLayoutPanel2.Location = new System.Drawing.Point(0, 74);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(456, 815);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(456, 719);
             this.flowLayoutPanel2.TabIndex = 14;
+            // 
+            // ChatSmall
+            // 
+            this.ChatSmall.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChatSmall.Location = new System.Drawing.Point(1066, 426);
+            this.ChatSmall.Name = "ChatSmall";
+            this.ChatSmall.Size = new System.Drawing.Size(373, 476);
+            this.ChatSmall.TabIndex = 0;
             // 
             // Second
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.ChatSmall);
             this.Controls.Add(this.messageUC);
             this.Controls.Add(this.socialUC);
             this.Controls.Add(this.userUC);
@@ -189,5 +201,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowPost;
         private System.Windows.Forms.TextBox tbNewFeed;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel ChatSmall;
     }
 }

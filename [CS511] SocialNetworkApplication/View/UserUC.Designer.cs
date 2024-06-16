@@ -60,19 +60,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
-            this.textBox1.Location = new System.Drawing.Point(71, 27);
+            this.textBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
+            this.textBox1.Location = new System.Drawing.Point(71, 33);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(342, 32);
+            this.textBox1.Size = new System.Drawing.Size(342, 28);
             this.textBox1.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Quicksand SemiBold", 7.8F);
-            this.label1.Location = new System.Drawing.Point(71, 5);
+            this.label1.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
+            this.label1.Location = new System.Drawing.Point(71, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(142, 19);
+            this.label1.Size = new System.Drawing.Size(187, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "Tìm kiếm các bài viết";
             // 
@@ -134,8 +134,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
@@ -144,5 +142,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel6;
+        public System.Windows.Forms.Panel panel1;
     }
 }
