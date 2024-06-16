@@ -27,7 +27,7 @@ namespace _CS511__SocialNetworkApplication.View
         {
             InitializeComponent();
         }
-        public Second(int idx) 
+        public Second(int idx)
         {
             InitializeComponent();
             index = idx;
@@ -63,7 +63,7 @@ namespace _CS511__SocialNetworkApplication.View
             userUC2 = new UserUC(index);
             userUC2.changeButton += UserUC2_changeButton;
             userUC.Controls.Add(userUC2);
-            //showPost();
+            showPost(index);
             flowPost.FlowDirection = FlowDirection.TopDown;
             flowPost.WrapContents = false;
             flowPost.AutoScroll = true;
@@ -209,6 +209,84 @@ namespace _CS511__SocialNetworkApplication.View
                     }
                     postList.Rows.Add(row);
                 }
+                for (int i = postList.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow row = postList.Rows[i];
+                    Post post = new Post(row);
+                    post.get_current(index);
+                    post.showDetail += showPostDetail;
+                    flowPost.Controls.Add(post);
+                }
+            }
+        }
+
+        private void showPostDetail(object sender, List<string> e)
+        {
+            FlowLayoutPanel flowDetail = new FlowLayoutPanel();
+            flowDetail.AutoSize = false;
+            flowDetail.AutoScroll = true;
+            flowDetail.FlowDirection = FlowDirection.LeftToRight;
+            flowDetail.Size = socialUC.Size;
+            int x = (this.Width - flowDetail.Width) / 2;
+            int y = (this.Height - flowDetail.Height) / 2;
+            flowDetail.Location = new Point(x, y);
+
+            PictureBox closeButt = new PictureBox();
+            closeButt.Image = Image.FromFile("../../Image/close-button.png");
+            closeButt.SizeMode = PictureBoxSizeMode.StretchImage;
+            closeButt.Width = 30;
+            closeButt.Height = 30;
+
+            int xc = (this.Width + flowDetail.Width) / 2 - 50;
+            int yc = (this.Height - flowDetail.Height) / 2;
+            closeButt.Location = new Point(xc, yc);
+
+            closeButt.Click += (the_sender, temp_e) =>
+            {
+                flowDetail.Dispose();
+                this.Controls.Remove(flowDetail);
+                closeButt.Dispose();
+                this.Controls.Remove(closeButt);
+            };
+            this.Controls.Add(closeButt);
+
+            foreach (string path in e)
+            {
+                if (Post.IsImageFile(path))
+                {
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.Image = Image.FromFile(path);
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Width = flowDetail.Width - 30;
+                    pictureBox.Height = (int)(pictureBox.Width / (double)pictureBox.Image.Width * (double)pictureBox.Image.Height);
+                    flowDetail.Controls.Add(pictureBox);
+                }
+                else
+                {
+                    VidPlayer player = new VidPlayer(path);
+                    flowDetail.Controls.Add(player);
+                    player.Width = flowDetail.Width - 30;
+                    player.Height = player.Width * 4 / 6;
+                }
+            }
+            this.Controls.Add(flowDetail);
+            this.Controls.SetChildIndex(flowDetail, 0);
+            this.Controls.SetChildIndex(closeButt, 0);
+        }
+
+        private void tbNewFeed_Click(object sender, EventArgs e)
+        {
+            FormFeed formFeed = new FormFeed(index, postList);
+            formFeed.UploadFeed += (form_sender, row_e) =>
+            {
+                postList.Rows.Add(row_e);
+                Post.WriteDataTableToCSV(postList, "../../Data/Post.csv");
+                postList.Clear();
+                postList.Columns.Clear();
+                flowPost.Controls.Clear();
+                showPost(index);
+            };
+            formFeed.ShowDialog();
                 foreach (DataRow row in postList.Rows)
                 {
                     

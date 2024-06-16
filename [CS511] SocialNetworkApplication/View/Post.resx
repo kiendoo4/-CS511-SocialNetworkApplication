@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="Avatar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="picAvatar.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DQAACw0B7QfALAAACLBJREFUeF7tm2tsHFcVx/MJkCCV4p2ZtQNqAQWCUtSoKmqhVdUiQQuV+MBDNFZK
+        DAAACwwBP0AiyAAACLBJREFUeF7tm2tsHFcVx/MJkCCV4p2ZtQNqAQWCUtSoKmqhVdUiQQuV+MBDNFZK
         GtvZXe/6kUezuy4NhJYSkgASFQihUkKKSJ9JQU2aNgmQllI3CX7G+/Crdp2odVw7jWfW6zh+7OWc2bv2
         7M7Z2ZnxrGtLPtJPu/LcOff8z33flVcs27ItW1Htht3sE+5w4m53WGkoDSsHSkNKI3z2uUPKh6VheRJJ
         f1f6+LMDatmgcteaOvZx7mZpWcnukevcYbmyNCSfgs9xEMXswN896Q7JFeiTu1+8tjoor4WAoQXti86H
@@ -161,7 +161,7 @@
         3b6uWnyXu1m2ZVu2YtiKFf8HWLDPgiEGm6gAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="Avatar.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="picAvatar.InitialImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
         DAAACwwBP0AiyAAACA9JREFUeF7t23XMLFcZx/GLO6W4t0CRYsVdSgsUKFAsuKUtBA32B8ECtHgbIGlS
