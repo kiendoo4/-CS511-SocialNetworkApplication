@@ -36,11 +36,17 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
             NameUser.Text = userList.Rows[idx]["Name"].ToString();
             Avatar.ImageLocation = userList.Rows[idx]["Avatar"].ToString();
             List<string> fr = Convert.ToString(userList.Rows[idx]["FriendList"].ToString()).Split('*').ToList();
-            if (fr[0] == "")
+            if (fr[0] == "" && fr.Count == 1)
             {
                 numofFriend.Text = "0 bạn bè";
             }
-            else numofFriend.Text = Convert.ToString(userList.Rows[idx]["FriendList"].ToString().Split('*').Length) + " bạn bè";
+            else
+            {
+                int cnt = userList.Rows[index]["FriendList"].ToString().Split('*').Length;
+                if (userList.Rows[index]["FriendList"].ToString().Split('*')[0] == "")
+                    cnt -= 1;
+                numofFriend.Text = Convert.ToString(cnt) + " bạn bè";
+            }
             if (role != "User")
             {
                 changeAvatar.Visible = false;
@@ -80,7 +86,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
         public void Lmeoo_Click(DataTable friendL, int index)
         {
             List<string> fr = Convert.ToString(friendL.Rows[index]["FriendList"].ToString()).Split('*').ToList();
-            if (fr[0] == "")
+            if (fr[0] == "" && fr.Count == 1)
             {
                 numofFriend.Text = "0 bạn bè";
             }
@@ -183,7 +189,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                     Background.ImageLocation = filePath;
                     if(!ck)
                     {
-                        File.WriteAllText("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", Convert.ToString(index) + "*" + filePath);
+                        File.AppendAllText("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", '\n' + (Convert.ToString(index) + "*" + filePath));
                     }  
                     else
                     {
@@ -195,9 +201,8 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                             {
                                 parts[1] = filePath;
                                 lines2[i] = string.Join("*", parts);
-                                break;
                             }
-                        }
+                        } 
                         File.WriteAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", lines2);
 
                     }

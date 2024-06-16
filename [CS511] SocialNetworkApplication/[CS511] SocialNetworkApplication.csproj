@@ -114,6 +114,12 @@
     <Compile Include="View\ChatsmallUC.Designer.cs">
       <DependentUpon>ChatsmallUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ChattingUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChattingUI.Designer.cs">
+      <DependentUpon>ChattingUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\CheckGmailForRegistration.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -256,6 +262,9 @@
     <EmbeddedResource Include="View\ChatsmallUC.resx">
       <DependentUpon>ChatsmallUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ChattingUI.resx">
+      <DependentUpon>ChattingUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\CheckGmailForRegistration.resx">
       <DependentUpon>CheckGmailForRegistration.cs</DependentUpon>
     </EmbeddedResource>
@@ -317,6 +326,16 @@
       <DependentUpon>VidPlayer.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Data\Post.csv" />
+    <None Include="Data\Post_cmt\Cmt_0.csv" />
+    <None Include="Data\Post_cmt\Cmt_1.csv" />
+    <None Include="Data\Post_cmt\Cmt_2.csv" />
+    <None Include="Data\Post_cmt\Cmt_3.csv" />
+    <None Include="Data\Post_cmt\Cmt_4.csv" />
+    <None Include="Data\Post_cmt\Cmt_5.csv" />
+    <None Include="Data\Post_cmt\Cmt_6.csv" />
+    <None Include="Data\Post_cmt\Cmt_7.csv" />
+    <None Include="Data\Post_cmt\Cmt_8.csv" />
+    <None Include="Data\Post_cmt\Cmt_template.csv" />
     <None Include="Data\User - Copy.csv" />
     <None Include="Data\User.csv" />
     <None Include="Image\social-media-network_74855-4575.avif" />
@@ -359,9 +378,11 @@
     <Content Include="Data\Images\emiu.jpg" />
     <Content Include="Data\UserExpression.txt" />
     <Content Include="Data\UserImgBackground.txt" />
+    <Content Include="Image\gray-color-solid-background-1920x1080.png" />
     <Content Include="Image\icons8-add-24.png" />
     <Content Include="Image\icons8-add-30.png" />
     <Content Include="Image\icons8-attach-25.png" />
+    <Content Include="Image\icons8-attach-30.png" />
     <Content Include="Image\icons8-back-50.png" />
     <Content Include="Image\icons8-camera-25.png" />
     <Content Include="Image\icons8-friend-25.png" />
@@ -386,6 +407,7 @@
     <Content Include="Image\icons8-friends-64.png" />
     <Content Include="Image\icons8-group-64.png" />
     <Content Include="Image\icons8-home-button-64.png" />
+    <Content Include="Image\icons8-invitation-30.png" />
     <Content Include="Image\icons8-message-64.png" />
     <Content Include="Image\icons8-save-64.png" />
     <Content Include="Image\icons8-send-30.png" />
@@ -393,6 +415,7 @@
     <Content Include="Image\icons8-user-25.png" />
     <Content Include="Image\icons8-video-64.png" />
     <Content Include="Image\nganngan.jpg" />
+    <Content Include="Image\play-button.png" />
     <Content Include="Image\private.png" />
     <None Include="Image\send.png" />
     <Content Include="Image\social_connections_preview.jpg" />

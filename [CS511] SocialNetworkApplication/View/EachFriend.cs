@@ -46,7 +46,13 @@ namespace _CS511__SocialNetworkApplication.View
                 label1.Location = new Point(label1.Location.X + 44, label1.Location.Y);
                 friendIcon.Location = new Point(friendIcon.Location.X + 44, friendIcon.Location.Y);
                 friendIcon.ImageLocation = "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-friend-25.png";
-            }    
+            }   
+            else if (opt == "Invite")
+            {
+                label1.Text = "Đã gửi lời kết bạn";
+                friendIcon.ImageLocation = "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-invitation-30.png";
+
+            }
             else
             {
                 label1.Text = "Thêm bạn bè mới";

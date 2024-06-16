@@ -78,7 +78,7 @@ namespace _CS511__SocialNetworkApplication.View
                     checkgm.sendcodeclick += Checkgm_sendcodeclick;
                     panel1.Controls.Add(checkgm);
                     panel1.Visible = true;
-                }    
+                }
             }    
         }
 

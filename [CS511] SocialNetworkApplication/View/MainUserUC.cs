@@ -104,22 +104,21 @@ namespace _CS511__SocialNetworkApplication.View
             // Add the theme label to the new panel
             friendList.Controls.Add(theme);
             listF.FlowDirection = FlowDirection.LeftToRight;
-            listF.Width = 1245;
+            listF.Width = 1220;
             listF.Height = 354;
             listF.AutoScroll = true;
             listF.WrapContents = false;
             listF.BorderStyle = BorderStyle.FixedSingle;
             List<string> frList = userList2.Rows[index]["FriendList"].ToString().Split('*').ToList();
-            if (frList[0] != "")
-            {
-                foreach (string invite in frList)
+            foreach (string invite in frList)
                 {
+                    if (invite == "") continue;
                     lf.Add(new EachFriend(userList2, Convert.ToInt32(invite), "Friend"));
                     lf[lf.Count - 1].changeButton += Friends_changeButton;
                     lf[lf.Count - 1].optionButton += Friends_optionButton;
                     listF.Controls.Add(lf[lf.Count - 1]);
                 }
-            }
+            
             friendList.Controls.Add(listF);
             infoinMain.Controls.Add(friendList);
         }
@@ -153,6 +152,7 @@ namespace _CS511__SocialNetworkApplication.View
                     head1.numofFriend.Text = frList.Length.ToString() + " bạn bè";
                     foreach (string invite in frList)
                     {
+                        if(invite == "") continue;
                         lf.Add(new EachFriend(userList2, Convert.ToInt32(invite), "Friend"));
                         lf[lf.Count - 1].changeButton += Friends_changeButton;
                         lf[lf.Count - 1].optionButton += Friends_optionButton;
@@ -164,7 +164,6 @@ namespace _CS511__SocialNetworkApplication.View
                     //changeInfo?.Invoke(frList.ToString().Split('*').Length, EventArgs.Empty);
                     MessageBox.Show("Đã xóa khỏi danh sách", "Thông báo", MessageBoxButtons.OK);
                 }
-                
             }    
         }
 
