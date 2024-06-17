@@ -117,7 +117,26 @@ namespace _CS511__SocialNetworkApplication.View
                     User.Controls.Add(mainUserUC);
                     Controls.Add(User);
                     Controls.SetChildIndex(User, 0);
-                }    
+                }
+                if (option == "Save")
+                {
+                    SavedPosts savedPosts = new SavedPosts(index);
+                    int x = (this.Width - savedPosts.Width) / 2;
+                    int y = (this.Height - savedPosts.Height) / 2;
+                    savedPosts.Location = new Point(x, y);
+                    savedPosts.close_this += (close_sender, close_e) =>
+                    {
+                        savedPosts.Dispose();
+                        this.Controls.Remove(savedPosts);
+                        postList.Clear();
+                        postList.Columns.Clear();
+                        flowPost.Controls.Clear();
+                        showPost(index);
+                    };
+                    this.Controls.Add(savedPosts);
+                    this.Controls.SetChildIndex(savedPosts, 0);
+
+                }
             }    
         }
 
@@ -212,9 +231,27 @@ namespace _CS511__SocialNetworkApplication.View
                 for (int i = postList.Rows.Count - 1; i >= 0; i--)
                 {
                     DataRow row = postList.Rows[i];
+                    if (row["Mode"].ToString() == "Bạn bè" && Convert.ToInt32(row["User_id"]) != index)
+                    {
+                        string[] user_friends = userList.Rows[Convert.ToInt32(row["User_id"])]["FriendList"].ToString().Split('*');
+                        List<string> friend_list = user_friends.ToList();
+                        if (friend_list[0] == "") friend_list.Remove("");
+                        int redflag = 0;
+                        foreach (string a_user in friend_list)
+                        {
+                            if (Convert.ToInt32(a_user) == index)
+                            {
+                                redflag = 1;
+                                break;
+                            }
+                        }
+                        if (redflag == 0) continue;
+                    }
+                    if (row["Mode"].ToString() == "Chỉ mình tôi" && Convert.ToInt32(row["User_id"]) != index) continue;
                     Post post = new Post(row);
-                    post.get_current(index);
+                    post.get_current(index, i);
                     post.showDetail += showPostDetail;
+                    post.sharing += sharePost;
                     flowPost.Controls.Add(post);
                 }
             }
@@ -254,12 +291,14 @@ namespace _CS511__SocialNetworkApplication.View
             {
                 if (Post.IsImageFile(path))
                 {
+                    Image temp = Image.FromFile(path);
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.Image = Image.FromFile(path);
+                    pictureBox.ImageLocation = path;
                     pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                     pictureBox.Width = flowDetail.Width - 30;
-                    pictureBox.Height = (int)(pictureBox.Width / (double)pictureBox.Image.Width * (double)pictureBox.Image.Height);
+                    pictureBox.Height = (int)(pictureBox.Width / (double)temp.Width * (double)temp.Height);
                     flowDetail.Controls.Add(pictureBox);
+                    temp.Dispose();
                 }
                 else
                 {
@@ -272,6 +311,21 @@ namespace _CS511__SocialNetworkApplication.View
             this.Controls.Add(flowDetail);
             this.Controls.SetChildIndex(flowDetail, 0);
             this.Controls.SetChildIndex(closeButt, 0);
+        }
+
+        private void sharePost(object sender, DataRow e)
+        {
+            FormFeed formFeed = new FormFeed(index, postList, e);
+            formFeed.UploadFeed += (form_sender, row_e) =>
+            {
+                postList.Rows.Add(row_e);
+                Post.WriteDataTableToCSV(postList, "../../Data/Post.csv");
+                postList.Clear();
+                postList.Columns.Clear();
+                flowPost.Controls.Clear();
+                showPost(index);
+            };
+            formFeed.ShowDialog();
         }
 
         private void tbNewFeed_Click(object sender, EventArgs e)
@@ -287,12 +341,6 @@ namespace _CS511__SocialNetworkApplication.View
                 showPost(index);
             };
             formFeed.ShowDialog();
-                foreach (DataRow row in postList.Rows)
-                {
-                    
-                    MessageBox.Show(row[3].ToString());
-                }
-            
         }
         private void showListMessageFr(int index) 
         {

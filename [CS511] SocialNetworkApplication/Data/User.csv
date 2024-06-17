@@ -1,11 +1,11 @@
-Username,Name,Date_of_birth,Gender,Email,Password,Avatar,FriendList,AddFriend,Mota,Chitiet
+Username,Name,Date_of_birth,Gender,Email,Password,Avatar,FriendList,AddFriend,Mota,Chitiet,Save
 an,An Trần,test time,1,21520553@gm.uit.edu.vn,1234,../../Data/Images/chems good guy.jpg,2,6,"I am An Tran
-Just wanna meo meo","Sinh viên năm 3 khoa KHMT, UIT"
-shoko,Shoko,test time,0,21521024@gm.uit.edu.vn,1234,../../Data/Images/shoko.jpg,,,,
-kdoo,Trung Kiên,"Tuesday, December 30, 2003",1,21521024@gm.uit.edu.vn,k,D:\Stuff\Image\6514db446bb429157a3dfc46dd9f0e7d.jpg,0*4*6,5*7,"Hong biết viết gì, đi học đây :>","+ Sinh viên năm 3 của lớp KHMT2021, UIT
-+ Tí đạo hàm tại Tik20, chuyên LQĐ Bình Định :>"
-itskiendoo,Hong phải là Kiên,"Saturday, January 1, 2000",1,21521024@gm.uit.edu.vn,kkkkk,../../Data/Images/0a2fbd331d51ae781d9393c311b97c3e.jpg,,4,,
-nganngants,Thu Ngân,"Saturday, January 1, 2000",1,nganngan@gm.uit.edu.vn,kkkkk,../../Data/Images/nganngan.jpg,2,,,
-kaka,Ricardo Kaka,"Saturday, January 1, 2000",1,kaka@gm.uit.edu.vn,kkkkk,../../Data/Images/kaka.jpg,,,,
-messi,Lionel Messi,"Saturday, January 1, 2000",1,messi@gm.uit.edu.vn,kkkkk,../../Data/Images/messi.jpg,,*2,,
-hermione,Emma Watson,"Saturday, January 1, 2000",1,emma@gm.uit.edu.vn,kkkkk,../../Data/Images/hermione.jpg,,,,
+Just wanna meo meo","Sinh viên năm 3 khoa KHMT, UIT",5
+shoko,Shoko,test time,0,21521024@gm.uit.edu.vn,1234,../../Data/Images/shoko.jpg,,,,,
+kdoo,Trung Kiên,"Tuesday, December 30, 2003",1,21521024@gm.uit.edu.vn,k,../../Data/Images/6514db446bb429157a3dfc46dd9f0e7d.jpg,0*4*6,5*7,"Hong biết viết gì, đi học đây :>","+ Sinh viên năm 3 của lớp KHMT2021, UIT
++ Tí đạo hàm tại Tik20, chuyên LQĐ Bình Định :>",
+itskiendoo,Hong phải là Kiên,"Saturday, January 1, 2000",1,21521024@gm.uit.edu.vn,kkkkk,../../Data/Images/0a2fbd331d51ae781d9393c311b97c3e.jpg,,4,,,
+nganngants,Thu Ngân,"Saturday, January 1, 2000",1,nganngan@gm.uit.edu.vn,kkkkk,../../Data/Images/nganngan.jpg,2,,,,
+kaka,Ricardo Kaka,"Saturday, January 1, 2000",1,kaka@gm.uit.edu.vn,kkkkk,../../Data/Images/kaka.jpg,,,,,
+messi,Lionel Messi,"Saturday, January 1, 2000",1,messi@gm.uit.edu.vn,kkkkk,../../Data/Images/messi.jpg,,*2,,,
+hermione,Emma Watson,"Saturday, January 1, 2000",1,emma@gm.uit.edu.vn,kkkkk,../../Data/Images/hermione.jpg,,,,,

@@ -85,7 +85,7 @@
             this.picAva.Location = new System.Drawing.Point(3, 3);
             this.picAva.Name = "picAva";
             this.picAva.Size = new System.Drawing.Size(50, 50);
-            this.picAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAva.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picAva.TabIndex = 0;
             this.picAva.TabStop = false;
             // 

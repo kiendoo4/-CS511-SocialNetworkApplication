@@ -204,6 +204,12 @@
     <Compile Include="View\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\SavedPosts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SavedPosts.Designer.cs">
+      <DependentUpon>SavedPosts.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Second.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -295,6 +301,9 @@
     <EmbeddedResource Include="View\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\SavedPosts.resx">
+      <DependentUpon>SavedPosts.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Second.resx">
       <DependentUpon>Second.cs</DependentUpon>
     </EmbeddedResource>
@@ -353,6 +362,7 @@
     <Content Include="Data\UserStatus.txt" />
     <Content Include="Icon\icons8-facebook-48.ico" />
     <Content Include="Icon\icons8-facebook-48.png" />
+    <None Include="Resources\icons8-save-64.png" />
     <None Include="Image\11.png" />
     <None Include="Image\close-button.png" />
     <Content Include="Icon\icons8-send-button-30.png" />
@@ -391,6 +401,15 @@
       <VersionMinor>0</VersionMinor>
       <Lcid>0</Lcid>
       <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>

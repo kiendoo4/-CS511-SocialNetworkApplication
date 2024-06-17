@@ -33,18 +33,19 @@ namespace _CS511__SocialNetworkApplication.View
             userIndividual = new UserIndividual(idx, "Main");
             userIndividual.ChangeButton += UserIndividual_ChangeButton;
             panel1.Controls.Add(userIndividual);
-            homeButton = new UserIndividual(idx, "Trang chủ", "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-home-button-64.png");
+            homeButton = new UserIndividual(idx, "Trang chủ", "../..\\Image\\icons8-home-button-64.png");
             homeButton.ChangeButton += HomeButton_ChangeButton;
             panel2.Controls.Add(homeButton);
-            message = new UserIndividual(idx, "Nhắn tin", "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-message-64.png");
+            message = new UserIndividual(idx, "Nhắn tin", "../..\\Image\\icons8-message-64.png");
             message.ChangeButton += Message_ChangeButton;
             panel3.Controls.Add(message);
-            friendButton = new UserIndividual(idx, "Bạn bè", "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-friends-64.png");
+            friendButton = new UserIndividual(idx, "Bạn bè", "../..\\Image\\icons8-friends-64.png");
             friendButton.ChangeButton += FriendButton_ChangeButton;
             panel4.Controls.Add(friendButton);
-            groupButton = new UserIndividual(idx, "Nhóm", "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-group-64.png");
+            groupButton = new UserIndividual(idx, "Nhóm", "../..\\Image\\icons8-group-64.png");
             panel5.Controls.Add(groupButton);
-            savePost = new UserIndividual(idx, "Đã lưu", "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-save-64.png");
+            savePost = new UserIndividual(idx, "Đã lưu", "../..\\Image\\icons8-save-64.png");
+            savePost.ChangeButton += SavePost_ChangeButton;
             panel6.Controls.Add(savePost);
             
         }
@@ -67,6 +68,11 @@ namespace _CS511__SocialNetworkApplication.View
         private void UserIndividual_ChangeButton(object sender, EventArgs e)
         {
             changeButton?.Invoke("User", e);
+        }
+
+        private void SavePost_ChangeButton(object sender, EventArgs e)
+        {
+            changeButton?.Invoke("Save", e);
         }
     }
 }
