@@ -29,290 +29,125 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageUC));
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.findtext = new System.Windows.Forms.TextBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.MessageList = new System.Windows.Forms.FlowLayoutPanel();
-            this.MessageBox = new System.Windows.Forms.RichTextBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.Username = new System.Windows.Forms.Label();
-            this.Avatar = new System.Windows.Forms.PictureBox();
-            this.LogoutButton = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Fullname = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.AccountList = new System.Windows.Forms.FlowLayoutPanel();
-            this.BackFBButton = new System.Windows.Forms.PictureBox();
-            this.panel3.SuspendLayout();
-            this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.pinnedButton = new System.Windows.Forms.PictureBox();
+            this.deleteButton = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.BackFBButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinnedButton)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteButton)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel3
+            // Fullname
             // 
-            this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.MessageList);
-            this.panel3.Controls.Add(this.MessageBox);
-            this.panel3.Controls.Add(this.pictureBox2);
-            this.panel3.Controls.Add(this.Username);
-            this.panel3.Location = new System.Drawing.Point(462, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1275, 892);
-            this.panel3.TabIndex = 60;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
-            this.label4.Location = new System.Drawing.Point(815, 1);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 25);
-            this.label4.TabIndex = 57;
-            this.label4.Text = "Tìm kiếm tin nhắn";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.findtext);
-            this.panel5.Controls.Add(this.pictureBox3);
-            this.panel5.Location = new System.Drawing.Point(813, 22);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(414, 40);
-            this.panel5.TabIndex = 11;
-            // 
-            // findtext
-            // 
-            this.findtext.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
-            this.findtext.Location = new System.Drawing.Point(54, 6);
-            this.findtext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.findtext.Name = "findtext";
-            this.findtext.Size = new System.Drawing.Size(355, 28);
-            this.findtext.TabIndex = 1;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.BackColor = System.Drawing.Color.White;
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(7, 5);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(43, 29);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 0;
-            this.pictureBox3.TabStop = false;
-            // 
-            // MessageList
-            // 
-            this.MessageList.AutoScroll = true;
-            this.MessageList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MessageList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.MessageList.Location = new System.Drawing.Point(28, 67);
-            this.MessageList.Name = "MessageList";
-            this.MessageList.Size = new System.Drawing.Size(1224, 726);
-            this.MessageList.TabIndex = 51;
-            this.MessageList.WrapContents = false;
-            // 
-            // MessageBox
-            // 
-            this.MessageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.MessageBox.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
-            this.MessageBox.Location = new System.Drawing.Point(28, 799);
-            this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(1092, 88);
-            this.MessageBox.TabIndex = 50;
-            this.MessageBox.Text = "";
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(28, 8);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(55, 55);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 49;
-            this.pictureBox2.TabStop = false;
-            // 
-            // Username
-            // 
-            this.Username.AutoSize = true;
-            this.Username.Font = new System.Drawing.Font("Quicksand", 13F, System.Drawing.FontStyle.Bold);
-            this.Username.Location = new System.Drawing.Point(89, 18);
-            this.Username.Name = "Username";
-            this.Username.Size = new System.Drawing.Size(102, 33);
-            this.Username.TabIndex = 47;
-            this.Username.Text = "Kiendoo";
-            // 
-            // Avatar
-            // 
-            this.Avatar.Image = ((System.Drawing.Image)(resources.GetObject("Avatar.Image")));
-            this.Avatar.Location = new System.Drawing.Point(21, 845);
-            this.Avatar.Name = "Avatar";
-            this.Avatar.Size = new System.Drawing.Size(55, 55);
-            this.Avatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.Avatar.TabIndex = 59;
-            this.Avatar.TabStop = false;
-            // 
-            // LogoutButton
-            // 
-            this.LogoutButton.BackColor = System.Drawing.Color.IndianRed;
-            this.LogoutButton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LogoutButton.ForeColor = System.Drawing.Color.White;
-            this.LogoutButton.Location = new System.Drawing.Point(291, 846);
-            this.LogoutButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.LogoutButton.Name = "LogoutButton";
-            this.LogoutButton.Size = new System.Drawing.Size(148, 50);
-            this.LogoutButton.TabIndex = 58;
-            this.LogoutButton.Text = "Đăng xuất";
-            this.LogoutButton.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
-            this.label2.Location = new System.Drawing.Point(86, 847);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(165, 25);
-            this.label2.TabIndex = 57;
-            this.label2.Text = "Xin chào, kiendoo4";
-            // 
-            // panel2
-            // 
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(0, 58);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(439, 40);
-            this.panel2.TabIndex = 56;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
-            this.textBox1.Location = new System.Drawing.Point(54, 7);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(380, 28);
-            this.textBox1.TabIndex = 1;
+            this.Fullname.AutoSize = true;
+            this.Fullname.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
+            this.Fullname.ForeColor = System.Drawing.Color.Black;
+            this.Fullname.Location = new System.Drawing.Point(70, 8);
+            this.Fullname.Name = "Fullname";
+            this.Fullname.Size = new System.Drawing.Size(70, 30);
+            this.Fullname.TabIndex = 2;
+            this.Fullname.Text = "label2";
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(7, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Location = new System.Drawing.Point(34, 7);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 29);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // richTextBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Paytone One", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(67, 4);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(178, 48);
-            this.label1.TabIndex = 55;
-            this.label1.Text = "Đoạn chat";
+            this.richTextBox1.BackColor = System.Drawing.Color.White;
+            this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.richTextBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
+            this.richTextBox1.Location = new System.Drawing.Point(34, 43);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
+            this.richTextBox1.Size = new System.Drawing.Size(806, 64);
+            this.richTextBox1.TabIndex = 7;
+            this.richTextBox1.Text = "";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Location = new System.Drawing.Point(857, 50);
+            this.pictureBox2.MaximumSize = new System.Drawing.Size(300, 300);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(61, 51);
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.LoadCompleted += new System.ComponentModel.AsyncCompletedEventHandler(this.picLoad);
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.AccountList);
-            this.panel1.Location = new System.Drawing.Point(0, 111);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(977, 94);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(439, 734);
-            this.panel1.TabIndex = 54;
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 8;
             // 
-            // AccountList
+            // pinnedButton
             // 
-            this.AccountList.AutoScroll = true;
-            this.AccountList.BackColor = System.Drawing.Color.White;
-            this.AccountList.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.AccountList.Location = new System.Drawing.Point(0, 2);
-            this.AccountList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.AccountList.Name = "AccountList";
-            this.AccountList.Size = new System.Drawing.Size(439, 728);
-            this.AccountList.TabIndex = 9;
+            this.pinnedButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pinnedButton.Image = ((System.Drawing.Image)(resources.GetObject("pinnedButton.Image")));
+            this.pinnedButton.Location = new System.Drawing.Point(146, 7);
+            this.pinnedButton.Name = "pinnedButton";
+            this.pinnedButton.Size = new System.Drawing.Size(30, 30);
+            this.pinnedButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pinnedButton.TabIndex = 9;
+            this.pinnedButton.TabStop = false;
             // 
-            // BackFBButton
+            // deleteButton
             // 
-            this.BackFBButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackFBButton.Image = ((System.Drawing.Image)(resources.GetObject("BackFBButton.Image")));
-            this.BackFBButton.Location = new System.Drawing.Point(8, 3);
-            this.BackFBButton.Name = "BackFBButton";
-            this.BackFBButton.Size = new System.Drawing.Size(53, 53);
-            this.BackFBButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.BackFBButton.TabIndex = 62;
-            this.BackFBButton.TabStop = false;
+            this.deleteButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.deleteButton.Image = ((System.Drawing.Image)(resources.GetObject("deleteButton.Image")));
+            this.deleteButton.Location = new System.Drawing.Point(182, 7);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(30, 30);
+            this.deleteButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.deleteButton.TabIndex = 10;
+            this.deleteButton.TabStop = false;
             // 
             // MessageUC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.BackFBButton);
-            this.Controls.Add(this.panel3);
-            this.Controls.Add(this.Avatar);
-            this.Controls.Add(this.LogoutButton);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.label1);
+            this.AutoSize = true;
+            this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.deleteButton);
+            this.Controls.Add(this.pinnedButton);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Fullname);
+            this.ForeColor = System.Drawing.SystemColors.ButtonShadow;
             this.Name = "MessageUC";
-            this.Size = new System.Drawing.Size(1740, 903);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Avatar)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Size = new System.Drawing.Size(1180, 197);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.BackFBButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pinnedButton)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deleteButton)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        public System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.Label label4;
-        public System.Windows.Forms.Panel panel5;
-        public System.Windows.Forms.TextBox findtext;
-        public System.Windows.Forms.PictureBox pictureBox3;
-        public System.Windows.Forms.FlowLayoutPanel MessageList;
-        public System.Windows.Forms.RichTextBox MessageBox;
-        public System.Windows.Forms.PictureBox pictureBox2;
-        public System.Windows.Forms.Label Username;
-        public System.Windows.Forms.PictureBox Avatar;
-        public System.Windows.Forms.Button LogoutButton;
-        public System.Windows.Forms.Label label2;
-        public System.Windows.Forms.Panel panel2;
-        public System.Windows.Forms.TextBox textBox1;
-        public System.Windows.Forms.PictureBox pictureBox1;
-        public System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Panel panel1;
-        public System.Windows.Forms.FlowLayoutPanel AccountList;
-        private System.Windows.Forms.PictureBox BackFBButton;
+        public System.Windows.Forms.Label Fullname;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        public System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pinnedButton;
+        private System.Windows.Forms.PictureBox deleteButton;
     }
 }

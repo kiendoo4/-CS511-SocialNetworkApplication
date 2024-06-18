@@ -19,7 +19,8 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
     {
         bool ck = false, ck2 = false; int index = -1;
         DataTable dataTable2 = new DataTable();
-        public event EventHandler backButton, friendButton;
+        public event EventHandler backButton, friendButton, postButton;
+        Label numofFriend = new Label();
         public Head()
         {
             InitializeComponent();
@@ -28,19 +29,38 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
         {
             InitializeComponent();
             dataTable2 = userList;
+            panel6.AutoSize = true;
+            numofFriend.Font = new Font("Quicksand", 14, FontStyle.Bold);
+            numofFriend.AutoSize = true;
             index = idx;
-            numofFriend.Click += NumofFriend_Click;
+            //numofFriend.Click += NumofFriend_Click;
+
+            label2.Click += Post_Click;
+            panel4.Click += Post_Click;
+            pictureBox2.Click += Post_Click;
+
+            label4.Click += NumofFriend_Click;
+            pictureBox3.Click += NumofFriend_Click;
+            panel5.Click += NumofFriend_Click;
             panel3.Visible = false;
             backB.Click += BackB_Click;
             dataTable2 = userList;
             NameUser.Text = userList.Rows[idx]["Name"].ToString();
             Avatar.ImageLocation = userList.Rows[idx]["Avatar"].ToString();
             List<string> fr = Convert.ToString(userList.Rows[idx]["FriendList"].ToString()).Split('*').ToList();
-            if (fr[0] == "")
+            if (fr[0] == "" && fr.Count == 1)
             {
                 numofFriend.Text = "0 bạn bè";
+                panel6.Controls.Add(numofFriend);
             }
-            else numofFriend.Text = Convert.ToString(userList.Rows[idx]["FriendList"].ToString().Split('*').Length) + " bạn bè";
+            else
+            {
+                int cnt = userList.Rows[index]["FriendList"].ToString().Split('*').Length;
+                if (userList.Rows[index]["FriendList"].ToString().Split('*')[0] == "")
+                    cnt -= 1;
+                numofFriend.Text = Convert.ToString(cnt) + " bạn bè";
+                panel6.Controls.Add(numofFriend);
+            }
             if (role != "User")
             {
                 changeAvatar.Visible = false;
@@ -58,7 +78,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
             label1.Click += ChangeInfo_Click;
             panel2.Click += ChangeInfo_Click;
             pictureBox1.Click += ChangeInfo_Click;
-            string[] lines2 = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt");
+            string[] lines2 = File.ReadAllLines("../..\\Data\\UserImgBackground.txt");
             foreach (string line in lines2)
             {
                 string[] parts = line.Split('*');
@@ -77,10 +97,15 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
             changeAvatar.Click += ChangeAvatar_Click;
         }
 
+        private void Post_Click(object sender, EventArgs e)
+        {
+            postButton?.Invoke(index, EventArgs.Empty);
+        }
+
         public void Lmeoo_Click(DataTable friendL, int index)
         {
             List<string> fr = Convert.ToString(friendL.Rows[index]["FriendList"].ToString()).Split('*').ToList();
-            if (fr[0] == "")
+            if (fr[0] == "" && fr.Count == 1)
             {
                 numofFriend.Text = "0 bạn bè";
             }
@@ -166,7 +191,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                     Avatar.ImageLocation = filePath;
                     dataTable2.Rows[index]["Avatar"] = filePath;
                     WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", dataTable2);
-                    MessageBox.Show("Đã đổi ảnh nền thành công", "Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Đã đổi ảnh đại diện thành công", "Thông báo", MessageBoxButtons.OK);
                 }
             }
         }
@@ -183,7 +208,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                     Background.ImageLocation = filePath;
                     if(!ck)
                     {
-                        File.WriteAllText("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", Convert.ToString(index) + "*" + filePath);
+                        File.AppendAllText("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", '\n' + (Convert.ToString(index) + "*" + filePath));
                     }  
                     else
                     {
@@ -195,9 +220,8 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                             {
                                 parts[1] = filePath;
                                 lines2[i] = string.Join("*", parts);
-                                break;
                             }
-                        }
+                        } 
                         File.WriteAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt", lines2);
 
                     }

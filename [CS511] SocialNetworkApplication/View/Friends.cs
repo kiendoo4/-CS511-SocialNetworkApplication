@@ -21,7 +21,9 @@ namespace _CS511__SocialNetworkApplication.View
     {
         List<EachFriend> lf = new List<EachFriend>();
         List<EachFriend> umkl = new List<EachFriend>();
+        List<EachFriend> fil = new List<EachFriend>();
         public event EventHandler changeButton, optionButton;
+        List<int> listInvite = new List<int>();
         DataTable userList2 = new DataTable();
         int index = -1;
         public Friends()
@@ -45,6 +47,27 @@ namespace _CS511__SocialNetworkApplication.View
             uMightKnowList.WrapContents = false;
             uMightKnowList.FlowDirection = FlowDirection.LeftToRight;
             panel1.Controls.Add(friendInviteList);
+            yourInvitation.AutoScroll = true;
+            yourInvitation.WrapContents = false;
+            yourInvitation.FlowDirection = FlowDirection.LeftToRight;
+
+            for (int i = 0; i < userList.Rows.Count; i++)
+            {
+                if (i == index) continue;
+                string[] frList2 = userList.Rows[i]["AddFriend"].ToString().Split('*');
+                if (Array.Exists(frList2, e => e == Convert.ToString(idx)))
+                {
+                    listInvite.Add(i);
+                }
+            }
+            for (int i = 0; i < listInvite.Count; i++)
+            {
+                fil.Add(new EachFriend(userList, listInvite[i], "Invite"));
+                fil[fil.Count - 1].changeButton += Friends_changeButton;
+                fil[fil.Count - 1].optionButton += Friends_optionButton2;
+                yourInvitation.Controls.Add(fil[fil.Count - 1]);
+            }
+
             string frInviteList = userList.Rows[idx]["AddFriend"].ToString();
             string[] Invites = frInviteList.Split('*');
             string[] frList = userList.Rows[idx]["FriendList"].ToString().Split('*');
@@ -58,7 +81,7 @@ namespace _CS511__SocialNetworkApplication.View
             }
             for(int i = 0; i < userList.Rows.Count; i++)
             {
-                if (!Array.Exists(frList, e => e == Convert.ToString(i)) && !Array.Exists(Invites, e => e == Convert.ToString(i)) && i != idx)
+                if (!Array.Exists(frList, e => e == Convert.ToString(i)) && !Array.Exists(Invites, e => e == Convert.ToString(i)) && i != idx && !listInvite.Contains(i))
                 {
                     umkl.Add(new EachFriend(userList, i, "Other"));
                     umkl[umkl.Count - 1].changeButton += Friends_changeButton;
@@ -68,14 +91,84 @@ namespace _CS511__SocialNetworkApplication.View
             }
             for (int i = 0; i < 2; i++)
             {
+                yourInvitation.Controls.Add(new blank());
                 friendInviteList.Controls.Add(new blank());
                 uMightKnowList.Controls.Add(new blank());
             }    
         }
 
+        private void Friends_optionButton2(object sender, EventArgs e)
+        {
+            MessageBox.Show("Ahihi", "Thông báo", MessageBoxButtons.OK);
+        }
+
         private void Friends_optionButton1(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            if (sender is int index2)
+            {
+                for (int i = 0; i < umkl.Count; i++)
+                {
+                    if (index2 == umkl[i].index)
+                    {
+                        DialogResult result = MessageBox.Show("Gửi lời mời muốn kết bạn đến người này?", "Lựa chọn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
+                            string[] frList = userList2.Rows[index2]["AddFriend"].ToString().Split('*');
+                            List<string> frListAsList = new List<string>(frList);
+                            string elementToAdd = Convert.ToString(index);
+                            frListAsList.Add(elementToAdd);
+                            frList = frListAsList.ToArray();
+                            userList2.Rows[index2]["AddFriend"] = string.Join("*", frList);
+                            WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
+
+                            uMightKnowList.Controls.Clear();
+                            umkl.Clear();
+                            string frInviteList = userList2.Rows[index]["AddFriend"].ToString();
+                            string[] Invites = frInviteList.Split('*');
+                            frList = userList2.Rows[index]["FriendList"].ToString().Split('*');
+
+                            yourInvitation.Controls.Clear();
+                            fil.Clear();
+                            listInvite.Clear();
+                            for (int ii = 0; ii < userList2.Rows.Count; ii++)
+                            {
+                                if (ii == index) continue;
+                                string[] frList2 = userList2.Rows[ii]["AddFriend"].ToString().Split('*');
+                                if (Array.Exists(frList2, ee => ee == Convert.ToString(index)))
+                                {
+                                    listInvite.Add(ii);
+                                }
+                            }
+                            for (int ii = 0; ii < listInvite.Count; ii++)
+                            {
+                                fil.Add(new EachFriend(userList2, listInvite[ii], "Invite"));
+                                fil[fil.Count - 1].changeButton += Friends_changeButton;
+                                fil[fil.Count - 1].optionButton += Friends_optionButton2;
+                                yourInvitation.Controls.Add(fil[fil.Count - 1]);
+                            }
+
+                            for (int inn = 0; inn < userList2.Rows.Count; inn++)
+                            {
+                                if (!Array.Exists(frList, ee => ee == Convert.ToString(inn)) && !Array.Exists(Invites, ee => ee == Convert.ToString(inn)) && inn != index && !listInvite.Contains(inn))
+                                {
+                                    umkl.Add(new EachFriend(userList2, inn, "Other"));
+                                    umkl[umkl.Count - 1].changeButton += Friends_changeButton;
+                                    umkl[umkl.Count - 1].optionButton += Friends_optionButton1;
+                                    uMightKnowList.Controls.Add(umkl[umkl.Count - 1]);
+                                }
+                            }
+
+                            for (int inn = 0; inn < 2; inn++)
+                            {
+                                yourInvitation.Controls.Add(new blank());
+                                uMightKnowList.Controls.Add(new blank());
+                            }
+                            MessageBox.Show("Đã gửi lời mời kết bạn", "Thông báo", MessageBoxButtons.OK);
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
         private void Friends_optionButton(object sender, EventArgs e)
@@ -86,7 +179,7 @@ namespace _CS511__SocialNetworkApplication.View
                 {
                     if (index2 == lf[i].index)
                     {
-                        DialogResult result = MessageBox.Show("Bạn có muốn kết bạn với người này?", "Lựa chọn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult result = MessageBox.Show("Chấp nhận kết bạn với người này?", "Lựa chọn", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                         if (result == DialogResult.Yes)
                         {
                             string[] frList = userList2.Rows[index]["FriendList"].ToString().Split('*');
@@ -105,13 +198,12 @@ namespace _CS511__SocialNetworkApplication.View
                             userList2.Rows[index]["AddFriend"] = string.Join("*", frList3);
                             WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
 
-
                             string[] frList2 = userList2.Rows[index2]["FriendList"].ToString().Split('*');
                             List<string> frListAsList2 = new List<string>(frList2);
                             string elementToRemove2 = Convert.ToString(index);
                             frListAsList2.Add(elementToRemove2);
                             frList2 = frListAsList2.ToArray();
-                            userList2.Rows[index2]["AddFriend"] = string.Join("*", frList2);
+                            userList2.Rows[index2]["FriendList"] = string.Join("*", frList2);
                             WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
                             
                             friendInviteList.Controls.Clear();
@@ -159,6 +251,11 @@ namespace _CS511__SocialNetworkApplication.View
             }
 
             return list;
+        }
+
+        private void Friends_Load(object sender, EventArgs e)
+        {
+
         }
 
         public static void WriteDataTableToCsv(string filePath, DataTable table)

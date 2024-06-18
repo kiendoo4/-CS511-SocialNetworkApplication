@@ -27,7 +27,7 @@ namespace _CS511__SocialNetworkApplication.View
         {
             InitializeComponent();
         }
-        public Second(int idx) 
+        public Second(int idx)
         {
             InitializeComponent();
             index = idx;
@@ -62,8 +62,9 @@ namespace _CS511__SocialNetworkApplication.View
 
             userUC2 = new UserUC(index);
             userUC2.changeButton += UserUC2_changeButton;
+            userUC2.searchPost += searchPost;
             userUC.Controls.Add(userUC2);
-            //showPost();
+            showPost(index);
             flowPost.FlowDirection = FlowDirection.TopDown;
             flowPost.WrapContents = false;
             flowPost.AutoScroll = true;
@@ -80,7 +81,7 @@ namespace _CS511__SocialNetworkApplication.View
             {
                 if(option == "Mess")
                 {
-                    MessageUC messageUC = new MessageUC(userList, index);
+                    MessageUC2 messageUC = new MessageUC2(userList, index);
                     messageUC.backButton += MessageUC_backButton;
                     Panel Message = new Panel();
                     Message.Width = this.Width;
@@ -117,7 +118,26 @@ namespace _CS511__SocialNetworkApplication.View
                     User.Controls.Add(mainUserUC);
                     Controls.Add(User);
                     Controls.SetChildIndex(User, 0);
-                }    
+                }
+                if (option == "Save")
+                {
+                    SavedPosts savedPosts = new SavedPosts(index);
+                    int x = (this.Width - savedPosts.Width) / 2;
+                    int y = (this.Height - savedPosts.Height) / 2;
+                    savedPosts.Location = new Point(x, y);
+                    savedPosts.close_this += (close_sender, close_e) =>
+                    {
+                        savedPosts.Dispose();
+                        this.Controls.Remove(savedPosts);
+                        postList.Clear();
+                        postList.Columns.Clear();
+                        flowPost.Controls.Clear();
+                        showPost(index);
+                    };
+                    this.Controls.Add(savedPosts);
+                    this.Controls.SetChildIndex(savedPosts, 0);
+
+                }
             }    
         }
 
@@ -181,7 +201,16 @@ namespace _CS511__SocialNetworkApplication.View
             Controls.RemoveAt(0);
         }
 
-        public void showPost(string username)
+        private void searchPost(object sender, string e)
+        {
+            foreach (Post post_item in flowPost.Controls)
+            {
+                if (post_item.searching(e) == false) post_item.Hide();
+                else post_item.Show();
+            }
+        }
+
+        public void showPost(int index)
         {
             string csvFilePath = "../../Data/Post.csv";
             using (var reader = new StreamReader(csvFilePath))
@@ -209,12 +238,119 @@ namespace _CS511__SocialNetworkApplication.View
                     }
                     postList.Rows.Add(row);
                 }
-                foreach (DataRow row in postList.Rows)
+                for (int i = postList.Rows.Count - 1; i >= 0; i--)
                 {
-                    
-                    MessageBox.Show(row[3].ToString());
+                    DataRow row = postList.Rows[i];
+                    if (row["Mode"].ToString() == "Bạn bè" && Convert.ToInt32(row["User_id"]) != index)
+                    {
+                        string[] user_friends = userList.Rows[Convert.ToInt32(row["User_id"])]["FriendList"].ToString().Split('*');
+                        List<string> friend_list = user_friends.ToList();
+                        if (friend_list[0] == "") friend_list.Remove("");
+                        int redflag = 0;
+                        foreach (string a_user in friend_list)
+                        {
+                            if (Convert.ToInt32(a_user) == index)
+                            {
+                                redflag = 1;
+                                break;
+                            }
+                        }
+                        if (redflag == 0) continue;
+                    }
+                    if (row["Mode"].ToString() == "Chỉ mình tôi" && Convert.ToInt32(row["User_id"]) != index) continue;
+                    Post post = new Post(row);
+                    post.get_current(index, i);
+                    post.showDetail += showPostDetail;
+                    post.sharing += sharePost;
+                    flowPost.Controls.Add(post);
                 }
             }
+        }
+
+        private void showPostDetail(object sender, List<string> e)
+        {
+            FlowLayoutPanel flowDetail = new FlowLayoutPanel();
+            flowDetail.AutoSize = false;
+            flowDetail.AutoScroll = true;
+            flowDetail.FlowDirection = FlowDirection.LeftToRight;
+            flowDetail.Size = socialUC.Size;
+            int x = (this.Width - flowDetail.Width) / 2;
+            int y = (this.Height - flowDetail.Height) / 2;
+            flowDetail.Location = new Point(x, y);
+
+            PictureBox closeButt = new PictureBox();
+            closeButt.Image = Image.FromFile("../../Image/close-button.png");
+            closeButt.SizeMode = PictureBoxSizeMode.StretchImage;
+            closeButt.Width = 30;
+            closeButt.Height = 30;
+
+            int xc = (this.Width + flowDetail.Width) / 2 - 50;
+            int yc = (this.Height - flowDetail.Height) / 2;
+            closeButt.Location = new Point(xc, yc);
+
+            closeButt.Click += (the_sender, temp_e) =>
+            {
+                flowDetail.Dispose();
+                this.Controls.Remove(flowDetail);
+                closeButt.Dispose();
+                this.Controls.Remove(closeButt);
+            };
+            this.Controls.Add(closeButt);
+
+            foreach (string path in e)
+            {
+                if (Post.IsImageFile(path))
+                {
+                    Image temp = Image.FromFile(path);
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.ImageLocation = path;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Width = flowDetail.Width - 30;
+                    pictureBox.Height = (int)(pictureBox.Width / (double)temp.Width * (double)temp.Height);
+                    flowDetail.Controls.Add(pictureBox);
+                    temp.Dispose();
+                }
+                else
+                {
+                    VidPlayer player = new VidPlayer(path);
+                    flowDetail.Controls.Add(player);
+                    player.Width = flowDetail.Width - 30;
+                    player.Height = player.Width * 4 / 6;
+                }
+            }
+            this.Controls.Add(flowDetail);
+            this.Controls.SetChildIndex(flowDetail, 0);
+            this.Controls.SetChildIndex(closeButt, 0);
+        }
+
+        private void sharePost(object sender, DataRow e)
+        {
+            FormFeed formFeed = new FormFeed(index, postList, e);
+            formFeed.UploadFeed += (form_sender, row_e) =>
+            {
+                postList.Rows.Add(row_e);
+                Post.WriteDataTableToCSV(postList, "../../Data/Post.csv");
+                postList.Clear();
+                postList.Columns.Clear();
+                flowPost.Controls.Clear();
+                showPost(index);
+            };
+            formFeed.ShowDialog();
+        }
+
+        private void tbNewFeed_Click(object sender, EventArgs e)
+        {
+            FormFeed formFeed = new FormFeed(index, postList);
+            formFeed.UploadFeed += (form_sender, row_e) =>
+            {
+                postList.Rows.Add(row_e);
+                Post.WriteDataTableToCSV(postList, "../../Data/Post.csv");
+                postList.Clear();
+                postList.Columns.Clear();
+                flowPost.Controls.Clear();
+                showPost(index);
+            };
+            formFeed.ShowDialog();
         }
         private void showListMessageFr(int index) 
         {

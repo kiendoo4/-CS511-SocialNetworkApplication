@@ -1,4 +1,4 @@
-User_id,Mode,Post_time,Content,Images,Videos,Comment
+User_id,Mode,Post_time,Content,Images,Videos,Comment,Like,Share
 0,Công khai,testdayyyyyyyyyyyyyyyyyyy,"Absolute Cinema
 Đây đúng thực sự là đỉnh cao điện ảnh cmnr
 Cảm xúc của người xem phân đoạn này chắc chắn giống hệt như cảm xúc của Darkness. Thật không ngờ khi có ngày chúng ta được chứng kiến một phân cảnh trong Konosuba với một tông màu lạnh như thế...
@@ -6,7 +6,7 @@ Hiệu ứng Slowmotion cùng với bản nhạc OST và những giây phút tho
 Absolute Cinema
 Đây đúng thực sự là đỉnh cao điện ảnh cmnr
 Cảm xúc của người xem phân đoạn này chắc chắn giống hệt như cảm xúc của Darkness. Thật không ngờ khi có ngày chúng ta được chứng kiến một phân cảnh trong Konosuba với một tông màu lạnh như thế...
-Hiệu ứng Slowmotion cùng với bản nhạc OST và những giây phút thoáng nhòe đi, thực sự đẹp như một Wedding Album, nhưng chỉ khác rằng đây không phải lễ cưới, mà là một phi vụ cướp dâu!!!",../../Data/Images/chems good guy.jpg;../../Data/Images/Fantasy tavern.png;../../Data/Images/shoko.jpg,../../Data/Images/Longstick.mp4;../../Data/Images/Longstick.mp4,../../Data/Post_cmt/Cmt_0.csv
+Hiệu ứng Slowmotion cùng với bản nhạc OST và những giây phút thoáng nhòe đi, thực sự đẹp như một Wedding Album, nhưng chỉ khác rằng đây không phải lễ cưới, mà là một phi vụ cướp dâu!!!",../../Data/Images/chems good guy.jpg;../../Data/Images/Fantasy tavern.png;../../Data/Images/shoko.jpg,../../Data/Images/Longstick.mp4;../../Data/Images/Longstick.mp4,../../Data/Post_cmt/Cmt_0.csv,../../Data/Post_like/Like_0.txt,
 1,Bạn bè,testday,"Absolute Cinema
 Đây đúng thực sự là đỉnh cao điện ảnh cmnr
 Cảm xúc của người xem phân đoạn này chắc chắn giống hệt như cảm xúc của Darkness. Thật không ngờ khi có ngày chúng ta được chứng kiến một phân cảnh trong Konosuba với một tông màu lạnh như thế...
@@ -18,11 +18,13 @@ Hiệu ứng Slowmotion cùng với bản nhạc OST và những giây phút tho
 12345678
 yeyeyeye
 nothing
-Có thể có một vài lý do khiến bạn gặp phải vấn đề khi dòng văn bản bị mất ở RichTextBox. Một lý do phổ biến là do cách bạn tính toán chiều cao của RichTextBox chưa bao gồm đầy đủ các yếu tố như padding và border của RichTextBox. Chiều cao bạn tính toán có thể không bao gồm không gian bổ sung mà RichTextBox cần để hiển thị toàn bộ văn bản một cách chín.",../../Data/Images/shoko.jpg,../../Data/Images/Longstick.mp4,../../Data/Post_cmt/Cmt_1.csv
-2,Chỉ mình tôi,testday,,../../Data/Images/shoko.jpg,,../../Data/Post_cmt/Cmt_2.csv
-3,Công khai,testday,oneline,../../Data/Images/shoko.jpg,,../../Data/Post_cmt/Cmt_3.csv
-0,Công khai,6/15/2024 6:18:46 PM,I want to fly!!! 👏,../../Data/Images/7ae27729-37fa-4105-bd1d-cb779280d781.jpg;../../Data/Images/09d2efbc-ad8c-454b-a136-884c8d88f40c.jpg,,../../Data/Post_cmt/Cmt_4.csv
-0,Bạn bè,6/15/2024 6:23:50 PM,2 chai nước mắm 😃,../../Data/Images/542976fa-4600-457b-b468-b178b0babb67.jpg;../../Data/Images/99794745d5b0d82459e1fcf810685bc7.jpg;../../Data/Images/438241771_1461193291270589_7418769774538554899_n.jpg;../../Data/Images/a98f4b03-67cb-4fda-9c02-76256dedcdf2.jpg,,../../Data/Post_cmt/Cmt_5.csv
-0,Công khai,6/15/2024 6:27:07 PM,some shiet post 😢,../../Data/Images/2ae70617-aef5-4cbf-b62f-dcdf975fb9e7.jpg,,../../Data/Post_cmt/Cmt_6.csv
-0,Công khai,6/15/2024 6:32:08 PM,I can do this all day,,,../../Data/Post_cmt/Cmt_7.csv
-0,Bạn bè,6/16/2024 2:49:03 PM,Coffee chill 😃,../../Data/Images/00-featured-tom-reading-newspaper-meme-template-preview.jpg,,../../Data/Post_cmt/Cmt_8.csv
+Có thể có một vài lý do khiến bạn gặp phải vấn đề khi dòng văn bản bị mất ở RichTextBox. Một lý do phổ biến là do cách bạn tính toán chiều cao của RichTextBox chưa bao gồm đầy đủ các yếu tố như padding và border của RichTextBox. Chiều cao bạn tính toán có thể không bao gồm không gian bổ sung mà RichTextBox cần để hiển thị toàn bộ văn bản một cách chín.",../../Data/Images/shoko.jpg,../../Data/Images/Longstick.mp4,../../Data/Post_cmt/Cmt_1.csv,../../Data/Post_like/Like_1.txt,
+2,Chỉ mình tôi,testday,,../../Data/Images/shoko.jpg,,../../Data/Post_cmt/Cmt_2.csv,../../Data/Post_like/Like_2.txt,
+3,Công khai,testday,oneline,../../Data/Images/shoko.jpg,,../../Data/Post_cmt/Cmt_3.csv,../../Data/Post_like/Like_3.txt,
+0,Công khai,6/15/2024 18:18,I want to fly!!! 👏,../../Data/Images/7ae27729-37fa-4105-bd1d-cb779280d781.jpg;../../Data/Images/09d2efbc-ad8c-454b-a136-884c8d88f40c.jpg,,../../Data/Post_cmt/Cmt_4.csv,../../Data/Post_like/Like_4.txt,
+0,Bạn bè,6/15/2024 18:23,2 chai nước mắm 😃,../../Data/Images/542976fa-4600-457b-b468-b178b0babb67.jpg;../../Data/Images/99794745d5b0d82459e1fcf810685bc7.jpg;../../Data/Images/438241771_1461193291270589_7418769774538554899_n.jpg;../../Data/Images/a98f4b03-67cb-4fda-9c02-76256dedcdf2.jpg,,../../Data/Post_cmt/Cmt_5.csv,../../Data/Post_like/Like_5.txt,
+0,Công khai,6/15/2024 18:27,some shiet post 😢,../../Data/Images/2ae70617-aef5-4cbf-b62f-dcdf975fb9e7.jpg,,../../Data/Post_cmt/Cmt_6.csv,../../Data/Post_like/Like_6.txt,
+0,Công khai,6/15/2024 18:32,I can do this all day,,,../../Data/Post_cmt/Cmt_7.csv,../../Data/Post_like/Like_7.txt,
+0,Bạn bè,6/16/2024 14:49,Coffee chill 😃,../../Data/Images/00-featured-tom-reading-newspaper-meme-template-preview.jpg,,../../Data/Post_cmt/Cmt_8.csv,../../Data/Post_like/Like_8.txt,
+0,Công khai,6/17/2024 6:54:10 PM,,,../../Data/Images/Longstick.mp4,../../Data/Post_cmt/Cmt_9.csv,../../Data/Post_like/Like_9.txt,
+0,Công khai,6/17/2024 7:13:38 PM,oneline,../../Data/Images/shoko.jpg,,../../Data/Post_cmt/Cmt_10.csv,../../Data/Post_like/Like_10.txt,3

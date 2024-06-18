@@ -87,7 +87,7 @@ namespace _CS511__SocialNetworkApplication.View
                 LoginSuccessClicked?.Invoke(lmeo, EventArgs.Empty);
             }
             else
-                MessageBox.Show("Tài khoản hoặc mật khẩu không khớp/không tồn tại", "Thông báo", MessageBoxButtons.OK); 
+                MessageBox.Show("Tài khoản hoặc mật khẩu không khớp/không tồn tại", "Thông báo", MessageBoxButtons.OK);
         }
 
         private void ForgotPassword_Click(object sender, EventArgs e)

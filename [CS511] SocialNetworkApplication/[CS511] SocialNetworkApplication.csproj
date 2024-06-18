@@ -33,8 +33,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
+    <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WMPLib.1.0.0\lib\AxInterop.WMPLib.dll</HintPath>
+    </Reference>
     <Reference Include="CsvHelper, Version=32.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
       <HintPath>..\packages\CsvHelper.32.0.3\lib\net47\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WMPLib.1.0.0\lib\Interop.WMPLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="MediaToolkit, Version=1.1.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MediaToolkit.1.1.0.1\lib\net40\MediaToolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
@@ -80,11 +99,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\blank2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\blank2.Designer.cs">
+      <DependentUpon>blank2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\blank.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\blank.Designer.cs">
       <DependentUpon>blank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Camera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Camera.Designer.cs">
+      <DependentUpon>Camera.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChangeInfo.cs">
       <SubType>UserControl</SubType>
@@ -92,11 +123,23 @@
     <Compile Include="View\ChangeInfo.Designer.cs">
       <DependentUpon>ChangeInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ChangingPassword.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChangingPassword.Designer.cs">
+      <DependentUpon>ChangingPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ChatsmallUC.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\ChatsmallUC.Designer.cs">
       <DependentUpon>ChatsmallUC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ChattingUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\ChattingUI.Designer.cs">
+      <DependentUpon>ChattingUI.cs</DependentUpon>
     </Compile>
     <Compile Include="View\CheckGmailForRegistration.cs">
       <SubType>UserControl</SubType>
@@ -110,11 +153,23 @@
     <Compile Include="View\EachFriend.Designer.cs">
       <DependentUpon>EachFriend.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Comment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Comment.Designer.cs">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\First.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View\First.Designer.cs">
       <DependentUpon>First.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FormFeed.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormFeed.Designer.cs">
+      <DependentUpon>FormFeed.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Friends.cs">
       <SubType>UserControl</SubType>
@@ -170,6 +225,12 @@
     <Compile Include="View\MessageUC.Designer.cs">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MessageUC2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MessageUC2.Designer.cs">
+      <DependentUpon>MessageUC2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Post.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -181,6 +242,12 @@
     </Compile>
     <Compile Include="View\Registration.Designer.cs">
       <DependentUpon>Registration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\SavedPosts.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\SavedPosts.Designer.cs">
+      <DependentUpon>SavedPosts.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Second.cs">
       <SubType>UserControl</SubType>
@@ -200,6 +267,12 @@
     <Compile Include="View\UserUC.Designer.cs">
       <DependentUpon>UserUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\VidPlayer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\VidPlayer.Designer.cs">
+      <DependentUpon>VidPlayer.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -208,15 +281,28 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\blank2.resx">
+      <DependentUpon>blank2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\blank.resx">
       <DependentUpon>blank.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera.resx">
+      <DependentUpon>Camera.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ChangeInfo.resx">
       <DependentUpon>ChangeInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ChangingPassword.resx">
+      <DependentUpon>ChangingPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChatsmallUC.resx">
       <DependentUpon>ChatsmallUC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ChattingUI.resx">
+      <DependentUpon>ChattingUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\CheckGmailForRegistration.resx">
       <DependentUpon>CheckGmailForRegistration.cs</DependentUpon>
@@ -224,8 +310,14 @@
     <EmbeddedResource Include="View\EachFriend.resx">
       <DependentUpon>EachFriend.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Comment.resx">
+      <DependentUpon>Comment.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\First.resx">
       <DependentUpon>First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FormFeed.resx">
+      <DependentUpon>FormFeed.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Friends.resx">
       <DependentUpon>Friends.cs</DependentUpon>
@@ -254,11 +346,17 @@
     <EmbeddedResource Include="View\MessageUC.resx">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MessageUC2.resx">
+      <DependentUpon>MessageUC2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Post.resx">
       <DependentUpon>Post.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Registration.resx">
       <DependentUpon>Registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SavedPosts.resx">
+      <DependentUpon>SavedPosts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Second.resx">
       <DependentUpon>Second.cs</DependentUpon>
@@ -269,7 +367,23 @@
     <EmbeddedResource Include="View\UserUC.resx">
       <DependentUpon>UserUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\VidPlayer.resx">
+      <DependentUpon>VidPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Data\Messages.csv" />
     <None Include="Data\Post.csv" />
+    <None Include="Data\Post_cmt\Cmt_0.csv" />
+    <None Include="Data\Post_cmt\Cmt_1.csv" />
+    <None Include="Data\Post_cmt\Cmt_10.csv" />
+    <None Include="Data\Post_cmt\Cmt_2.csv" />
+    <None Include="Data\Post_cmt\Cmt_3.csv" />
+    <None Include="Data\Post_cmt\Cmt_4.csv" />
+    <None Include="Data\Post_cmt\Cmt_5.csv" />
+    <None Include="Data\Post_cmt\Cmt_6.csv" />
+    <None Include="Data\Post_cmt\Cmt_7.csv" />
+    <None Include="Data\Post_cmt\Cmt_8.csv" />
+    <None Include="Data\Post_cmt\Cmt_9.csv" />
+    <None Include="Data\Post_cmt\Cmt_template.csv" />
     <None Include="Data\User - Copy.csv" />
     <None Include="Data\User.csv" />
     <None Include="Image\social-media-network_74855-4575.avif" />
@@ -287,24 +401,52 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="Data\Images\00-featured-tom-reading-newspaper-meme-template-preview.jpg" />
+    <Content Include="Data\Images\09d2efbc-ad8c-454b-a136-884c8d88f40c.jpg" />
     <Content Include="Data\Images\0a2fbd331d51ae781d9393c311b97c3e.jpg" />
+    <Content Include="Data\Images\2ae70617-aef5-4cbf-b62f-dcdf975fb9e7.jpg" />
+    <Content Include="Data\Images\438241771_1461193291270589_7418769774538554899_n.jpg" />
+    <Content Include="Data\Images\443fb978039d0817cc9fd28caeb14ef4.jpg" />
+    <Content Include="Data\Images\542976fa-4600-457b-b468-b178b0babb67.jpg" />
     <Content Include="Data\Images\6514db446bb429157a3dfc46dd9f0e7d.jpg" />
+    <Content Include="Data\Images\7ae27729-37fa-4105-bd1d-cb779280d781.jpg" />
+    <Content Include="Data\Images\99794745d5b0d82459e1fcf810685bc7.jpg" />
+    <Content Include="Data\Images\a98f4b03-67cb-4fda-9c02-76256dedcdf2.jpg" />
+    <Content Include="Data\Images\Avt dis saber.jpg" />
     <Content Include="Data\Images\chems good guy.jpg" />
     <Content Include="Data\Images\f017f12f8deb2d39d624daf1adcc30e5.jpg" />
     <Content Include="Data\Images\Fantasy tavern.png" />
     <Content Include="Data\Images\gojo.jpg" />
+    <Content Include="Data\Images\hermione.jpg" />
     <Content Include="Data\Images\kaka.jpg" />
+    <Content Include="Data\Images\Longstick.mp4" />
     <Content Include="Data\Images\messi.jpg" />
     <Content Include="Data\Images\nganngan.jpg" />
+    <Content Include="Data\Images\emiu.jpg" />
+    <Content Include="Data\Post_like\Like_0.txt" />
+    <Content Include="Data\Post_like\Like_1.txt" />
+    <Content Include="Data\Post_like\Like_10.txt" />
+    <Content Include="Data\Post_like\Like_2.txt" />
+    <Content Include="Data\Post_like\Like_3.txt" />
+    <Content Include="Data\Post_like\Like_4.txt" />
+    <Content Include="Data\Post_like\Like_5.txt" />
+    <Content Include="Data\Post_like\Like_6.txt" />
+    <Content Include="Data\Post_like\Like_7.txt" />
+    <Content Include="Data\Post_like\Like_8.txt" />
+    <Content Include="Data\Post_like\Like_9.txt" />
     <Content Include="Data\UserExpression.txt" />
     <Content Include="Data\UserImgBackground.txt" />
+    <Content Include="Image\gray-color-solid-background-1920x1080.png" />
     <Content Include="Image\icons8-add-24.png" />
     <Content Include="Image\icons8-add-30.png" />
     <Content Include="Image\icons8-attach-25.png" />
+    <Content Include="Image\icons8-attach-30.png" />
     <Content Include="Image\icons8-back-50.png" />
     <Content Include="Image\icons8-camera-25.png" />
+    <Content Include="Image\icons8-camera-30.png" />
+    <Content Include="Image\icons8-delete-30.png" />
+    <Content Include="Image\icons8-emotion-30.png" />
     <Content Include="Image\icons8-friend-25.png" />
     <Content Include="Image\icons8-human-30.png" />
     <Content Include="Data\Images\shoko.jpg" />
@@ -316,6 +458,9 @@
     <Content Include="Data\UserStatus.txt" />
     <Content Include="Icon\icons8-facebook-48.ico" />
     <Content Include="Icon\icons8-facebook-48.png" />
+    <None Include="Resources\icons8-save-64.png" />
+    <None Include="Image\11.png" />
+    <None Include="Image\close-button.png" />
     <Content Include="Icon\icons8-send-button-30.png" />
     <Content Include="Image\friends.png" />
     <Content Include="Image\global.png" />
@@ -325,15 +470,57 @@
     <Content Include="Image\icons8-friends-64.png" />
     <Content Include="Image\icons8-group-64.png" />
     <Content Include="Image\icons8-home-button-64.png" />
+    <Content Include="Image\icons8-invitation-30.png" />
     <Content Include="Image\icons8-message-64.png" />
+    <Content Include="Image\icons8-pin-25.png" />
+    <Content Include="Image\icons8-pin-30.png" />
+    <Content Include="Image\icons8-pinned-30.png" />
     <Content Include="Image\icons8-save-64.png" />
     <Content Include="Image\icons8-send-30.png" />
     <Content Include="Image\icons8-send-button-30.png" />
     <Content Include="Image\icons8-user-25.png" />
+    <Content Include="Image\icons8-video-30.png" />
     <Content Include="Image\icons8-video-64.png" />
     <Content Include="Image\nganngan.jpg" />
+    <Content Include="Image\page-blank_16120.png" />
+    <Content Include="Image\play-button.png" />
     <Content Include="Image\private.png" />
+    <None Include="Image\send.png" />
+    <Content Include="Image\save_post.png" />
     <Content Include="Image\social_connections_preview.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="MediaPlayer">
+      <Guid>{22D6F304-B0F6-11D0-94AB-0080C74C7E95}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="stdole">
+      <Guid>{00020430-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\TakePicture\" />
+    <Folder Include="Data\TakeVideo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,6 +73,7 @@ namespace _CS511__SocialNetworkApplication.View
                 Head head1 = new Head(userList, idx, role);
                 head1.backButton += Head1_backButton;
                 head1.friendButton += Head1_friendButton;
+                head1.postButton += Head1_postButton;
                 insideMain.Controls.Add(head1);
                 Infomation infomation = new Infomation(userList, idx, role);
                 infomation.Location = new Point(head1.Location.X + head1.Width + 20, head1.Location.Y + head1.Height + 20);
@@ -84,6 +85,7 @@ namespace _CS511__SocialNetworkApplication.View
                 head1 = new Head(userList, idx, role);
                 head1.backButton += Head1_backButton;
                 head1.friendButton += Head1_friendButton;
+                head1.postButton += Head1_postButton;
                 insideMain.Controls.Add(head1);
                 infomation = new Infomation(userList, idx, role);
                 infomation.Location = new Point(head1.Location.X + head1.Width + 20, head1.Location.Y + head1.Height + 20);
@@ -91,8 +93,20 @@ namespace _CS511__SocialNetworkApplication.View
                 insideMain.Controls.Add(infoinMain);
             }    
         }
+
+        private void Head1_postButton(object sender, EventArgs e)
+        {
+            if (sender is int ind)
+            {
+                MessageBox.Show(ind.ToString());
+            }    
+        }
+
         private void Head1_friendButton(object sender, EventArgs e)
         {
+            friendList.Controls.Clear();
+            listF.Controls.Clear();
+            lf.Clear();
             //string[] test = new string[];
             Label theme = new Label();
             theme.Name = "themeLabel";
@@ -104,22 +118,21 @@ namespace _CS511__SocialNetworkApplication.View
             // Add the theme label to the new panel
             friendList.Controls.Add(theme);
             listF.FlowDirection = FlowDirection.LeftToRight;
-            listF.Width = 1245;
+            listF.Width = 1220;
             listF.Height = 354;
             listF.AutoScroll = true;
             listF.WrapContents = false;
             listF.BorderStyle = BorderStyle.FixedSingle;
             List<string> frList = userList2.Rows[index]["FriendList"].ToString().Split('*').ToList();
-            if (frList[0] != "")
-            {
-                foreach (string invite in frList)
+            foreach (string invite in frList)
                 {
+                    if (invite == "") continue;
                     lf.Add(new EachFriend(userList2, Convert.ToInt32(invite), "Friend"));
                     lf[lf.Count - 1].changeButton += Friends_changeButton;
                     lf[lf.Count - 1].optionButton += Friends_optionButton;
                     listF.Controls.Add(lf[lf.Count - 1]);
                 }
-            }
+            
             friendList.Controls.Add(listF);
             infoinMain.Controls.Add(friendList);
         }
@@ -150,9 +163,16 @@ namespace _CS511__SocialNetworkApplication.View
                     listF.Controls.Clear();
                     frList = userList2.Rows[index]["FriendList"].ToString().Split('*');
                     lf.Clear();
-                    head1.numofFriend.Text = frList.Length.ToString() + " bạn bè";
+                    //head1.numofFriend.Text = frList.Length.ToString() + " bạn bè";
+                    Label numofFriend = new Label();
+                    numofFriend.Font = new Font("Quicksand", 14, FontStyle.Bold);
+                    numofFriend.AutoSize = true;
+                    head1.panel6.Controls.Clear();
+                    head1.panel6.Controls.Add(numofFriend);
+
                     foreach (string invite in frList)
                     {
+                        if(invite == "") continue;
                         lf.Add(new EachFriend(userList2, Convert.ToInt32(invite), "Friend"));
                         lf[lf.Count - 1].changeButton += Friends_changeButton;
                         lf[lf.Count - 1].optionButton += Friends_optionButton;
@@ -164,7 +184,6 @@ namespace _CS511__SocialNetworkApplication.View
                     //changeInfo?.Invoke(frList.ToString().Split('*').Length, EventArgs.Empty);
                     MessageBox.Show("Đã xóa khỏi danh sách", "Thông báo", MessageBoxButtons.OK);
                 }
-                
             }    
         }
 

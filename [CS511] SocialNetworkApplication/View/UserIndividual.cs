@@ -22,7 +22,7 @@ namespace _CS511__SocialNetworkApplication.View
         private Color borderColor = Color.White;
         private bool isMouseOver = false;
         public DataTable userList = new DataTable();
-        int index = -1;
+        public int index = -1;
         public UserIndividual()
         {
             InitializeComponent();
@@ -94,8 +94,17 @@ namespace _CS511__SocialNetworkApplication.View
                 NameUser.Click += UserIndividual_Click1;
                 Avatar.Click += UserIndividual_Click1;
             }
+            if(role == "Riel")
+            {
+                this.Click += UserIndividual_Click3;
+                NameUser.Click += UserIndividual_Click3;
+                Avatar.Click += UserIndividual_Click3;
+            }    
         }
-
+        private void UserIndividual_Click3(object sender, EventArgs e)
+        {
+            MessageChatButton?.Invoke(index, e);
+        }
         private void UserIndividual_Click1(object sender, EventArgs e)
         {
             ChangeButton?.Invoke(index, e);
