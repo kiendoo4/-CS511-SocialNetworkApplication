@@ -28,16 +28,18 @@ namespace _CS511__SocialNetworkApplication.View
         FlowLayoutPanel listF = new FlowLayoutPanel();
         DataTable userList2 = new DataTable();
         int index = -1;
+        int cur_user = -1;
         List<EachFriend> lf = new List<EachFriend>();
         public MainUserUC()
         {
             InitializeComponent();
         }
-        public MainUserUC(DataTable userList, int idx, string role)
+        public MainUserUC(DataTable userList, int idx, string role, int cur)
         {
             InitializeComponent();
             userList2 = userList;
             index = idx;
+            cur_user = cur;
             // Create and configure the main panel
             
             main.Location = new Point(0, 0);  // Set location relative to the form
@@ -98,7 +100,95 @@ namespace _CS511__SocialNetworkApplication.View
         {
             if (sender is int ind)
             {
-                MessageBox.Show(ind.ToString());
+                friendList.Controls.Clear();
+                listF.Controls.Clear();
+                DataTable postList = new DataTable();
+                string csvFilePath = "../../Data/Post.csv";
+                if (string.IsNullOrEmpty(csvFilePath)) return;
+                using (var reader = new StreamReader(csvFilePath))
+                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ",",
+                    BadDataFound = null
+                }))
+                {
+                    // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                    csv.Read();
+                    csv.ReadHeader();
+                    foreach (var header in csv.HeaderRecord)
+                    {
+                        postList.Columns.Add(header);
+                    }
+
+                    // Đọc các dòng còn lại và thêm vào DataTable
+                    while (csv.Read())
+                    {
+                        var row = postList.NewRow();
+                        foreach (DataColumn column in postList.Columns)
+                        {
+                            row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                        }
+                        postList.Rows.Add(row);
+                    }
+                }
+                DataTable userList = new DataTable();
+                csvFilePath = "../../Data/User.csv";
+                using (var reader = new StreamReader(csvFilePath))
+                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ",",
+                    BadDataFound = null
+                }))
+                {
+                    // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                    csv.Read();
+                    csv.ReadHeader();
+                    foreach (var header in csv.HeaderRecord)
+                    {
+                        userList.Columns.Add(header);
+                    }
+
+                    // Đọc các dòng còn lại và thêm vào DataTable
+                    while (csv.Read())
+                    {
+                        var row = userList.NewRow();
+                        foreach (DataColumn column in userList.Columns)
+                        {
+                            row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                        }
+                        userList.Rows.Add(row);
+                    }
+                }
+
+                for (int i = postList.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow row = postList.Rows[i];
+                    if (Convert.ToInt32(row["User_id"]) != ind) continue;
+                    if (row["Mode"].ToString() == "Bạn bè" && Convert.ToInt32(row["User_id"]) != cur_user)
+                    {
+                        string[] user_friends = userList.Rows[Convert.ToInt32(row["User_id"])]["FriendList"].ToString().Split('*');
+                        List<string> friend_list = user_friends.ToList();
+                        if (friend_list[0] == "") friend_list.Remove("");
+                        int redflag = 0;
+                        foreach (string a_user in friend_list)
+                        {
+                            if (Convert.ToInt32(a_user) == index)
+                            {
+                                redflag = 1;
+                                break;
+                            }
+                        }
+                        if (redflag == 0) continue;
+                    }
+                    if (row["Mode"].ToString() == "Chỉ mình tôi" && Convert.ToInt32(row["User_id"]) != cur_user) continue;
+                    Post post = new Post(row);
+                    post.Margin = new Padding(210,3,3,3);
+                    post.get_current(cur_user, i);
+                    post.showDetail += showPostDetail;
+                    post.sharing += sharePost;
+                    friendList.Controls.Add(post);
+                }
+                infoinMain.Controls.Add(friendList);
             }    
         }
 
@@ -150,7 +240,7 @@ namespace _CS511__SocialNetworkApplication.View
                     frListAsList.Remove(elementToRemove);
                     frList = frListAsList.ToArray();
                     userList2.Rows[index]["FriendList"] = string.Join("*", frList);
-                    WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
+                    WriteDataTableToCsv("../..\\Data\\User.csv", userList2);
 
                     string[] frList2 = userList2.Rows[index2]["FriendList"].ToString().Split('*');
                     List<string> frListAsList2 = new List<string>(frList2);
@@ -159,7 +249,7 @@ namespace _CS511__SocialNetworkApplication.View
                     frList2 = frListAsList2.ToArray();
 
                     userList2.Rows[index2]["FriendList"] = string.Join("*", frList2);
-                    WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", userList2);
+                    WriteDataTableToCsv("../..\\Data\\User.csv", userList2);
                     listF.Controls.Clear();
                     frList = userList2.Rows[index]["FriendList"].ToString().Split('*');
                     lf.Clear();
@@ -246,6 +336,103 @@ namespace _CS511__SocialNetworkApplication.View
                     csv.NextRecord();
                 }
             }
+        }
+
+        private void showPostDetail(object sender, List<string> e)
+        {
+            FlowLayoutPanel flowDetail = new FlowLayoutPanel();
+            flowDetail.AutoSize = false;
+            flowDetail.AutoScroll = true;
+            flowDetail.FlowDirection = FlowDirection.LeftToRight;
+            flowDetail.Width = 720;
+            flowDetail.Height = this.Height;
+            int x = (this.Width - flowDetail.Width) / 2;
+            int y = (this.Height - flowDetail.Height) / 2;
+            flowDetail.Location = new Point(x, y);
+
+            PictureBox closeButt = new PictureBox();
+            closeButt.Image = Image.FromFile("../../Image/close-button.png");
+            closeButt.SizeMode = PictureBoxSizeMode.StretchImage;
+            closeButt.Width = 30;
+            closeButt.Height = 30;
+
+            int xc = (this.Width + flowDetail.Width) / 2 - 50;
+            int yc = (this.Height - flowDetail.Height) / 2;
+            closeButt.Location = new Point(xc, yc);
+
+            closeButt.Click += (the_sender, temp_e) =>
+            {
+                flowDetail.Dispose();
+                this.Controls.Remove(flowDetail);
+                closeButt.Dispose();
+                this.Controls.Remove(closeButt);
+            };
+            this.Controls.Add(closeButt);
+
+            foreach (string path in e)
+            {
+                if (Post.IsImageFile(path))
+                {
+                    Image temp = Image.FromFile(path);
+                    PictureBox pictureBox = new PictureBox();
+                    pictureBox.ImageLocation = path;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Width = flowDetail.Width - 30;
+                    pictureBox.Height = (int)(pictureBox.Width / (double)temp.Width * (double)temp.Height);
+                    flowDetail.Controls.Add(pictureBox);
+                    temp.Dispose();
+                }
+                else
+                {
+                    VidPlayer player = new VidPlayer(path);
+                    flowDetail.Controls.Add(player);
+                    player.Width = flowDetail.Width - 30;
+                    player.Height = player.Width * 4 / 6;
+                }
+            }
+            this.Controls.Add(flowDetail);
+            this.Controls.SetChildIndex(flowDetail, 0);
+            this.Controls.SetChildIndex(closeButt, 0);
+        }
+
+        private void sharePost(object sender, DataRow e)
+        {
+            DataTable postList = new DataTable();
+            string csvFilePath = "../../Data/Post.csv";
+            if (string.IsNullOrEmpty(csvFilePath)) return;
+            using (var reader = new StreamReader(csvFilePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ",",
+                BadDataFound = null
+            }))
+            {
+                // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
+                {
+                    postList.Columns.Add(header);
+                }
+
+                // Đọc các dòng còn lại và thêm vào DataTable
+                while (csv.Read())
+                {
+                    var row = postList.NewRow();
+                    foreach (DataColumn column in postList.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+                    postList.Rows.Add(row);
+                }
+            }
+            FormFeed formFeed = new FormFeed(cur_user, postList, e);
+            formFeed.UploadFeed += (form_sender, row_e) =>
+            {
+                postList.Rows.Add(row_e);
+                Post.WriteDataTableToCSV(postList, "../../Data/Post.csv");
+            };
+            formFeed.ShowDialog();
         }
     }
 }

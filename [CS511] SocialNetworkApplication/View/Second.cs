@@ -79,7 +79,14 @@ namespace _CS511__SocialNetworkApplication.View
         {
             if (sender is string option)
             {
-                if(option == "Mess")
+                if (option == "Home")
+                {
+                    postList.Rows.Clear();
+                    postList.Columns.Clear();
+                    flowPost.Controls.Clear();
+                    showPost(index);
+                }
+                if (option == "Mess")
                 {
                     MessageUC2 messageUC = new MessageUC2(userList, index);
                     messageUC.backButton += MessageUC_backButton;
@@ -113,7 +120,7 @@ namespace _CS511__SocialNetworkApplication.View
                     //Controls.Add(User);
                     //Controls.SetChildIndex(User, 0);
 
-                    MainUserUC mainUserUC = new MainUserUC(userList, index, "User");
+                    MainUserUC mainUserUC = new MainUserUC(userList, index, "User", index);
                     mainUserUC.backButton += MainUserUC_backButton;
                     User.Controls.Add(mainUserUC);
                     Controls.Add(User);
@@ -152,7 +159,7 @@ namespace _CS511__SocialNetworkApplication.View
                 User.Location = this.Location;
                 User.Visible = true;
                 User.Dock = DockStyle.Fill;
-                MainUserUC mainUserUC = new MainUserUC(userList, index2, "Other");
+                MainUserUC mainUserUC = new MainUserUC(userList, index2, "Other", index);
                 mainUserUC.backButton += MainUserUC_backButton;
                 User.Controls.Add(mainUserUC);
                 Controls.Add(User);
