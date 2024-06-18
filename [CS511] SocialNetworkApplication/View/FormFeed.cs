@@ -34,7 +34,8 @@ namespace _CS511__SocialNetworkApplication.View
             tbContent.Text = postRow["Content"].ToString();
             string temp1 = shareRow["Images"].ToString();
             string temp2 = shareRow["Videos"].ToString();
-            temp1 = temp1 + temp2;
+            temp1 = temp1 + ";" + temp2;
+
             if (temp1[0] == ';') temp1 =  temp1.Substring(1);
             if (temp1.Length > 0 && temp1[temp1.Length - 1] == ';')
             {
@@ -76,7 +77,7 @@ namespace _CS511__SocialNetworkApplication.View
                         if (postRow["Share"].ToString() == "") File.Copy(filePath, new_path, true);
                         imgPath.Append(new_path).Append(';');
                     }
-                    else
+                    else if (Post.IsVideoFile(filePath))
                     {
                         string new_path = "../../Data/Images/" + Path.GetFileName(filePath);
                         if (postRow["Share"].ToString() == "") File.Copy(filePath, new_path, true);
