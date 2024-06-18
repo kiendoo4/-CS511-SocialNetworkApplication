@@ -599,5 +599,11 @@ namespace _CS511__SocialNetworkApplication.View
                 WriteDataTableToCSV(userList, "../../Data/User.csv");
             }
         }
+
+        public bool searching(string keyword)
+        {
+            if (postInfo["Content"].ToString().Contains(keyword) || userList.Rows[current_user]["Name"].ToString().Contains(keyword)) return true;
+            return false;
+        }
     }
 }

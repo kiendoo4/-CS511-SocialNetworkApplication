@@ -17,6 +17,7 @@ namespace _CS511__SocialNetworkApplication.View
     public partial class UserUC : UserControl
     {
         public event EventHandler changeButton;
+        public event EventHandler<string> searchPost;
         UserIndividual homeButton = new UserIndividual();
         public UserIndividual userIndividual = new UserIndividual();
         UserIndividual friendButton = new UserIndividual();
@@ -73,6 +74,14 @@ namespace _CS511__SocialNetworkApplication.View
         private void SavePost_ChangeButton(object sender, EventArgs e)
         {
             changeButton?.Invoke("Save", e);
+        }
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                searchPost?.Invoke(this, textBox1.Text);
+            }
         }
     }
 }

@@ -62,6 +62,7 @@ namespace _CS511__SocialNetworkApplication.View
 
             userUC2 = new UserUC(index);
             userUC2.changeButton += UserUC2_changeButton;
+            userUC2.searchPost += searchPost;
             userUC.Controls.Add(userUC2);
             showPost(index);
             flowPost.FlowDirection = FlowDirection.TopDown;
@@ -198,6 +199,15 @@ namespace _CS511__SocialNetworkApplication.View
         private void MessageUC_backButton(object sender, EventArgs e)
         {
             Controls.RemoveAt(0);
+        }
+
+        private void searchPost(object sender, string e)
+        {
+            foreach (Post post_item in flowPost.Controls)
+            {
+                if (post_item.searching(e) == false) post_item.Hide();
+                else post_item.Show();
+            }
         }
 
         public void showPost(int index)
