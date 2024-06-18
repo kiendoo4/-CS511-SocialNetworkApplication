@@ -117,31 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pinnedButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAI4SURBVEhLvdbLi81hHMfxxzUxLgnZzcIMiYUN0qRcN9OE
-        jZRiYSGbWWnWKBnEH6CZkaXbRmSjGTVKwoqFMgv3SGEYShTe7+c4Dadz+V3O73zqld/zK/M9v+f3PN/n
-        FwrIMXzFEGZ4oxU5gM/Yhxe4gukoNMvwBfvjKIR2PEOhxf3D93A1jiZj8ee4jEKKn8ArLIyj/9OJ17iI
-        ad5oVjbiB7bEUfVY/A0uYKo38mYBnMr+OKqf5bD4eaQqPgursQOb4FP47h5iJpJkJd7hTBw1yFbchNP5
-        C2/hL/8N9+sKpImr/mPpsnrmwgVhMf/txr8NoQ2LS5eJsxcWPRtHNTKKl9gcR/niD3SrfUMvpqBm3CKf
-        sDaOsmcnfK934bpIlOMYx/o4Spd5OAfXxlGk3sNZim+Dr+kR1ngja07CaV8XR/XTARekP7gpp9MgkhS3
-        qbjV3PO546osT53T3qi4e93tlyueKiO4/ffaaW9U/APscLlie/PkWRJHpfdWfvJqC87W6jtOsh5qZg++
-        o1xgKe7Ag8FPm2rFfVL/z+w4yhAXh734YByFsAH26FtY5A1yCpXF7VDXSpfp48ocw0AchXAIPsVpVDaC
-        8ju3+HY4zZ7RqeNZeR33MR+enxPYjVrxPLa4Xxoe9plie3uPLjzAU6xCo/hZO4xM77YHP2HXsbHfgNNe
-        aDw57ExuHRv7EdQ9vpoRD/XHsNX5Qb4LhcenugSLPoHfRS1JHyzq580cb7QqPuVhFP4+JxPCH3MEd7Pe
-        rBmoAAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="deleteButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAD1SURBVEhL7ZZLDoJAEAVZGo/nQhd+ln4O5MKF3kgvoB7E
-        na/GYAg0w6SBEIOVvIQOky4YJqSz0TNRDspROXUUeu0Veptw46bclbNiNfGEXg+F3qacp0I6DVW30BP5
-        LlQl2BKeri8uCo4K+db0RW3/v7jITFl+LqOwhrUWLvFceSmbUNksFNasQ1XFJYaYvEkKbjFY8hQptBJD
-        UZ4qhdZiWCkICdcp/K64uL0ppz2nldj6pqlytzh2kFLkLnHK6W2Su8SD/TK74C/+Mtjow7DHQNbXsPdU
-        tqEqkY+3yLseb5FelehszQjKllhNPKEXb1orHQNZ9gbd55A1XDC7ygAAAABJRU5ErkJggg==
-</value>
-  </data>
 </root>

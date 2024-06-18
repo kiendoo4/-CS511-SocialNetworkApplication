@@ -80,7 +80,7 @@ namespace _CS511__SocialNetworkApplication.View
             {
                 if(option == "Mess")
                 {
-                    MessageUC messageUC = new MessageUC(userList, index);
+                    MessageUC2 messageUC = new MessageUC2(userList, index);
                     messageUC.backButton += MessageUC_backButton;
                     Panel Message = new Panel();
                     Message.Width = this.Width;

@@ -90,6 +90,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\blank2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\blank2.Designer.cs">
+      <DependentUpon>blank2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\blank.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -204,6 +210,12 @@
     <Compile Include="View\MessageUC.Designer.cs">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MessageUC2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\MessageUC2.Designer.cs">
+      <DependentUpon>MessageUC2.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Post.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -250,6 +262,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\blank2.resx">
+      <DependentUpon>blank2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\blank.resx">
       <DependentUpon>blank.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +322,9 @@
     <EmbeddedResource Include="View\MessageUC.resx">
       <DependentUpon>MessageUC.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\MessageUC2.resx">
+      <DependentUpon>MessageUC2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Post.resx">
       <DependentUpon>Post.cs</DependentUpon>
     </EmbeddedResource>
@@ -325,6 +343,7 @@
     <EmbeddedResource Include="View\VidPlayer.resx">
       <DependentUpon>VidPlayer.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Data\Messages.csv" />
     <None Include="Data\Post.csv" />
     <None Include="Data\Post_cmt\Cmt_0.csv" />
     <None Include="Data\Post_cmt\Cmt_1.csv" />
@@ -385,6 +404,7 @@
     <Content Include="Image\icons8-attach-30.png" />
     <Content Include="Image\icons8-back-50.png" />
     <Content Include="Image\icons8-camera-25.png" />
+    <Content Include="Image\icons8-delete-30.png" />
     <Content Include="Image\icons8-friend-25.png" />
     <Content Include="Image\icons8-human-30.png" />
     <Content Include="Data\Images\shoko.jpg" />
@@ -409,12 +429,14 @@
     <Content Include="Image\icons8-home-button-64.png" />
     <Content Include="Image\icons8-invitation-30.png" />
     <Content Include="Image\icons8-message-64.png" />
+    <Content Include="Image\icons8-pinned-30.png" />
     <Content Include="Image\icons8-save-64.png" />
     <Content Include="Image\icons8-send-30.png" />
     <Content Include="Image\icons8-send-button-30.png" />
     <Content Include="Image\icons8-user-25.png" />
     <Content Include="Image\icons8-video-64.png" />
     <Content Include="Image\nganngan.jpg" />
+    <Content Include="Image\page-blank_16120.png" />
     <Content Include="Image\play-button.png" />
     <Content Include="Image\private.png" />
     <None Include="Image\send.png" />
