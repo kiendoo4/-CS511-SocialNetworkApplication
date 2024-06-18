@@ -21,7 +21,7 @@ namespace _CS511__SocialNetworkApplication.View
         UserIndividual homeButton = new UserIndividual();
         public UserIndividual userIndividual = new UserIndividual();
         UserIndividual friendButton = new UserIndividual();
-        UserIndividual groupButton = new UserIndividual();
+        UserIndividual logoutButton = new UserIndividual();
         UserIndividual savePost = new UserIndividual();
         UserIndividual message = new UserIndividual();
         public UserUC()
@@ -43,12 +43,20 @@ namespace _CS511__SocialNetworkApplication.View
             friendButton = new UserIndividual(idx, "Bạn bè", "../..\\Image\\icons8-friends-64.png");
             friendButton.ChangeButton += FriendButton_ChangeButton;
             panel4.Controls.Add(friendButton);
-            groupButton = new UserIndividual(idx, "Nhóm", "../..\\Image\\icons8-group-64.png");
-            panel5.Controls.Add(groupButton);
+            //groupButton = new UserIndividual(idx, "Nhóm", "../..\\Image\\icons8-group-64.png");
+            //panel5.Controls.Add(groupButton);
             savePost = new UserIndividual(idx, "Đã lưu", "../..\\Image\\icons8-save-64.png");
             savePost.ChangeButton += SavePost_ChangeButton;
-            panel6.Controls.Add(savePost);
-            
+            panel5.Controls.Add(savePost);
+            logoutButton = new UserIndividual(idx, "Đăng xuất", "../..\\Image\\icons8-log-out-48.png");
+            logoutButton.ChangeButton += LogoutButton_ChangeButton;
+            panel6.Controls.Add(logoutButton);
+
+        }
+
+        private void LogoutButton_ChangeButton(object sender, EventArgs e)
+        {
+            changeButton?.Invoke("Logout", e);
         }
 
         private void FriendButton_ChangeButton(object sender, EventArgs e)

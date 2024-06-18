@@ -59,6 +59,9 @@ namespace _CS511__SocialNetworkApplication.View
         private void Registration_ButtonClicked(object sender, EventArgs e)
         {
             panel2.Controls.Clear();
+            panel1.Controls.Clear();
+            login = new Login();
+            panel1.Controls.Add(login);
             panel1.Visible = true;
             panel2.Visible = false;
         }

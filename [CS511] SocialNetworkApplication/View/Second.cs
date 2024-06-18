@@ -12,15 +12,17 @@ using System.Windows.Forms;
 using _CS511__SocialNetworkApplication.View.InsideMainUserUC;
 using CsvHelper;
 using CsvHelper.Configuration;
+using NAudio.Wave;
 
 namespace _CS511__SocialNetworkApplication.View
 {
     public partial class Second : UserControl
     {
+        public event EventHandler logoutButton;
         public UserUC userUC2 = new UserUC();
-        static DataTable postList = new DataTable();
-        static DataTable userList = new DataTable();
-        static int index = -1;
+        public DataTable postList = new DataTable();
+        public DataTable userList = new DataTable();
+        public int index = -1;
         List<UserIndividual> userMessList = new List<UserIndividual>();
         List<Control> friendControl = new List<Control>();
         public Second()
@@ -32,6 +34,7 @@ namespace _CS511__SocialNetworkApplication.View
             InitializeComponent();
             index = idx;
             ChatSmall.Visible = false;
+            userList = new DataTable();
             string csvFilePath = "../../Data/User.csv";
             using (var reader = new StreamReader(csvFilePath))
             using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
@@ -72,14 +75,20 @@ namespace _CS511__SocialNetworkApplication.View
             flowLayoutPanel2.AutoScroll = true;
             flowLayoutPanel2.WrapContents = false;
             flowLayoutPanel2.FlowDirection = FlowDirection.TopDown;
-            showListMessageFr(index);
         }
 
         private void UserUC2_changeButton(object sender, EventArgs e)
         {
             if (sender is string option)
             {
-                if(option == "Mess")
+                if (option == "Home")
+                {
+                    postList.Rows.Clear();
+                    postList.Columns.Clear();
+                    flowPost.Controls.Clear();
+                    showPost(index);
+                }
+                if (option == "Mess")
                 {
                     MessageUC2 messageUC = new MessageUC2(userList, index);
                     messageUC.backButton += MessageUC_backButton;
@@ -113,7 +122,7 @@ namespace _CS511__SocialNetworkApplication.View
                     //Controls.Add(User);
                     //Controls.SetChildIndex(User, 0);
 
-                    MainUserUC mainUserUC = new MainUserUC(userList, index, "User");
+                    MainUserUC mainUserUC = new MainUserUC(userList, index, "User", index);
                     mainUserUC.backButton += MainUserUC_backButton;
                     User.Controls.Add(mainUserUC);
                     Controls.Add(User);
@@ -138,6 +147,10 @@ namespace _CS511__SocialNetworkApplication.View
                     this.Controls.SetChildIndex(savedPosts, 0);
 
                 }
+                if (option == "Logout")
+                {
+                    logoutButton?.Invoke(this, e);
+                }    
             }    
         }
 
@@ -152,7 +165,7 @@ namespace _CS511__SocialNetworkApplication.View
                 User.Location = this.Location;
                 User.Visible = true;
                 User.Dock = DockStyle.Fill;
-                MainUserUC mainUserUC = new MainUserUC(userList, index2, "Other");
+                MainUserUC mainUserUC = new MainUserUC(userList, index2, "Other", index);
                 mainUserUC.backButton += MainUserUC_backButton;
                 User.Controls.Add(mainUserUC);
                 Controls.Add(User);
@@ -354,17 +367,44 @@ namespace _CS511__SocialNetworkApplication.View
         }
         private void showListMessageFr(int index) 
         {
-            for (int i = 0; i < userList.Rows.Count; i++) 
+            flowLayoutPanel2.Controls.Clear();
+            userMessList.Clear();
+            for (int i = 0; i < userList.Rows.Count; i++)
             {
-                userMessList.Add(new UserIndividual(i, "Mess"));
-                userMessList[i].ChangeButton += Second_ChangeButton;
-                flowLayoutPanel2.Controls.Add(userMessList[i]);
-               
+                if ((userList.Rows[i]["Name"].ToString().ToLower().Contains(textBox1.Text.ToLower()) ||
+                        userList.Rows[i]["Username"].ToString().ToLower().Contains(textBox1.Text.ToLower()))
+                        && i != index)
+                {
+                    userMessList.Add(new UserIndividual(i, "Riel"));
+                    userMessList[i].MessageChatButton += ShowAcc_Click;
+                    flowLayoutPanel2.Controls.Add(userMessList[i]);
+                }
             }
             for (int i = 0; i < 6; i++)
             {
                 flowLayoutPanel2.Controls.Add(new blank());
-            }    
+            }
+        }
+        private void ShowAcc_Click(object sender, EventArgs e)
+        {
+            if (sender is int index2)
+            {
+                Panel User = new Panel();
+                User.Width = this.Width;
+                User.Height = this.Height;
+                User.Location = this.Location;
+                User.Visible = true;
+                User.Dock = DockStyle.Fill;
+                //User.Controls.Add(head);
+                //Controls.Add(User);
+                //Controls.SetChildIndex(User, 0);
+
+                MainUserUC mainUserUC = new MainUserUC(userList, index2, "Other", index);
+                mainUserUC.backButton += MainUserUC_backButton;
+                User.Controls.Add(mainUserUC);
+                Controls.Add(User);
+                Controls.SetChildIndex(User, 0);
+            }
         }
 
         private void Second_ChangeButton(object sender, EventArgs e)
@@ -391,6 +431,35 @@ namespace _CS511__SocialNetworkApplication.View
         {
             ChatSmall.Visible = false;
             ChatSmall.Controls.Clear();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                flowLayoutPanel2.Controls.Clear();
+                userMessList.Clear();
+                for (int i = 0; i < userList.Rows.Count; i++)
+                {
+                    if ((userList.Rows[i]["Name"].ToString().ToLower().Contains(textBox1.Text.ToLower()) ||
+                            userList.Rows[i]["Username"].ToString().ToLower().Contains(textBox1.Text.ToLower()))
+                            && i != index)
+                    {
+                        userMessList.Add(new UserIndividual(i, "Riel"));
+                        userMessList[userMessList.Count - 1].MessageChatButton += ShowAcc_Click;
+                        flowLayoutPanel2.Controls.Add(userMessList[userMessList.Count - 1]);
+                    }
+                }
+                for (int i = 0; i < 6; i++)
+                {
+                    flowLayoutPanel2.Controls.Add(new blank());
+                }
+            }
+            else
+            {
+                flowLayoutPanel2.Controls.Clear();
+                userMessList.Clear();
+            }    
         }
     }
 }

@@ -51,7 +51,6 @@ namespace _CS511__SocialNetworkApplication.View
             {
                 label1.Text = "Đã gửi lời kết bạn";
                 friendIcon.ImageLocation = "D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Image\\icons8-invitation-30.png";
-
             }
             else
             {

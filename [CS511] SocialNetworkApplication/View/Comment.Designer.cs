@@ -41,7 +41,7 @@
             // 
             this.lbName.AutoSize = true;
             this.lbName.Font = new System.Drawing.Font("Quicksand", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbName.Location = new System.Drawing.Point(59, 3);
+            this.lbName.Location = new System.Drawing.Point(55, 3);
             this.lbName.Name = "lbName";
             this.lbName.Size = new System.Drawing.Size(61, 25);
             this.lbName.TabIndex = 1;
@@ -49,7 +49,7 @@
             // 
             // tbContent
             // 
-            this.tbContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.tbContent.BackColor = System.Drawing.Color.White;
             this.tbContent.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbContent.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbContent.Location = new System.Drawing.Point(0, 3);
@@ -95,7 +95,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.flowContent);
             this.Controls.Add(this.lbName);
             this.Controls.Add(this.picAva);

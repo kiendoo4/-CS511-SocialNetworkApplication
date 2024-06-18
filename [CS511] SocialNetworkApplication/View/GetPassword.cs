@@ -11,12 +11,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using CsvHelper.Configuration;
+using CsvHelper;
+using System.Globalization;
 
 namespace _CS511__SocialNetworkApplication.View
 {
     public partial class GetPassword : UserControl
     {
         public event EventHandler ButtonClicked;
+        DataTable userList = new DataTable();
         public GetPassword()
         {
             InitializeComponent();
@@ -26,6 +30,33 @@ namespace _CS511__SocialNetworkApplication.View
             GetPwButton.MouseLeave += (sender, e) => GetPwButton.BackColor = Color.IndianRed;
             Backbutton.MouseEnter += (sender, e) => Backbutton.BackColor = Color.LightCoral;
             Backbutton.MouseLeave += (sender, e) => Backbutton.BackColor = Color.IndianRed;
+            string csvFilePath = "../../Data/User.csv";
+            using (var reader = new StreamReader(csvFilePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ",",
+                BadDataFound = null
+            }))
+            {
+                // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
+                {
+                    userList.Columns.Add(header);
+                }
+
+                // Đọc các dòng còn lại và thêm vào DataTable
+                while (csv.Read())
+                {
+                    var row = userList.NewRow();
+                    foreach (DataColumn column in userList.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+                    userList.Rows.Add(row);
+                }
+            }
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {
@@ -34,12 +65,10 @@ namespace _CS511__SocialNetworkApplication.View
 
         private void GetPwButton_Click(object sender, EventArgs e)
         {
-            string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
             bool checkacc = false;
-            foreach (string line in lines)
+            for(int i = 0; i < userList.Rows.Count; i++)
             {
-                string[] parts = line.Split('*');
-                if (parts[0] == username.Text && parts[4] == gmail.Text)
+                if (username.Text == userList.Rows[i]["Username"].ToString() && fullname.Text == userList.Rows[i]["Name"].ToString() && userList.Rows[i]["Email"].ToString() == gmail.Text)
                 {
                     try
                     {
@@ -51,7 +80,7 @@ namespace _CS511__SocialNetworkApplication.View
                         message.From = new MailAddress("koke36354@gmail.com");
                         message.To.Add(gmail.Text);
                         message.Subject = "Mật khẩu của bạn";
-                        message.Body = "Mật khẩu của bạn là: " + parts[5];
+                        message.Body = "Mật khẩu của bạn là: " + userList.Rows[i]["Password"].ToString();
                         client.Send(message);
                     }
                     catch (Exception ex)

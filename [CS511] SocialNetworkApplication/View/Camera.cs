@@ -1,21 +1,19 @@
-﻿using AForge.Video.DirectShow;
-using AForge.Video;
+﻿using Accord.Video.VFW;
+using AForge.Video.DirectShow;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.IO;
+using System.Windows.Forms;
 
 namespace _CS511__SocialNetworkApplication.View
 {
     public partial class Camera : Form
     {
-        public event EventHandler imgButton;
+        public event EventHandler imgButton, vidButton;
+        private FilterInfoCollection videoDevices;
+        private VideoCaptureDevice videoSource;
+        private AVIWriter aviWriter;
+        private bool isRecording = false;
         public Camera()
         {
             InitializeComponent();
@@ -25,15 +23,17 @@ namespace _CS511__SocialNetworkApplication.View
             label3.Click += button1_Click;
         }
 
-        private FilterInfoCollection videoDevices;
-        private VideoCaptureDevice videoSource;
-        private void InitializeCamera()
+        public Camera(string role)
+        {
+        }
+
+        private void InitializeCamera2()
         {
             videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
             if (videoDevices.Count > 0)
             {
                 videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
-                videoSource.NewFrame += new NewFrameEventHandler(Video_NewFrame);
+                videoSource.NewFrame += Video_NewFrame2;
                 videoSource.Start();
             }
             else
@@ -42,7 +42,35 @@ namespace _CS511__SocialNetworkApplication.View
             }
         }
 
-        private void Video_NewFrame(object sender, NewFrameEventArgs eventArgs)
+        private void Video_NewFrame2(object sender, AForge.Video.NewFrameEventArgs eventArgs)
+        {
+            // Display the frame in the PictureBox
+            takepic.Image = (Bitmap)eventArgs.Frame.Clone();
+
+            // Write the frame to the AVI file if recording
+            if (aviWriter != null && isRecording)
+            {
+                aviWriter.AddFrame((Bitmap)eventArgs.Frame.Clone());
+            }
+        }
+
+
+        private void InitializeCamera()
+        {
+            videoDevices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (videoDevices.Count > 0)
+            {
+                videoSource = new VideoCaptureDevice(videoDevices[0].MonikerString);
+                videoSource.NewFrame += Video_NewFrame;
+                videoSource.Start();
+            }
+            else
+            {
+                MessageBox.Show("No video sources found");
+            }
+        }
+
+        private void Video_NewFrame(object sender, AForge.Video.NewFrameEventArgs eventArgs)
         {
             // Display the frame in the PictureBox
             takepic.Image = (Bitmap)eventArgs.Frame.Clone();
@@ -59,13 +87,13 @@ namespace _CS511__SocialNetworkApplication.View
                 takepic.Image.Save(savePath, System.Drawing.Imaging.ImageFormat.Jpeg);
                 MessageBox.Show($"Đã gửi hình", "Thông báo", MessageBoxButtons.OK);
                 imgButton?.Invoke(savePath, e);
-                this.Close();
             }
             else
             {
                 MessageBox.Show("Lỗi", "Thông báo", MessageBoxButtons.OK);
             }
         }
+
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             if (videoSource != null && videoSource.IsRunning)
