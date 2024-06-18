@@ -77,9 +77,9 @@
             // 
             // textPost
             // 
-            this.textPost.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.textPost.BackColor = System.Drawing.Color.White;
             this.textPost.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textPost.Font = new System.Drawing.Font("Quicksand", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textPost.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
             this.textPost.Location = new System.Drawing.Point(3, 3);
             this.textPost.Name = "textPost";
             this.textPost.ReadOnly = true;
@@ -148,7 +148,7 @@
             this.btShare.Name = "btShare";
             this.btShare.Size = new System.Drawing.Size(251, 35);
             this.btShare.TabIndex = 13;
-            this.btShare.Text = "Chia sẽ";
+            this.btShare.Text = "Chia sẻ";
             this.btShare.UseVisualStyleBackColor = true;
             this.btShare.Click += new System.EventHandler(this.btShare_Click);
             // 
@@ -242,9 +242,9 @@
             // 
             // tbComment
             // 
-            this.tbComment.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbComment.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbComment.BackColor = System.Drawing.Color.White;
+            this.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbComment.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
             this.tbComment.Location = new System.Drawing.Point(97, 3);
             this.tbComment.Name = "tbComment";
             this.tbComment.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
@@ -340,7 +340,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(250)))), ((int)(((byte)(250)))));
+            this.BackColor = System.Drawing.Color.White;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.flowTitle);
             this.Controls.Add(this.flowPost);
             this.Name = "Post";

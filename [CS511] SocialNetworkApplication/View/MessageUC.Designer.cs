@@ -67,11 +67,11 @@
             this.richTextBox1.BackColor = System.Drawing.Color.White;
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
-            this.richTextBox1.Location = new System.Drawing.Point(34, 43);
+            this.richTextBox1.Location = new System.Drawing.Point(75, 43);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.None;
-            this.richTextBox1.Size = new System.Drawing.Size(806, 64);
+            this.richTextBox1.Size = new System.Drawing.Size(765, 64);
             this.richTextBox1.TabIndex = 7;
             this.richTextBox1.Text = "";
             // 

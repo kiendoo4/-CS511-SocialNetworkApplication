@@ -12,6 +12,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using CsvHelper.Configuration;
+using CsvHelper;
+using System.Globalization;
 
 namespace _CS511__SocialNetworkApplication.View
 {
@@ -21,6 +24,7 @@ namespace _CS511__SocialNetworkApplication.View
         bool checkingPw = false;
         string sixDigitNumber;
         CheckGmailForRegistration checkgm = new CheckGmailForRegistration();
+        DataTable userList = new DataTable();
         public Registration()
         {
             InitializeComponent();
@@ -40,6 +44,33 @@ namespace _CS511__SocialNetworkApplication.View
             ChooseProfileIm.MouseEnter += (sender, e) => ChooseProfileIm.BackColor = Color.LightCoral;
             ChooseProfileIm.MouseLeave += (sender, e) => ChooseProfileIm.BackColor = Color.IndianRed;
             panel1.Visible = false;
+            string csvFilePath = "../../Data/User.csv";
+            using (var reader = new StreamReader(csvFilePath))
+            using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+            {
+                Delimiter = ",",
+                BadDataFound = null
+            }))
+            {
+                // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                csv.Read();
+                csv.ReadHeader();
+                foreach (var header in csv.HeaderRecord)
+                {
+                    userList.Columns.Add(header);
+                }
+
+                // Đọc các dòng còn lại và thêm vào DataTable
+                while (csv.Read())
+                {
+                    var row = userList.NewRow();
+                    foreach (DataColumn column in userList.Columns)
+                    {
+                        row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                    }
+                    userList.Rows.Add(row);
+                }
+            }
         }
         private void Backbutton_Click(object sender, EventArgs e)
         {
@@ -71,12 +102,10 @@ namespace _CS511__SocialNetworkApplication.View
                 }
                 else
                 {
-                    string[] lines = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserList.txt");
                     bool checkus = true;
-                    foreach (string line in lines)
+                    for (int i = 0; i < userList.Rows.Count; i++)
                     {
-                        string[] parts = line.Split('*');
-                        if (parts[0] == username.Text)
+                        if (userList.Rows[i]["Username"].ToString() == username.Text)
                         {
                             checkus = false;
                             break;
@@ -85,7 +114,6 @@ namespace _CS511__SocialNetworkApplication.View
                     if (!checkus) MessageBox.Show("Tài khoản đã tồn tại!", "Thông báo", MessageBoxButtons.OK);
                     else
                     {
-                        
                         try
                         {
                             Random random = new Random();
@@ -154,11 +182,26 @@ namespace _CS511__SocialNetworkApplication.View
             if (sender is true)
             {
                 checkingPw = true;
-                string filePath = @"D:\CS511\Doan\[CS511] SocialNetworkApplication\[CS511] SocialNetworkApplication\Data\UserList.txt";
-                using (StreamWriter writer = new StreamWriter(filePath, true))
-                {
-                    writer.WriteLine($"{username.Text}*{hoten.Text}*{BornDate.Text}*{Gender.Text}*{gmail.Text}*{Password.Text}*{ProfileImage.ImageLocation}");
-                }
+                //string filePath = @"D:\CS511\Doan\[CS511] SocialNetworkApplication\[CS511] SocialNetworkApplication\Data\UserList.txt";
+                //using (StreamWriter writer = new StreamWriter(filePath, true))
+                //{
+                //    writer.WriteLine($"{username.Text}*{hoten.Text}*{BornDate.Text}*{Gender.Text}*{gmail.Text}*{Password.Text}*{ProfileImage.ImageLocation}");
+                //}
+                DataRow newRow = userList.NewRow();
+                newRow["Name"] = hoten.Text;
+                newRow["Username"] = username.Text;
+                newRow["Date_of_birth"] = BornDate.Text;
+                newRow["Email"] = gmail.Text;
+                newRow["Password"] = Password.Text;
+                newRow["Avatar"] = ProfileImage.ImageLocation;
+                newRow["Gender"] = 1 - Gender.SelectedIndex;
+                newRow["FriendList"] = "";
+                newRow["AddFriend"] = "";
+                newRow["Mota"] = "";
+                newRow["Chitiet"] = "";
+                newRow["Save"] = "";
+                userList.Rows.Add(newRow);
+                WriteDataTableToCsv("..\\..\\Data\\User.csv", userList);
                 MessageBox.Show("Đã đăng ký thành công!", "Thông báo", MessageBoxButtons.OK);
                 ButtonClicked?.Invoke(this, EventArgs.Empty);
             }    
@@ -168,6 +211,46 @@ namespace _CS511__SocialNetworkApplication.View
                 MessageBox.Show("Vui lòng thử lại", "Thông báo", MessageBoxButtons.OK);
             }    
 
+        }
+        public static List<Dictionary<string, object>> DataTableToList(DataTable table)
+        {
+            var list = new List<Dictionary<string, object>>();
+
+            foreach (DataRow row in table.Rows)
+            {
+                var dict = new Dictionary<string, object>();
+                foreach (DataColumn col in table.Columns)
+                {
+                    dict[col.ColumnName] = row[col];
+                }
+                list.Add(dict);
+            }
+
+            return list;
+        }
+        public static void WriteDataTableToCsv(string filePath, DataTable table)
+        {
+            var records = DataTableToList(table);
+
+            using (var writer = new StreamWriter(filePath))
+            using (var csv = new CsvWriter(writer, new CsvConfiguration(CultureInfo.InvariantCulture)))
+            {
+                // Write the header
+                foreach (var column in table.Columns)
+                {
+                    csv.WriteField(column.ToString());
+                }
+                csv.NextRecord();
+                // Write the rows
+                foreach (var record in records)
+                {
+                    foreach (var value in record.Values)
+                    {
+                        csv.WriteField(value);
+                    }
+                    csv.NextRecord();
+                }
+            }
         }
     }
 }

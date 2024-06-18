@@ -35,23 +35,25 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Backbutton = new System.Windows.Forms.Button();
             this.GetPwButton = new System.Windows.Forms.Button();
+            this.fullname = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // gmail
             // 
             this.gmail.BackColor = System.Drawing.Color.White;
             this.gmail.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
-            this.gmail.Location = new System.Drawing.Point(55, 301);
+            this.gmail.Location = new System.Drawing.Point(36, 349);
             this.gmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.gmail.Name = "gmail";
-            this.gmail.Size = new System.Drawing.Size(400, 39);
+            this.gmail.Size = new System.Drawing.Size(431, 39);
             this.gmail.TabIndex = 13;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(54, 250);
+            this.label3.Location = new System.Drawing.Point(35, 298);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(324, 38);
             this.label3.TabIndex = 12;
@@ -61,17 +63,17 @@
             // 
             this.username.BackColor = System.Drawing.Color.White;
             this.username.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
-            this.username.Location = new System.Drawing.Point(54, 186);
+            this.username.Location = new System.Drawing.Point(35, 143);
             this.username.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(400, 39);
+            this.username.Size = new System.Drawing.Size(432, 39);
             this.username.TabIndex = 11;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(54, 135);
+            this.label2.Location = new System.Drawing.Point(35, 92);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 38);
             this.label2.TabIndex = 10;
@@ -81,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Paytone One", 21F);
-            this.label1.Location = new System.Drawing.Point(45, 47);
+            this.label1.Location = new System.Drawing.Point(32, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(328, 57);
             this.label1.TabIndex = 9;
@@ -92,7 +94,7 @@
             this.Backbutton.BackColor = System.Drawing.Color.IndianRed;
             this.Backbutton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Backbutton.ForeColor = System.Drawing.Color.White;
-            this.Backbutton.Location = new System.Drawing.Point(54, 386);
+            this.Backbutton.Location = new System.Drawing.Point(35, 412);
             this.Backbutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Backbutton.Name = "Backbutton";
             this.Backbutton.Size = new System.Drawing.Size(148, 50);
@@ -106,7 +108,7 @@
             this.GetPwButton.BackColor = System.Drawing.Color.IndianRed;
             this.GetPwButton.Font = new System.Drawing.Font("Paytone One", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.GetPwButton.ForeColor = System.Drawing.Color.White;
-            this.GetPwButton.Location = new System.Drawing.Point(306, 386);
+            this.GetPwButton.Location = new System.Drawing.Point(319, 412);
             this.GetPwButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GetPwButton.Name = "GetPwButton";
             this.GetPwButton.Size = new System.Drawing.Size(148, 50);
@@ -115,11 +117,33 @@
             this.GetPwButton.UseVisualStyleBackColor = false;
             this.GetPwButton.Click += new System.EventHandler(this.GetPwButton_Click);
             // 
+            // fullname
+            // 
+            this.fullname.BackColor = System.Drawing.Color.White;
+            this.fullname.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
+            this.fullname.Location = new System.Drawing.Point(35, 245);
+            this.fullname.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.fullname.Name = "fullname";
+            this.fullname.Size = new System.Drawing.Size(431, 39);
+            this.fullname.TabIndex = 42;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Quicksand SemiBold", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(34, 194);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(239, 38);
+            this.label4.TabIndex = 41;
+            this.label4.Text = "Họ và tên của bạn";
+            // 
             // GetPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.fullname);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.Backbutton);
             this.Controls.Add(this.GetPwButton);
             this.Controls.Add(this.gmail);
@@ -142,6 +166,7 @@
         public System.Windows.Forms.Label label1;
         public System.Windows.Forms.Button Backbutton;
         public System.Windows.Forms.Button GetPwButton;
-
+        public System.Windows.Forms.TextBox fullname;
+        public System.Windows.Forms.Label label4;
     }
 }

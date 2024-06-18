@@ -76,12 +76,13 @@
             // 
             // tbNewFeed
             // 
+            this.tbNewFeed.BackColor = System.Drawing.Color.White;
             this.tbNewFeed.Font = new System.Drawing.Font("Quicksand SemiBold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbNewFeed.Location = new System.Drawing.Point(27, 10);
             this.tbNewFeed.Margin = new System.Windows.Forms.Padding(30, 10, 70, 10);
             this.tbNewFeed.Name = "tbNewFeed";
             this.tbNewFeed.ReadOnly = true;
-            this.tbNewFeed.Size = new System.Drawing.Size(753, 36);
+            this.tbNewFeed.Size = new System.Drawing.Size(795, 36);
             this.tbNewFeed.TabIndex = 1;
             this.tbNewFeed.Text = "Bạn đang nghĩ gì?";
             this.tbNewFeed.Click += new System.EventHandler(this.tbNewFeed_Click);
@@ -126,6 +127,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(394, 28);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // pictureBox1
             // 
