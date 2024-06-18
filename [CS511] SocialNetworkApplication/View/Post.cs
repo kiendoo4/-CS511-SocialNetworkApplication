@@ -26,10 +26,12 @@ namespace _CS511__SocialNetworkApplication.View
     {
         DataRow postInfo;
         int current_user = -1;
+        int postID = -1;
         DataTable userList = new DataTable();
         DataTable cmtList = new DataTable();
         List<string> mediaPath = new List<string>();
         public event EventHandler<List<string>> showDetail;
+        public event EventHandler<DataRow> sharing;
 
         public Post(DataRow row)
         {
@@ -69,12 +71,28 @@ namespace _CS511__SocialNetworkApplication.View
                 cmt.picAva.ImageLocation = userList.Rows[Convert.ToInt32(item["User_id"])]["Avatar"].ToString();
                 cmt.lbName.Text = userList.Rows[Convert.ToInt32(item["User_id"])]["Name"].ToString();
                 flowComment.Controls.Add(cmt);
+                cmt.Hide();
+            }
+
+            if (postInfo["Share"].ToString() != "")
+            {
+                System.Windows.Forms.Label author = new System.Windows.Forms.Label();
+                author.Text = $"Bài viết gốc của {userList.Rows[Convert.ToInt32(postInfo["Share"])]["Name"].ToString()}";
+                author.Font = new Font("Arial", 12, FontStyle.Italic);
+                author.Width = flowTitle.Width - 6;
+                author.TextAlign = ContentAlignment.MiddleRight;
+                flowTitle.Controls.Add(author);
+                flowTitle.Controls.SetChildIndex(author, 0);
+                flowTitle.Controls.SetChildIndex(panel1, 1);
+                flowPost.Location = new Point(flowPost.Location.X, flowPost.Location.Y + author.Height);
             }
         }
 
-        public void get_current(int i)
+        public void get_current(int i, int j)
         {
             current_user = i;
+            postID = j;
+            CheckLike();
         }
 
         private void gridMedia()
@@ -85,12 +103,14 @@ namespace _CS511__SocialNetworkApplication.View
                 {
                     if (IsImageFile(path))
                     {
+                        Image temp = Image.FromFile(path);
                         PictureBox pictureBox = new PictureBox();
-                        pictureBox.Image = Image.FromFile(path);
+                        pictureBox.ImageLocation = path;
                         pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
                         pictureBox.Width = flowMedia.Width - 5;
-                        pictureBox.Height = (int)(pictureBox.Width / (double)pictureBox.Image.Width * (double)pictureBox.Image.Height);
+                        pictureBox.Height = (int)(pictureBox.Width / (double)temp.Width * (double)temp.Height);
                         flowMedia.Controls.Add(pictureBox);
+                        temp.Dispose();
                     }
                     else
                     {
@@ -100,7 +120,7 @@ namespace _CS511__SocialNetworkApplication.View
                         player.Height = player.Width * 4 / 6;
                     }
                 }
-                TableClickRegister(tableMedia.Controls);
+                TableClickRegister(flowMedia.Controls);
                 return;
             }
 
@@ -111,7 +131,7 @@ namespace _CS511__SocialNetworkApplication.View
                     if (IsImageFile(mediaPath[i]))
                     {
                         PictureBox pictureBox = new PictureBox();
-                        pictureBox.Image = Image.FromFile(mediaPath[i]);
+                        pictureBox.ImageLocation = mediaPath[i];
                         pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                         pictureBox.BackColor = Color.Black;
                         pictureBox.Width = (tableMedia.Width / 2) - 10;
@@ -158,7 +178,7 @@ namespace _CS511__SocialNetworkApplication.View
                 if (IsImageFile(mediaPath[i]))
                 {
                     PictureBox pictureBox = new PictureBox();
-                    pictureBox.Image = Image.FromFile(mediaPath[i]);
+                    pictureBox.ImageLocation = mediaPath[i];
                     pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
                     pictureBox.BackColor = Color.Black;
                     pictureBox.Width = (tableMedia.Width / 2) - 10;
@@ -357,6 +377,7 @@ namespace _CS511__SocialNetworkApplication.View
             new_cmt["Date_of_birth"] = DateTime.Now;
             cmtList.Rows.Add(new_cmt);
             picAttach.Tag = null;
+            tbComment.Text = "";
 
             flowComment.Controls.Clear();
             foreach (DataRow item in cmtList.Rows)
@@ -427,6 +448,162 @@ namespace _CS511__SocialNetworkApplication.View
                     csvWriter.NextRecord();
                 }
             }
+        }
+
+        private void btLike_Click(object sender, EventArgs e)
+        {
+            string[] user_like_raw = File.ReadAllText(postInfo["Like"].ToString()).Split(';');
+            List<string> user_like = user_like_raw.ToList();
+            if (user_like[0] == "") user_like.Remove("");
+            foreach (string a_user in user_like)
+            {
+                if (Convert.ToInt32(a_user) == current_user)
+                {
+                    btLike.BackColor = Color.FromArgb(250, 250, 250);
+                    user_like.Remove(a_user);
+                    File.WriteAllText(postInfo["Like"].ToString(), String.Join(";", user_like));
+                    return;
+                }
+            }
+            btLike.BackColor = Color.LightSkyBlue;
+            user_like.Add(current_user.ToString());
+            File.WriteAllText(postInfo["Like"].ToString(), String.Join(";", user_like));
+        }
+
+        private void CheckLike()
+        {
+            string[] user_like_raw = File.ReadAllText(postInfo["Like"].ToString()).Split(';');
+            List<string> user_like = user_like_raw.ToList();
+            if (user_like[0] == "") user_like.Remove("");
+            foreach (string a_user in user_like)
+            {
+                if (Convert.ToInt32(a_user) == current_user)
+                {
+                    btLike.BackColor = Color.LightSkyBlue;
+                    return;
+                }
+            }
+        }
+
+        private void picSave_Click(object sender, EventArgs e)
+        {
+            userList.Rows.Clear();
+            userList.Columns.Clear();
+            loadUserData();
+            string[] saved = userList.Rows[current_user]["Save"].ToString().Split(';');
+            List<string> saved_list = saved.ToList();
+            if (saved_list[0] == "") saved_list.Remove("");
+            if (saved_list.Contains(postID.ToString()))
+            {
+                saved_list.Remove(postID.ToString());
+                MessageBox.Show("Đã bỏ bài viết khỏi Đã lưu.");
+            }
+            else
+            {
+                saved_list.Add(postID.ToString());
+                MessageBox.Show("Đã thêm bài viết vào Đã lưu.");
+            }
+            userList.Rows[current_user]["Save"] = String.Join(";", saved_list);
+            WriteDataTableToCSV(userList, "../../Data/User.csv");
+        }
+
+        private void btComment_Click(object sender, EventArgs e)
+        {
+            foreach(Control control in flowComment.Controls)
+            {
+                if (control.Visible == true) control.Hide();
+                else control.Show();
+            }
+        }
+
+        private void btShare_Click(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(postInfo["User_id"]) == current_user)
+            {
+                MessageBox.Show("Không thể share post của chính bạn.");
+                return;
+            }
+            if (postInfo["Mode"].ToString() != "Công khai")
+            {
+                MessageBox.Show("Không thể share post không công khai.");
+                return;
+            }
+            sharing?.Invoke(this, postInfo);
+        }
+
+        private void picDelete_Click(object sender, EventArgs e)
+        {
+            if (current_user != Convert.ToInt64(postInfo["User_id"]))
+            {
+                this.Hide();
+            }
+            else
+            {
+                this.Hide();
+                DataTable postList = new DataTable();
+                string csvFilePath = "../../Data/Post.csv";
+                using (var reader = new StreamReader(csvFilePath))
+                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ",",
+                    BadDataFound = null
+                }))
+                {
+                    // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                    csv.Read();
+                    csv.ReadHeader();
+                    foreach (var header in csv.HeaderRecord)
+                    {
+                        postList.Columns.Add(header);
+                    }
+
+                    // Đọc các dòng còn lại và thêm vào DataTable
+                    while (csv.Read())
+                    {
+                        var row = postList.NewRow();
+                        foreach (DataColumn column in postList.Columns)
+                        {
+                            row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                        }
+                        postList.Rows.Add(row);
+                    }
+                }
+                if (File.Exists(postInfo["Comment"].ToString()))
+                {
+                    File.Delete(postInfo["Comment"].ToString());
+                }
+                if (File.Exists(postInfo["Like"].ToString()))
+                {
+                    File.Delete(postInfo["Like"].ToString());
+                }
+                postList.Rows.RemoveAt(postID);
+                WriteDataTableToCSV(postList, csvFilePath);
+
+                for (int i = 0; i < userList.Rows.Count; i++)
+                {
+                    string[] saved = userList.Rows[i]["Save"].ToString().Split(';');
+                    List<string> saved_list = saved.ToList();
+                    if (saved_list[0] == "") saved_list.Remove("");
+                    string delete_item = "";
+                    foreach (string saved_item in saved_list)
+                    {
+                        if (saved_item == postID.ToString())
+                        {
+                            delete_item = saved_item;
+                            break;
+                        }
+                    }
+                    saved_list.Remove(delete_item);
+                    userList.Rows[i]["Save"] = String.Join(";", saved_list);
+                }
+                WriteDataTableToCSV(userList, "../../Data/User.csv");
+            }
+        }
+
+        public bool searching(string keyword)
+        {
+            if (postInfo["Content"].ToString().Contains(keyword) || userList.Rows[current_user]["Name"].ToString().Contains(keyword)) return true;
+            return false;
         }
     }
 }

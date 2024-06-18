@@ -78,7 +78,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
             label1.Click += ChangeInfo_Click;
             panel2.Click += ChangeInfo_Click;
             pictureBox1.Click += ChangeInfo_Click;
-            string[] lines2 = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\UserImgBackground.txt");
+            string[] lines2 = File.ReadAllLines("../..\\Data\\UserImgBackground.txt");
             foreach (string line in lines2)
             {
                 string[] parts = line.Split('*');

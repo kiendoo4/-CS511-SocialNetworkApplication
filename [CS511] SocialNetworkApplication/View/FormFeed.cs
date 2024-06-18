@@ -25,6 +25,28 @@ namespace _CS511__SocialNetworkApplication.View
             cbMode.SelectedIndex = 0;
         }
 
+        public FormFeed(int index, DataTable postList, DataRow shareRow)
+        {
+            InitializeComponent();
+            postRow = postList.NewRow();
+            postRow["User_id"] = index;
+            postRow["Content"] = shareRow["Content"];
+            tbContent.Text = postRow["Content"].ToString();
+            string temp1 = shareRow["Images"].ToString();
+            string temp2 = shareRow["Videos"].ToString();
+            temp1 = temp1 + temp2;
+            if (temp1[0] == ';') temp1 =  temp1.Substring(1);
+            if (temp1.Length > 0 && temp1[temp1.Length - 1] == ';')
+            {
+                temp1 = temp1.Substring(0, temp1.Length - 1);
+            }
+            picAttach.Tag = temp1;
+            tbContent.Enabled = false;
+            picAttach.Enabled = false;
+            postRow["Share"] = shareRow["User_id"];
+            cbMode.SelectedIndex = 0;
+        }
+
         private void picClose_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -51,13 +73,13 @@ namespace _CS511__SocialNetworkApplication.View
                     if (Post.IsImageFile(filePath))
                     {
                         string new_path = "../../Data/Images/" + Path.GetFileName(filePath);
-                        File.Copy(filePath, new_path, true);
+                        if (postRow["Share"].ToString() == "") File.Copy(filePath, new_path, true);
                         imgPath.Append(new_path).Append(';');
                     }
                     else
                     {
                         string new_path = "../../Data/Images/" + Path.GetFileName(filePath);
-                        File.Copy(filePath, new_path, true);
+                        if (postRow["Share"].ToString() == "") File.Copy(filePath, new_path, true);
                         vidPath.Append(new_path).Append(';');
                     }
                 }
@@ -80,6 +102,8 @@ namespace _CS511__SocialNetworkApplication.View
 
             postRow["Comment"] = GetUniqueFilePath("../../Data/Post_cmt/", "Cmt", ".csv");
             File.Copy("../../Data/Post_cmt/Cmt_template.csv", postRow["Comment"].ToString());
+            postRow["Like"] = GetUniqueFilePath("../../Data/Post_like/", "Like", ".txt");
+            File.WriteAllText(postRow["Like"].ToString(), "");
 
             UploadFeed?.Invoke(this, postRow);
             this.Close();
