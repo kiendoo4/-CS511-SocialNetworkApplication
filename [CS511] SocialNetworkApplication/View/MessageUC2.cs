@@ -17,6 +17,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using static System.Net.Mime.MediaTypeNames;
 using System.Diagnostics.Eventing.Reader;
+using AForge.Video;
+using AForge.Video.DirectShow;
 
 namespace _CS511__SocialNetworkApplication.View
 {
@@ -70,6 +72,8 @@ namespace _CS511__SocialNetworkApplication.View
             BackFBButton.Click += BackFBButton_Click;
             ReactionButton.FlatAppearance.BorderSize = 0;
             button1.FlatAppearance.BorderSize = 0;
+            TakePictureButton.FlatAppearance.BorderSize = 0;
+            TakeVideoButton.FlatAppearance.BorderSize = 0;
             //yourus = us;
             flowLayoutPanel1.Visible = false;
             label2.Text = userList.Rows[idx]["Name"].ToString();
@@ -119,11 +123,6 @@ namespace _CS511__SocialNetworkApplication.View
                 for (int i = 0; i < messageList.Rows.Count; i++)
                 {
                     List<string> parts = new List<string>();
-                    parts.Add(messageList.Rows[i]["Sender"].ToString());
-                    parts.Add(messageList.Rows[i]["Message"].ToString());
-                    parts.Add(messageList.Rows[i]["Date"].ToString());
-                    parts.Add(messageList.Rows[i]["Receiver"].ToString());
-                    parts.Add(messageList.Rows[i]["Type"].ToString());
                     if ((Convert.ToString(index) == messageList.Rows[i]["Sender"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Receiver"].ToString() ||
                             Convert.ToString(index) == messageList.Rows[i]["Receiver"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Sender"].ToString()
                             ) && messageList.Rows[i]["Deleted"].ToString() == "0" && messageList.Rows[i]["Pinned"].ToString() == "1")
@@ -133,7 +132,8 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
-                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                         messageUC.pinnedB += MessageUC_pinnedB2;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -148,11 +148,6 @@ namespace _CS511__SocialNetworkApplication.View
                 for (int i = 0; i < messageList.Rows.Count; i++)
                 {
                     List<string> parts = new List<string>();
-                    parts.Add(messageList.Rows[i]["Sender"].ToString());
-                    parts.Add(messageList.Rows[i]["Message"].ToString());
-                    parts.Add(messageList.Rows[i]["Date"].ToString());
-                    parts.Add(messageList.Rows[i]["Receiver"].ToString());
-                    parts.Add(messageList.Rows[i]["Type"].ToString());
                     if ((Convert.ToString(index) == messageList.Rows[i]["Sender"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Receiver"].ToString() ||
                             Convert.ToString(index) == messageList.Rows[i]["Receiver"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Sender"].ToString()
                             ) && messageList.Rows[i]["Deleted"].ToString() == "0")
@@ -162,7 +157,8 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
-                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                         messageUC.pinnedB += MessageUC_pinnedB;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -188,22 +184,16 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
                         if ((hehe[0] == parts[0] && hehe[3] == parts[3] && hehe[2] == parts[2] && hehe[1] == parts[1]
                                 ) && messageList.Rows[i]["Deleted"].ToString() == "0" && messageList.Rows[i]["Pinned"].ToString() == "1"
                                 )
                         {
                             messageList.Rows[i]["Pinned"] = "0";
                             WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
-                            parts.Add(messageList.Rows[i]["Sender"].ToString());
-                            parts.Add(messageList.Rows[i]["Message"].ToString());
-                            parts.Add(messageList.Rows[i]["Date"].ToString());
-                            parts.Add(messageList.Rows[i]["Receiver"].ToString());
-                            parts.Add(messageList.Rows[i]["Type"].ToString());
-                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], "0");
                             messageUC.pinnedB += MessageUC_pinnedB2;
                             messageUC.deleteB += MessageUC_deleteB;
-                            MessageList.Controls.Add(messageUC);
-                            MessageList.ScrollControlIntoView(messageUC);
                         }
                     }
                     for (int i = 0; i < messageList.Rows.Count; i++)
@@ -218,7 +208,8 @@ namespace _CS511__SocialNetworkApplication.View
                             parts.Add(messageList.Rows[i]["Date"].ToString());
                             parts.Add(messageList.Rows[i]["Receiver"].ToString());
                             parts.Add(messageList.Rows[i]["Type"].ToString());
-                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                             messageUC.pinnedB += MessageUC_pinnedB;
                             messageUC.deleteB += MessageUC_deleteB;
                             MessageList.Controls.Add(messageUC);
@@ -234,6 +225,7 @@ namespace _CS511__SocialNetworkApplication.View
         {
             if(sender is int index2)
             {
+                panel6.Visible = false;
                 curr = index2;
                 //System.Windows.Forms.MessageBox.Show(Convert.ToString(index2), "Thông báo", MessageBoxButtons.OK);
                 MessageList.Controls.Clear();
@@ -257,7 +249,8 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
-                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                         messageUC.pinnedB += MessageUC_pinnedB;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -305,7 +298,7 @@ namespace _CS511__SocialNetworkApplication.View
                                         parts.Add(messageList.Rows[j]["Date"].ToString());
                                         parts.Add(messageList.Rows[j]["Receiver"].ToString());
                                         parts.Add(messageList.Rows[j]["Type"].ToString());
-                                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                                         messageUC.pinnedB += MessageUC_pinnedB;
                                         messageUC.deleteB += MessageUC_deleteB;
                                         MessageList.Controls.Add(messageUC);
@@ -362,7 +355,35 @@ namespace _CS511__SocialNetworkApplication.View
                         }    
                     }
                 }
-                
+                MessageList.Controls.Clear();
+                MessageBox.Text = "";
+                string imagePath = userList2.Rows[curr]["Avatar"].ToString();
+                if (!string.IsNullOrEmpty(imagePath))
+                {
+                    pictureBox2.ImageLocation = imagePath;
+                }
+                Username.Text = userList2.Rows[curr]["Name"].ToString();
+                //string[] lines2 = File.ReadAllLines("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\Messages.txt");
+                for (int i = 0; i < messageList.Rows.Count; i++)
+                {
+                    if (((Convert.ToString(index) == messageList.Rows[i]["Sender"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Receiver"].ToString())
+                        || (Convert.ToString(index) == messageList.Rows[i]["Receiver"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Sender"].ToString()))
+                        && messageList.Rows[i]["Deleted"].ToString() == "0")
+                    {
+                        List<string> parts = new List<string>();
+                        parts.Add(messageList.Rows[i]["Sender"].ToString());
+                        parts.Add(messageList.Rows[i]["Message"].ToString());
+                        parts.Add(messageList.Rows[i]["Date"].ToString());
+                        parts.Add(messageList.Rows[i]["Receiver"].ToString());
+                        parts.Add(messageList.Rows[i]["Type"].ToString());
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
+                        messageUC.pinnedB += MessageUC_pinnedB;
+                        messageUC.deleteB += MessageUC_deleteB;
+                        MessageList.Controls.Add(messageUC);
+                        MessageList.ScrollControlIntoView(messageUC);
+                    }
+                }
             }
         }
 
@@ -468,7 +489,7 @@ namespace _CS511__SocialNetworkApplication.View
                 newRow["Deleted"] = "0";
                 messageList.Rows.Add(newRow);
                 WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
-                MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), newRow["Message"].ToString(), date, Convert.ToString(curr), "Icon");
+                MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), newRow["Message"].ToString(), date, Convert.ToString(curr), "Icon", "0");
                 messageUC.pinnedB += MessageUC_pinnedB;
                 messageUC.deleteB += MessageUC_deleteB;
                 MessageList.Controls.Add(messageUC);
@@ -548,7 +569,7 @@ namespace _CS511__SocialNetworkApplication.View
                         newRow["Deleted"] = "0";
                         messageList.Rows.Add(newRow);
                         WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
-                        MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), fileName, date, Convert.ToString(curr), "Video");
+                        MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), fileName, date, Convert.ToString(curr), "Video", "0");
                         messageUC.pinnedB += MessageUC_pinnedB;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -573,7 +594,7 @@ namespace _CS511__SocialNetworkApplication.View
                         newRow["Deleted"] = "0";
                         messageList.Rows.Add(newRow);
                         WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
-                        MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), fileName, date, Convert.ToString(curr), "Image");
+                        MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), fileName, date, Convert.ToString(curr), "Image", "0");
                         messageUC.pinnedB += MessageUC_pinnedB;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -606,12 +627,12 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
-                        
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
                         if ((Convert.ToInt32(parts[0]) == index && Convert.ToInt32(parts[3]) == curr 
                             || Convert.ToInt32(parts[3]) == index && Convert.ToInt32(parts[0]) == curr
                             ) && messageList.Rows[i]["Deleted"].ToString() == "0")
                         {
-                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                             messageUC.pinnedB += MessageUC_pinnedB;
                             messageUC.deleteB += MessageUC_deleteB;
                             if (parts[4] != "Text") continue;
@@ -664,7 +685,8 @@ namespace _CS511__SocialNetworkApplication.View
                             parts.Add(messageList.Rows[i]["Date"].ToString());
                             parts.Add(messageList.Rows[i]["Receiver"].ToString());
                             parts.Add(messageList.Rows[i]["Type"].ToString());
-                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                            parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                            MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                             messageUC.pinnedB += MessageUC_pinnedB;
                             messageUC.deleteB += MessageUC_deleteB;
                             MessageList.Controls.Add(messageUC);
@@ -699,7 +721,8 @@ namespace _CS511__SocialNetworkApplication.View
                         parts.Add(messageList.Rows[i]["Date"].ToString());
                         parts.Add(messageList.Rows[i]["Receiver"].ToString());
                         parts.Add(messageList.Rows[i]["Type"].ToString());
-                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4]);
+                        parts.Add(messageList.Rows[i]["Pinned"].ToString());
+                        MessageUC messageUC = new MessageUC(userList2, parts[0], parts[1], parts[2], parts[3], parts[4], parts[5]);
                         messageUC.pinnedB += MessageUC_pinnedB;
                         messageUC.deleteB += MessageUC_deleteB;
                         MessageList.Controls.Add(messageUC);
@@ -722,7 +745,7 @@ namespace _CS511__SocialNetworkApplication.View
             newRow["Deleted"] = "0";
             messageList.Rows.Add(newRow);
             WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
-            MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), MessageBox.Text, date, Convert.ToString(curr), "Text");
+            MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), MessageBox.Text, date, Convert.ToString(curr), "Text", "0");
             messageUC.pinnedB += MessageUC_pinnedB;
             messageUC.deleteB += MessageUC_deleteB;
             MessageList.Controls.Add(messageUC);
@@ -754,6 +777,48 @@ namespace _CS511__SocialNetworkApplication.View
         }
 
         private void Friends_Load(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void TakePictureButton_Click(object sender, EventArgs e)
+        {
+            Camera camera = new Camera();
+            camera.imgButton += Camera_imgButton;
+            camera.ShowDialog();
+        }
+
+        private void Camera_imgButton(object sender, EventArgs e)
+        {
+            if (sender is string path)
+            {
+                string date = Convert.ToString(DateTime.Now);
+                DataRow newRow = messageList.NewRow();
+                newRow["Sender"] = Convert.ToString(index);
+                newRow["Message"] = path;
+                newRow["Date"] = date;
+                newRow["Receiver"] = Convert.ToString(curr);
+                newRow["Type"] = "Image";
+                newRow["Pinned"] = "0";
+                newRow["Deleted"] = "0";
+                messageList.Rows.Add(newRow);
+                WriteDataTableToCsv("..\\..\\Data\\Messages.csv", messageList);
+                MessageUC messageUC = new MessageUC(userList2, Convert.ToString(index), path, date, Convert.ToString(curr), "Image", "0");
+                messageUC.pinnedB += MessageUC_pinnedB;
+                messageUC.deleteB += MessageUC_deleteB;
+                MessageList.Controls.Add(messageUC);
+                foreach (Control control in AccountList.Controls)
+                {
+                    if (control is UserIndividual lmeo)
+                        if (lmeo.index == curr)
+                        {
+                            AccountList.Controls.SetChildIndex(control, 0);
+                        }
+                }
+            }    
+        }
+
+        private void TakeVideoButton_Click(object sender, EventArgs e)
         {
 
         }

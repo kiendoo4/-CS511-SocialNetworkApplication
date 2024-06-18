@@ -25,7 +25,7 @@ namespace _CS511__SocialNetworkApplication.View
             richTextBox1.BackColor = Color.Transparent;
             Fullname.BackColor = Color.Transparent;
         }
-        public MessageUC(DataTable userList, string fullname, string message, string time, string receiver, string type)
+        public MessageUC(DataTable userList, string fullname, string message, string time, string receiver, string type, string pinned)
         {
             InitializeComponent();
             hehe.Add(fullname);
@@ -33,8 +33,9 @@ namespace _CS511__SocialNetworkApplication.View
             hehe.Add(time);
             hehe.Add(receiver);
             hehe.Add(type);
-            pinnedButton.Click += PinnedButton_Click; ;
+            pinnedButton.Click += PinnedButton_Click;
             deleteButton.Click += DeleteButton_Click;
+            if (pinned == "1") pinnedButton.ImageLocation = "..\\..\\Image\\icons8-pin-30.png";
             panel1.Width = 0;
             panel1.Height = 0;
             int ful = Convert.ToInt32(fullname), rec = Convert.ToInt32(receiver);

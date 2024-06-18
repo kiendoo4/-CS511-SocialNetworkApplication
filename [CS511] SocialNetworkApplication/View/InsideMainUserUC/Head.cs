@@ -191,7 +191,7 @@ namespace _CS511__SocialNetworkApplication.View.InsideMainUserUC
                     Avatar.ImageLocation = filePath;
                     dataTable2.Rows[index]["Avatar"] = filePath;
                     WriteDataTableToCsv("D:\\CS511\\Doan\\[CS511] SocialNetworkApplication\\[CS511] SocialNetworkApplication\\Data\\User.csv", dataTable2);
-                    MessageBox.Show("Đã đổi ảnh nền thành công", "Thông báo", MessageBoxButtons.OK);
+                    MessageBox.Show("Đã đổi ảnh đại diện thành công", "Thông báo", MessageBoxButtons.OK);
                 }
             }
         }

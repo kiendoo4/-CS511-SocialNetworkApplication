@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageUC2));
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.friendIcon = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -51,10 +54,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.AccountList = new System.Windows.Forms.FlowLayoutPanel();
             this.BackFBButton = new System.Windows.Forms.PictureBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.friendIcon = new System.Windows.Forms.PictureBox();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.TakePictureButton = new System.Windows.Forms.Button();
+            this.TakeVideoButton = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.friendIcon)).BeginInit();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -63,16 +68,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BackFBButton)).BeginInit();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.friendIcon)).BeginInit();
             this.SuspendLayout();
             // 
             // panel3
             // 
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.flowLayoutPanel1);
+            this.panel3.Controls.Add(this.TakeVideoButton);
+            this.panel3.Controls.Add(this.TakePictureButton);
             this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.button1);
-            this.panel3.Controls.Add(this.flowLayoutPanel1);
             this.panel3.Controls.Add(this.label4);
             this.panel3.Controls.Add(this.ReactionButton);
             this.panel3.Controls.Add(this.panel5);
@@ -86,11 +91,44 @@
             this.panel3.Size = new System.Drawing.Size(1275, 892);
             this.panel3.TabIndex = 60;
             // 
+            // panel4
+            // 
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.label3);
+            this.panel4.Controls.Add(this.friendIcon);
+            this.panel4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panel4.Location = new System.Drawing.Point(1018, 34);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(234, 39);
+            this.panel4.TabIndex = 62;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label3.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
+            this.label3.Location = new System.Drawing.Point(36, 5);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(194, 25);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Xem tin nhắn đã ghim";
+            // 
+            // friendIcon
+            // 
+            this.friendIcon.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.friendIcon.Image = ((System.Drawing.Image)(resources.GetObject("friendIcon.Image")));
+            this.friendIcon.Location = new System.Drawing.Point(4, 3);
+            this.friendIcon.Name = "friendIcon";
+            this.friendIcon.Size = new System.Drawing.Size(30, 30);
+            this.friendIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.friendIcon.TabIndex = 0;
+            this.friendIcon.TabStop = false;
+            // 
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("button1.BackgroundImage")));
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Location = new System.Drawing.Point(1121, 826);
@@ -104,7 +142,7 @@
             // 
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(1028, 446);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(1033, 446);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(82, 376);
             this.flowLayoutPanel1.TabIndex = 61;
@@ -124,7 +162,7 @@
             // 
             this.ReactionButton.BackColor = System.Drawing.Color.White;
             this.ReactionButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("ReactionButton.BackgroundImage")));
-            this.ReactionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ReactionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ReactionButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.ReactionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ReactionButton.Location = new System.Drawing.Point(1121, 780);
@@ -199,7 +237,7 @@
             this.MessageBox.Font = new System.Drawing.Font("Quicksand SemiBold", 15F);
             this.MessageBox.Location = new System.Drawing.Point(28, 780);
             this.MessageBox.Name = "MessageBox";
-            this.MessageBox.Size = new System.Drawing.Size(1073, 88);
+            this.MessageBox.Size = new System.Drawing.Size(1032, 88);
             this.MessageBox.TabIndex = 50;
             this.MessageBox.Text = "";
             // 
@@ -320,44 +358,47 @@
             this.BackFBButton.TabIndex = 62;
             this.BackFBButton.TabStop = false;
             // 
-            // panel4
+            // panel6
             // 
-            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel4.Controls.Add(this.label3);
-            this.panel4.Controls.Add(this.friendIcon);
-            this.panel4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel4.Location = new System.Drawing.Point(1018, 34);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(234, 39);
-            this.panel4.TabIndex = 62;
+            this.panel6.Location = new System.Drawing.Point(558, 122);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(450, 244);
+            this.panel6.TabIndex = 63;
             // 
-            // label3
+            // TakePictureButton
             // 
-            this.label3.AutoSize = true;
-            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label3.Font = new System.Drawing.Font("Quicksand SemiBold", 10F);
-            this.label3.Location = new System.Drawing.Point(36, 5);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(194, 25);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Xem tin nhắn đã ghim";
+            this.TakePictureButton.BackColor = System.Drawing.Color.White;
+            this.TakePictureButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TakePictureButton.BackgroundImage")));
+            this.TakePictureButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.TakePictureButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TakePictureButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TakePictureButton.Location = new System.Drawing.Point(1071, 780);
+            this.TakePictureButton.Name = "TakePictureButton";
+            this.TakePictureButton.Size = new System.Drawing.Size(44, 42);
+            this.TakePictureButton.TabIndex = 63;
+            this.TakePictureButton.UseVisualStyleBackColor = false;
+            this.TakePictureButton.Click += new System.EventHandler(this.TakePictureButton_Click);
             // 
-            // friendIcon
+            // TakeVideoButton
             // 
-            this.friendIcon.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.friendIcon.Image = ((System.Drawing.Image)(resources.GetObject("friendIcon.Image")));
-            this.friendIcon.Location = new System.Drawing.Point(4, 3);
-            this.friendIcon.Name = "friendIcon";
-            this.friendIcon.Size = new System.Drawing.Size(30, 30);
-            this.friendIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.friendIcon.TabIndex = 0;
-            this.friendIcon.TabStop = false;
+            this.TakeVideoButton.BackColor = System.Drawing.Color.White;
+            this.TakeVideoButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("TakeVideoButton.BackgroundImage")));
+            this.TakeVideoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.TakeVideoButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.TakeVideoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.TakeVideoButton.Location = new System.Drawing.Point(1071, 826);
+            this.TakeVideoButton.Name = "TakeVideoButton";
+            this.TakeVideoButton.Size = new System.Drawing.Size(44, 42);
+            this.TakeVideoButton.TabIndex = 64;
+            this.TakeVideoButton.UseVisualStyleBackColor = false;
+            this.TakeVideoButton.Click += new System.EventHandler(this.TakeVideoButton_Click);
             // 
             // MessageUC2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.Controls.Add(this.panel6);
             this.Controls.Add(this.BackFBButton);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.Avatar);
@@ -369,6 +410,9 @@
             this.Size = new System.Drawing.Size(1740, 903);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.friendIcon)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
@@ -379,9 +423,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.BackFBButton)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.friendIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,5 +454,8 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.PictureBox friendIcon;
+        private System.Windows.Forms.Panel panel6;
+        public System.Windows.Forms.Button TakeVideoButton;
+        public System.Windows.Forms.Button TakePictureButton;
     }
 }

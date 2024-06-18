@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AForge, Version=2.2.5.0, Culture=neutral, PublicKeyToken=c1db6ff4eaa06aeb, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.2.2.5\lib\AForge.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video, Version=2.2.5.0, Culture=neutral, PublicKeyToken=cbfb6e07d173c401, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.2.2.5\lib\AForge.Video.dll</HintPath>
+    </Reference>
+    <Reference Include="AForge.Video.DirectShow, Version=2.2.5.0, Culture=neutral, PublicKeyToken=61ea4348d43881b7, processorArchitecture=MSIL">
+      <HintPath>..\packages\AForge.Video.DirectShow.2.2.5\lib\AForge.Video.DirectShow.dll</HintPath>
+    </Reference>
     <Reference Include="AxInterop.WMPLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\WMPLib.1.0.0\lib\AxInterop.WMPLib.dll</HintPath>
     </Reference>
@@ -101,6 +110,12 @@
     </Compile>
     <Compile Include="View\blank.Designer.cs">
       <DependentUpon>blank.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Camera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Camera.Designer.cs">
+      <DependentUpon>Camera.cs</DependentUpon>
     </Compile>
     <Compile Include="View\ChangeInfo.cs">
       <SubType>UserControl</SubType>
@@ -274,6 +289,9 @@
     <EmbeddedResource Include="View\blank.resx">
       <DependentUpon>blank.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Camera.resx">
+      <DependentUpon>Camera.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ChangeInfo.resx">
       <DependentUpon>ChangeInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -406,6 +424,17 @@
     <Content Include="Data\Images\messi.jpg" />
     <Content Include="Data\Images\nganngan.jpg" />
     <Content Include="Data\Images\emiu.jpg" />
+    <Content Include="Data\Post_like\Like_0.txt" />
+    <Content Include="Data\Post_like\Like_1.txt" />
+    <Content Include="Data\Post_like\Like_10.txt" />
+    <Content Include="Data\Post_like\Like_2.txt" />
+    <Content Include="Data\Post_like\Like_3.txt" />
+    <Content Include="Data\Post_like\Like_4.txt" />
+    <Content Include="Data\Post_like\Like_5.txt" />
+    <Content Include="Data\Post_like\Like_6.txt" />
+    <Content Include="Data\Post_like\Like_7.txt" />
+    <Content Include="Data\Post_like\Like_8.txt" />
+    <Content Include="Data\Post_like\Like_9.txt" />
     <Content Include="Data\UserExpression.txt" />
     <Content Include="Data\UserImgBackground.txt" />
     <Content Include="Image\gray-color-solid-background-1920x1080.png" />
@@ -415,7 +444,9 @@
     <Content Include="Image\icons8-attach-30.png" />
     <Content Include="Image\icons8-back-50.png" />
     <Content Include="Image\icons8-camera-25.png" />
+    <Content Include="Image\icons8-camera-30.png" />
     <Content Include="Image\icons8-delete-30.png" />
+    <Content Include="Image\icons8-emotion-30.png" />
     <Content Include="Image\icons8-friend-25.png" />
     <Content Include="Image\icons8-human-30.png" />
     <Content Include="Data\Images\shoko.jpg" />
@@ -441,17 +472,21 @@
     <Content Include="Image\icons8-home-button-64.png" />
     <Content Include="Image\icons8-invitation-30.png" />
     <Content Include="Image\icons8-message-64.png" />
+    <Content Include="Image\icons8-pin-25.png" />
+    <Content Include="Image\icons8-pin-30.png" />
     <Content Include="Image\icons8-pinned-30.png" />
     <Content Include="Image\icons8-save-64.png" />
     <Content Include="Image\icons8-send-30.png" />
     <Content Include="Image\icons8-send-button-30.png" />
     <Content Include="Image\icons8-user-25.png" />
+    <Content Include="Image\icons8-video-30.png" />
     <Content Include="Image\icons8-video-64.png" />
     <Content Include="Image\nganngan.jpg" />
     <Content Include="Image\page-blank_16120.png" />
     <Content Include="Image\play-button.png" />
     <Content Include="Image\private.png" />
     <None Include="Image\send.png" />
+    <Content Include="Image\save_post.png" />
     <Content Include="Image\social_connections_preview.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -482,6 +517,10 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\TakePicture\" />
+    <Folder Include="Data\TakeVideo\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
