@@ -93,6 +93,8 @@ namespace _CS511__SocialNetworkApplication.View
             current_user = i;
             postID = j;
             CheckLike();
+            if (current_user != Convert.ToInt32(postInfo["User_id"])) picEdit.Visible = false;
+            if (postInfo["Share"].ToString() != "") picEdit.Visible = false;
         }
 
         private void gridMedia()
@@ -604,6 +606,74 @@ namespace _CS511__SocialNetworkApplication.View
         {
             if (postInfo["Content"].ToString().Contains(keyword) || userList.Rows[current_user]["Name"].ToString().Contains(keyword)) return true;
             return false;
+        }
+
+        private void picEdit_Click(object sender, EventArgs e)
+        {
+            FormEdit formEdit = new FormEdit(postInfo, mediaPath);
+            formEdit.EditFeed += (form_sender, row_e) =>
+            {
+                postInfo = row_e;
+
+                if (postInfo["Mode"].ToString() == "Công khai") picMode.ImageLocation = "../../Image/global.png";
+                else if (postInfo["Mode"].ToString() == "Bạn bè") picMode.ImageLocation = "../../Image/friends.png";
+                else picMode.ImageLocation = "../../Image/private.png";
+                textPost.Text = postInfo["Content"].ToString();
+                resizeTextBox();
+
+                mediaPath.Clear();
+
+                string[] vid_paths = postInfo["Videos"].ToString().Split(';');
+                foreach (string vid_path in vid_paths)
+                {
+                    if (vid_path == "") continue;
+                    mediaPath.Add(vid_path);
+                }
+
+                string[] img_paths = postInfo["Images"].ToString().Split(';');
+                foreach (string img_path in img_paths)
+                {
+                    if (img_path == "") continue;
+                    mediaPath.Add(img_path);
+                }
+
+                flowMedia.Controls.Clear();
+                gridMedia();
+
+                //Update data
+
+                DataTable postList = new DataTable();
+                string csvFilePath = "../../Data/Post.csv";
+                using (var reader = new StreamReader(csvFilePath))
+                using (var csv = new CsvReader(reader, new CsvConfiguration(CultureInfo.InvariantCulture)
+                {
+                    Delimiter = ",",
+                    BadDataFound = null
+                }))
+                {
+                    // Đọc header của CSV và tạo các cột tương ứng trong DataTable
+                    csv.Read();
+                    csv.ReadHeader();
+                    foreach (var header in csv.HeaderRecord)
+                    {
+                        postList.Columns.Add(header);
+                    }
+
+                    // Đọc các dòng còn lại và thêm vào DataTable
+                    while (csv.Read())
+                    {
+                        var row = postList.NewRow();
+                        foreach (DataColumn column in postList.Columns)
+                        {
+                            row[column.ColumnName] = csv.GetField(column.DataType, column.ColumnName);
+                        }
+                        postList.Rows.Add(row);
+                    }
+                }
+                postList.Rows[postID].ItemArray = postInfo.ItemArray;
+                WriteDataTableToCSV(postList, "../../Data/Post.csv");
+            };
+            formEdit.ShowDialog();
         }
     }
 }

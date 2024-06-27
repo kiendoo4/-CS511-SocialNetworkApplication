@@ -41,27 +41,29 @@
             this.flowComment = new System.Windows.Forms.FlowLayoutPanel();
             this.panelComment = new System.Windows.Forms.Panel();
             this.cbEmo = new System.Windows.Forms.ComboBox();
-            this.picAttach = new System.Windows.Forms.PictureBox();
-            this.picSend = new System.Windows.Forms.PictureBox();
             this.tbComment = new System.Windows.Forms.RichTextBox();
             this.lbDate = new System.Windows.Forms.Label();
-            this.picMode = new System.Windows.Forms.PictureBox();
+            this.flowTitle = new System.Windows.Forms.FlowLayoutPanel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.picEdit = new System.Windows.Forms.PictureBox();
             this.picAvatar = new System.Windows.Forms.PictureBox();
             this.picDelete = new System.Windows.Forms.PictureBox();
             this.picSave = new System.Windows.Forms.PictureBox();
-            this.flowTitle = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.picMode = new System.Windows.Forms.PictureBox();
+            this.picAttach = new System.Windows.Forms.PictureBox();
+            this.picSend = new System.Windows.Forms.PictureBox();
             this.flowPost.SuspendLayout();
             this.panelButton.SuspendLayout();
             this.panelComment.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picAttach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSend)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMode)).BeginInit();
+            this.flowTitle.SuspendLayout();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEdit)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picDelete)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picSave)).BeginInit();
-            this.flowTitle.SuspendLayout();
-            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picMode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAttach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSend)).BeginInit();
             this.SuspendLayout();
             // 
             // lbUser
@@ -216,34 +218,10 @@
             this.cbEmo.TabIndex = 14;
             this.cbEmo.SelectedIndexChanged += new System.EventHandler(this.cbEmo_SelectedIndexChanged);
             // 
-            // picAttach
-            // 
-            this.picAttach.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picAttach.Image = global::_CS511__SocialNetworkApplication.Properties.Resources._11;
-            this.picAttach.Location = new System.Drawing.Point(3, 3);
-            this.picAttach.Name = "picAttach";
-            this.picAttach.Size = new System.Drawing.Size(30, 30);
-            this.picAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picAttach.TabIndex = 13;
-            this.picAttach.TabStop = false;
-            this.picAttach.Click += new System.EventHandler(this.picAttach_Click);
-            // 
-            // picSend
-            // 
-            this.picSend.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picSend.Image = global::_CS511__SocialNetworkApplication.Properties.Resources.send;
-            this.picSend.Location = new System.Drawing.Point(739, 3);
-            this.picSend.Name = "picSend";
-            this.picSend.Size = new System.Drawing.Size(30, 30);
-            this.picSend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picSend.TabIndex = 12;
-            this.picSend.TabStop = false;
-            this.picSend.Click += new System.EventHandler(this.picSend_Click);
-            // 
             // tbComment
             // 
-            this.tbComment.BackColor = System.Drawing.Color.White;
-            this.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbComment.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.tbComment.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tbComment.Font = new System.Drawing.Font("Quicksand SemiBold", 12F);
             this.tbComment.Location = new System.Drawing.Point(97, 3);
             this.tbComment.Name = "tbComment";
@@ -264,14 +242,43 @@
             this.lbDate.TabIndex = 11;
             this.lbDate.Text = "labelTime";
             // 
-            // picMode
+            // flowTitle
             // 
-            this.picMode.Location = new System.Drawing.Point(69, 38);
-            this.picMode.Name = "picMode";
-            this.picMode.Size = new System.Drawing.Size(20, 20);
-            this.picMode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picMode.TabIndex = 8;
-            this.picMode.TabStop = false;
+            this.flowTitle.AutoSize = true;
+            this.flowTitle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowTitle.Controls.Add(this.panel1);
+            this.flowTitle.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowTitle.Location = new System.Drawing.Point(13, 13);
+            this.flowTitle.MinimumSize = new System.Drawing.Size(778, 5);
+            this.flowTitle.Name = "flowTitle";
+            this.flowTitle.Size = new System.Drawing.Size(778, 71);
+            this.flowTitle.TabIndex = 21;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.picEdit);
+            this.panel1.Controls.Add(this.picAvatar);
+            this.panel1.Controls.Add(this.lbUser);
+            this.panel1.Controls.Add(this.picDelete);
+            this.panel1.Controls.Add(this.picSave);
+            this.panel1.Controls.Add(this.lbDate);
+            this.panel1.Controls.Add(this.picMode);
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(772, 65);
+            this.panel1.TabIndex = 0;
+            // 
+            // picEdit
+            // 
+            this.picEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picEdit.Image = global::_CS511__SocialNetworkApplication.Properties.Resources.edit;
+            this.picEdit.Location = new System.Drawing.Point(667, 3);
+            this.picEdit.Name = "picEdit";
+            this.picEdit.Size = new System.Drawing.Size(30, 30);
+            this.picEdit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picEdit.TabIndex = 19;
+            this.picEdit.TabStop = false;
+            this.picEdit.Click += new System.EventHandler(this.picEdit_Click);
             // 
             // picAvatar
             // 
@@ -309,30 +316,38 @@
             this.picSave.TabStop = false;
             this.picSave.Click += new System.EventHandler(this.picSave_Click);
             // 
-            // flowTitle
+            // picMode
             // 
-            this.flowTitle.AutoSize = true;
-            this.flowTitle.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowTitle.Controls.Add(this.panel1);
-            this.flowTitle.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowTitle.Location = new System.Drawing.Point(13, 13);
-            this.flowTitle.MinimumSize = new System.Drawing.Size(778, 5);
-            this.flowTitle.Name = "flowTitle";
-            this.flowTitle.Size = new System.Drawing.Size(778, 71);
-            this.flowTitle.TabIndex = 21;
+            this.picMode.Location = new System.Drawing.Point(69, 38);
+            this.picMode.Name = "picMode";
+            this.picMode.Size = new System.Drawing.Size(20, 20);
+            this.picMode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picMode.TabIndex = 8;
+            this.picMode.TabStop = false;
             // 
-            // panel1
+            // picAttach
             // 
-            this.panel1.Controls.Add(this.picAvatar);
-            this.panel1.Controls.Add(this.lbUser);
-            this.panel1.Controls.Add(this.picDelete);
-            this.panel1.Controls.Add(this.picSave);
-            this.panel1.Controls.Add(this.lbDate);
-            this.panel1.Controls.Add(this.picMode);
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(772, 65);
-            this.panel1.TabIndex = 0;
+            this.picAttach.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picAttach.Image = global::_CS511__SocialNetworkApplication.Properties.Resources._11;
+            this.picAttach.Location = new System.Drawing.Point(3, 3);
+            this.picAttach.Name = "picAttach";
+            this.picAttach.Size = new System.Drawing.Size(30, 30);
+            this.picAttach.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picAttach.TabIndex = 13;
+            this.picAttach.TabStop = false;
+            this.picAttach.Click += new System.EventHandler(this.picAttach_Click);
+            // 
+            // picSend
+            // 
+            this.picSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picSend.Image = global::_CS511__SocialNetworkApplication.Properties.Resources.send;
+            this.picSend.Location = new System.Drawing.Point(739, 3);
+            this.picSend.Name = "picSend";
+            this.picSend.Size = new System.Drawing.Size(30, 30);
+            this.picSend.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picSend.TabIndex = 12;
+            this.picSend.TabStop = false;
+            this.picSend.Click += new System.EventHandler(this.picSend_Click);
             // 
             // Post
             // 
@@ -341,7 +356,6 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.flowTitle);
             this.Controls.Add(this.flowPost);
             this.Name = "Post";
@@ -351,15 +365,16 @@
             this.flowPost.PerformLayout();
             this.panelButton.ResumeLayout(false);
             this.panelComment.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picAttach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSend)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picMode)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picSave)).EndInit();
             this.flowTitle.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picEdit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picDelete)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSave)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picMode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picAttach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picSend)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -389,5 +404,6 @@
         private System.Windows.Forms.PictureBox picSave;
         private System.Windows.Forms.FlowLayoutPanel flowTitle;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox picEdit;
     }
 }

@@ -200,6 +200,12 @@
     <Compile Include="View\First.Designer.cs">
       <DependentUpon>First.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FormEdit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FormEdit.Designer.cs">
+      <DependentUpon>FormEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FormFeed.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -351,6 +357,9 @@
     <EmbeddedResource Include="View\First.resx">
       <DependentUpon>First.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FormEdit.resx">
+      <DependentUpon>FormEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FormFeed.resx">
       <DependentUpon>FormFeed.cs</DependentUpon>
     </EmbeddedResource>
@@ -473,6 +482,7 @@
     <Content Include="Data\Post_like\Like_9.txt" />
     <Content Include="Data\UserExpression.txt" />
     <Content Include="Data\UserImgBackground.txt" />
+    <None Include="Image\edit.png" />
     <Content Include="Image\gray-color-solid-background-1920x1080.png" />
     <Content Include="Image\icons8-add-24.png" />
     <Content Include="Image\icons8-add-30.png" />
