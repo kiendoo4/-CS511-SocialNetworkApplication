@@ -127,7 +127,7 @@ namespace _CS511__SocialNetworkApplication.View
                     List<string> parts = new List<string>();
                     if ((Convert.ToString(index) == messageList.Rows[i]["Sender"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Receiver"].ToString() ||
                             Convert.ToString(index) == messageList.Rows[i]["Receiver"].ToString() && Convert.ToString(curr) == messageList.Rows[i]["Sender"].ToString()
-                            ) && messageList.Rows[i]["Deleted"].ToString() == "0" && messageList.Rows[i]["Type"].ToString() != "Text")
+                            ) && messageList.Rows[i]["Deleted"].ToString() == "0" && messageList.Rows[i]["Type"].ToString() != "Text" && messageList.Rows[i]["Type"].ToString() != "Icon")
                     {
                         parts.Add(messageList.Rows[i]["Sender"].ToString());
                         parts.Add(messageList.Rows[i]["Message"].ToString());

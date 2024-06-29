@@ -76,7 +76,7 @@
             // 
             this.NameUser.AutoSize = true;
             this.NameUser.Font = new System.Drawing.Font("Paytone One", 25F);
-            this.NameUser.Location = new System.Drawing.Point(264, 551);
+            this.NameUser.Location = new System.Drawing.Point(275, 551);
             this.NameUser.Name = "NameUser";
             this.NameUser.Size = new System.Drawing.Size(260, 69);
             this.NameUser.TabIndex = 1;
@@ -126,9 +126,10 @@
             // 
             // changeAvatar
             // 
+            this.changeAvatar.BackColor = System.Drawing.Color.White;
             this.changeAvatar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.changeAvatar.Image = ((System.Drawing.Image)(resources.GetObject("changeAvatar.Image")));
-            this.changeAvatar.Location = new System.Drawing.Point(68, 635);
+            this.changeAvatar.Location = new System.Drawing.Point(247, 634);
             this.changeAvatar.Name = "changeAvatar";
             this.changeAvatar.Size = new System.Drawing.Size(30, 30);
             this.changeAvatar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -254,7 +255,7 @@
             // 
             // panel6
             // 
-            this.panel6.Location = new System.Drawing.Point(276, 618);
+            this.panel6.Location = new System.Drawing.Point(287, 618);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(229, 42);
             this.panel6.TabIndex = 8;
